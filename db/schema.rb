@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_26_155703) do
+ActiveRecord::Schema.define(version: 2019_11_26_201256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 2019_11_26_155703) do
     t.time "start_time"
     t.integer "duration"
     t.string "location"
-    t.boolean "confirmed"
-    t.text "greeting"
+    t.boolean "confirmed", default: false
+    t.text "greeting", default: "Hi, looking forward to meeting you!"
     t.integer "sender_id"
     t.integer "recipient_id"
     t.datetime "created_at", null: false

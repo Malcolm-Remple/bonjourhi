@@ -16,7 +16,7 @@ malcolm = User.create!(
   last_name: "Remple",
   email: "malcolm@example.com",
   password: "aaaaaa",
-  city: "Montreal"  
+  city: "Montreal"
   )
 
 lea = User.create!(
@@ -24,7 +24,7 @@ lea = User.create!(
   last_name: "Grelou",
   email: "lea@example.com",
   password: "aaaaaa",
-  city: "Montreal"  
+  city: "Montreal"
   )
 
 lynn = User.create!(
@@ -32,7 +32,7 @@ lynn = User.create!(
   last_name: "Qi",
   email: "lynn@example.com",
   password: "aaaaaa",
-  city: "Montreal"  
+  city: "Montreal"
   )
 
 claire = User.create!(
@@ -40,7 +40,7 @@ claire = User.create!(
   last_name: "Froelich",
   email: "claire@example.com",
   password: "aaaaaa",
-  city: "Montreal"  
+  city: "Montreal"
   )
 
 en = Language.create!(name: "English (US)", code: "en-US")
@@ -48,14 +48,18 @@ fr = Language.create!(name: "French", code: "fr")
 de = Language.create!(name: "German", code: "de")
 cn = Language.create!(name: "Chinese", code: "zh")
 
-UserLanguage.create!(user: malcolm, language: en, proficiency: 5, seeking: false, sharing: true) 
-UserLanguage.create!(user: malcolm, language: fr, proficiency: 2, seeking: true, sharing: false) 
-UserLanguage.create!(user: lynn, language: cn, proficiency: 5, seeking: false, sharing: true) 
-UserLanguage.create!(user: lynn, language: en, proficiency: 3, seeking: true, sharing: false) 
-UserLanguage.create!(user: lea, language: fr, proficiency: 5, seeking: false, sharing: true) 
-UserLanguage.create!(user: lea, language: en, proficiency: 4, seeking: true, sharing: false) 
-UserLanguage.create!(user: claire, language: en, proficiency: 4, seeking: false, sharing: true) 
-UserLanguage.create!(user: claire, language: fr, proficiency: 2, seeking: true, sharing: false) 
+UserLanguage.create!(user: malcolm, language: en, proficiency: 5, seeking: false, sharing: true)
+UserLanguage.create!(user: malcolm, language: fr, proficiency: 2, seeking: true, sharing: false)
+UserLanguage.create!(user: lynn, language: cn, proficiency: 5, seeking: false, sharing: true)
+UserLanguage.create!(user: lynn, language: en, proficiency: 3, seeking: true, sharing: false)
+UserLanguage.create!(user: lea, language: fr, proficiency: 5, seeking: false, sharing: true)
+UserLanguage.create!(user: lea, language: en, proficiency: 4, seeking: true, sharing: false)
+UserLanguage.create!(user: claire, language: en, proficiency: 4, seeking: false, sharing: true)
+UserLanguage.create!(user: claire, language: fr, proficiency: 2, seeking: true, sharing: false)
+
+puts "destorying meetups.."
+Meetup.destroy_all
+puts "creating meetups.."
 
 Meetup.create!(
   date: Date.parse("Tue, 10 Aug 2019 01:20:19 -0400 (EDT)"),

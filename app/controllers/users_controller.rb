@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
   def index
-    @text = "dsfiuhsdajk"
+    @users = User.where.not("id = ?", current_user.id)
   end
+
+  def show
+    @user = User.find(params[:id])
+  end
+
 end

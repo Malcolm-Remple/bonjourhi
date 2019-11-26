@@ -1,2 +1,6 @@
-<h1>Meetups#show</h1>
-<p>Find me in app/views/meetups/show.html.erb</p>
+<h1>Your meetup with <%= @meetup.opposite_user(current_user).first_name %></h1>
+
+<% if current_user != @meetup.sender %>
+  <%= link_to "Confirm", meetup_path(@meetup), method: :patch %>
+<% end %>
+

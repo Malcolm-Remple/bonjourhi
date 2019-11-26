@@ -1,2 +1,21 @@
-<h1>Meetups#index</h1>
-<p>Find me in app/views/meetups/index.html.erb</p>
+<h1>Outbound meetup requests</h1>
+<ul>
+<% @outbound_meetup_requests.each do |m| %>
+  <li><%= link_to m.opposite_user(current_user).first_name, meetup_path(m) %></li>
+<% end %>
+</ul>
+
+<h1>Inbound meetup requests</h1>
+<ul>
+<% @inbound_meetup_requests.each do |m| %>
+  <li><%= link_to m.opposite_user(current_user).first_name, meetup_path(m) %></li>
+<% end %>
+</ul>
+
+
+<h1>Confirmed meetups</h1>
+<ul>
+<% @confirmed_meetups.each do |m| %>
+  <li><%= link_to m.opposite_user(current_user).first_name, meetup_path(m) %></li>
+<% end %>
+</ul>

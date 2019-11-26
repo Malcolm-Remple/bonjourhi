@@ -1,2 +1,10 @@
 <h1>Meetups#new</h1>
-<p>Find me in app/views/meetups/new.html.erb</p>
+
+<%= simple_form_for [@user, @meetup] do |f| %>
+  <%= f.input :date, label: "Choose the date", required: true %>
+  <%= f.input :start_time, label: "Choose the time you want to meet?", required: true %>
+  <%= f.input :duration, label: "How long would you like to meet?", required: true %>
+  <%= f.input :location, label: "Where?", required: true %>
+  <%= f.input :greeting, label: "Greeting (Max 150 characters)", error: "Message too long (under 150 characters)" %>
+  <%= f.submit "Create the booking" %>
+<% end %>
