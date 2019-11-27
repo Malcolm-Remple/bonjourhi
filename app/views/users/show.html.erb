@@ -1,4 +1,44 @@
-<h1><%= @user.first_name %></h1>
+<h1><%= @user.first_name %>
+  <%= link_to edit_user_path(@user) do %>
+     <i class="fas fa-pencil-alt"></i>
+  <% end %>
+</h1>
+
+
+<h3>Sharing Languages</h3>
+<ul>
+  <% @user_languages.filter(&:sharing).each do |ul| %>
+  <li><%= ul.language.name %> (<%= ul.proficiency %>)
+  <% if @user == current_user %>
+
+      <%= link_to edit_user_language_path(ul) do %>
+        <i class="fas fa-pencil-alt"></i>
+      <% end %>
+
+
+
+    <%= link_to edit_user_language_path(ul) do %>
+        <i class="far fa-trash-alt"></i>
+      <% end %>
+
+    <% end %></li>
+  <% end %>
+</ul>
+
+<h3>Seeking Languages</h3>
+<ul>
+  <% @user_languages.filter(&:seeking).each do |ul| %>
+    <li><%= ul.language.name %> (<%= ul.proficiency %>)
+    <% if @user == current_user %>
+      <%= link_to edit_user_language_path(ul) do %>
+        <i class="fas fa-pencil-alt"></i>
+      <% end %>
+    <% end %></li>
+  <% end %>
+</ul>
+
+
+
 
 <p><%= link_to "Go back to users", users_path %></p>
 <% if @user != current_user %>
