@@ -1,4 +1,9 @@
 <h1><%= @user.first_name %></h1>
 
 <p><%= link_to "Go back to users", users_path %></p>
-<p><%= link_to "Book this person", new_user_meetup_path(@user) %></p>
+<% if @user != current_user %>
+  <p><%= link_to "Book this person", new_user_meetup_path(@user) %></p>
+<% else %>
+  <p><%= link_to "Edit #{@user.first_name}'s profile", edit_user_path(@user) %></p>
+<% end %>
+

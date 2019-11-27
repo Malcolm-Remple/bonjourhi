@@ -18,6 +18,12 @@
           <%= link_to "Users", users_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
+          <%= link_to "Meetups", meetups_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "My profile", user_path(current_user), class: "nav-link" %>
+        </li>
+        <li class="nav-item">
           <%= current_user.email %>
         </li>
         <li class="nav-item dropdown">
