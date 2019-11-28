@@ -14,4 +14,9 @@ class Meetup < ApplicationRecord
   def opposite_user(current_user)
     sender == current_user ? recipient : sender
   end
+
+  def end_time
+    # returns end time (note: duration in minutes)
+    start_time + (duration * 60)
+  end
 end
