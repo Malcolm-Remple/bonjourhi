@@ -13,6 +13,11 @@ class User < ApplicationRecord
   # has_many :meetups, as: :sender
   # has_many :meetups, as: :recipient
 
+  # returns all users excluding the user this method is called on
+  def all_users_except_me
+    User.where.not(id: id)
+  end
+
   def meetups
     Meetup.where("sender_id = ? OR recipient_id = ?", id, id)
   end
