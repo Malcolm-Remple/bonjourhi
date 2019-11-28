@@ -12,20 +12,114 @@
   
   <a href=""><button class="bh-btn-outline-sm">Button</button>
   </a>
-  
+
+<!-- card of user index   -->
   <div class="bh-card-user-index">
-    <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "bh-avatar-sm" %>
+    <div>
+      <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "bh-avatar-sm" %>
+    </div>
     <div class="bh-card-user-index-info">
       <h3>Firstname</h3>
       <p>city</p>
     </div>
-    <p>sharing</p>
-    <h3>EN</h3>
-    <progress value="100" max="100"></progress>
-    <p>practicing</p>
-    <h3>FR</h3>
-    <progress value="60" max="100"></progress>
+    <div class="bh-card-user-index-languages">
+      <div class="bh-card-user-index-sharing">
+        <div>
+          <p>sharing</p>
+        </div>
+        <!-- build the progress bar by self -->
+        <div class="language-part">
+          <h3 class="language">EN</h3>
+            <div class= "bh-progress-background-sharing">
+              <div class = "bh-progress-bar-sharing"></div>
+            </div>
+        </div>
+      </div>
+      <div class="bh-card-user-index-practicing">
+        <div>
+          <p>practicing</p>
+        </div>
+        <div class="language-part">
+          <h3 class="language">FR</h3>
+            <div class= "bh-progress-background-practicing">
+              <div class = "bh-progress-bar-practicing"></div>
+            </div>
+        </div>
+<!--         <div class="bh-language-icon">
+        </div> -->
+      </div>
+    </div>
   </div>
+<br>
+<br>
+
+
+
+  <!-- card of index version 2 with css grid -->
+    <!-- <div class="bh-grid-container">
+      <div class="bh-grid-item1">
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "bh-avatar-sm" %>
+      </div>
+      <div class="bh-grid-item2">
+        <h3>Firstname</h3>
+      </div>
+      <div class="bh-grid-item3">
+        <p>city</p>
+      </div>
+      <div class="bh-grid-item4">
+        <p>sharing</p>
+      </div>
+      <div class="bh-grid-item5">
+        <p>practicing</p>
+      </div>
+      <div class="bh-grid-item6">
+        <h3>EN</h3>
+      </div>
+      <div class="bh-grid-item7">
+        <h3>FR</h3>
+      </div>
+      <div class="bh-grid-item8">
+        <div class= "bh-progress-background-sharing">
+          <div class = "bh-progress-bar-sharing"></div>
+        </div>
+      </div>
+      <div class="bh-grid-item9">
+        <div class= "bh-progress-background-practicing">
+          <div class = "bh-progress-bar-practicing"></div>
+        </div>
+      </div>
+    </div> -->
+
+
+<!-- meetups index card -->
+  <div class="bh-card-meetup-index">
+    <div class="meetup-avatar-info">
+      <div class="bh-meetup-avatar">
+        <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg", class: "bh-avatar-sm meetup" %>
+      </div>
+      <div class="bh-card-meetup-index-info">
+        <h3>Firstname</h3>
+        <p>confirmed</p>
+      </div>
+    </div>
+    <div class="bh-card-meetup-index-date">      
+      <div>
+        <p>12/12/2020</p>
+      </div>        
+      <div class="bh-card-meetup-index-languages">
+        <div>
+          <h3>EN | FR</h3>
+        </div>
+        <!-- <div>
+          <h3>FR</h3>
+        </div> -->
+      </div>
+    </div>
+  </div> 
+
+  <br>
+  <br>  
+  <!-- Text  -->
   <h1>Text</h1>
   <h2>Text</h2>
   <h3>Text</h3>
