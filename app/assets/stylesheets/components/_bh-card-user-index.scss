@@ -1,7 +1,128 @@
 .bh-card-user-index{
-
+  width: 100%;
+  height: 71px;
+  background: white;
+  // box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .bh-card-user-index-info {
-  
+  display:flex;
+  flex-direction: column;
+  p {
+    margin-bottom: 0px;
+  }
+  h3 {
+    margin-bottom: 0px;
+  }
+}
+
+.bh-card-user-index-languages {
+  display: flex;
+  flex-direction: column;
+ p {
+    margin-bottom: 0px;
+  }
+  h3 {
+    margin-bottom: 0px;
+  }
+}
+
+.language-part {
+  justify-content: space-between;
+  display: flex;
+  align-items: baseline;
+}
+
+.language{
+  padding-left: 10px;
+  padding-right: 10px;
+
+}
+
+.bh-card-user-index-sharing {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  .bh-progress-background-sharing {
+    background-color: lightgrey; 
+    width: 50px;
+  }
+}
+
+.bh-progress-bar-sharing {
+  width: 50%; 
+  background-color: blue; 
+  height: 10px;
+}
+
+.bh-card-user-index-practicing {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+ 
+}
+
+.bh-progress-background-practicing {
+    background-color: lightgrey; 
+    width: 50px;
+  }
+
+.bh-language-icon {
+  display: flex;
+}
+
+.bh-progress-bar-practicing {
+  width: 50%; 
+  background-color: red; 
+  height: 10px;
+}
+
+.bh-card-meetup-index {
+  width: 100%;
+  height: 71px;
+  background: white;
+  // box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.meetup-avatar-info {
+  display: flex;
+}
+
+.bh-meetup-avatar {
+  margin-left: 10px;
+}
+
+.bh-card-meetup-index-date {
+  display: flex;
+  flex-direction: column;
+  p {
+    margin-bottom: 0px;
+  }
+  margin-right: 10px;
+}
+
+.bh-card-meetup-index-info {
+  display:flex;
+  flex-direction: column;
+  margin-left: 20px;
+    p {
+    margin-bottom: 0px;
+  }
+    h3 {
+    margin-bottom: 0px;
+  }
+  justify-content: center;
+}
+
+.bh-card-meetup-index-languages {
+  display: flex;
+  h3 {
+    margin-bottom: 0px;
+  }
 }
