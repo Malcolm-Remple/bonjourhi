@@ -1,0 +1,22 @@
+.bh-nav-footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: white;
+  list-style-type: none;
+  background-color: black;
+  width: 100%;
+  height: 52px;
+  font-size: 22px;
+  text-align: center;
+  position: sticky;
+  bottom: 0;
+}
+
+.bh-nav-i {
+  color: white;
+}
+
+.bh-pushdown-content {
+  min-height: calc(100vh - 52px);
+}
