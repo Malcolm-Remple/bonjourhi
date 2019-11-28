@@ -1,14 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-
-# USER // LANGUAGE // USER_LANGUAGE SEEDS
-
+# USER SEEDS
 puts "Destroying users..."
 
 # because of the pb with dependent destroy, we first need to destroy joint tables
@@ -32,9 +22,9 @@ counter = 7000
   first_name = Faker::Name.first_name
   counter += 1
   User.create!(
-    first_name: first_name
+    first_name: first_name,
     last_name: Faker::Name.last_name,
-    email: Faker::Internet.email(name: "#{first_name}", domain: 'email')
+    email: Faker::Internet.email(name: "#{first_name}"),
     password: "aaaaaa",
     city: "Montreal",
     bio: "Hi, I'm looking forward to meeting you! I love talking foreign languages.",
@@ -43,64 +33,88 @@ counter = 7000
     )
 end
 
-# en = Language.create!(name: "English (US)", code: "en-US")
-# fr = Language.create!(name: "French", code: "fr")
-# de = Language.create!(name: "German", code: "de")
-# cn = Language.create!(name: "Chinese", code: "zh")
-# es = Language.create!(name: "Spanish", code: "es")
-
-# UserLanguage.create!(user: malcolm, language: en, proficiency: 5, seeking: false, sharing: true)
-# UserLanguage.create!(user: malcolm, language: fr, proficiency: 2, seeking: true, sharing: false)
-# UserLanguage.create!(user: lynn, language: cn, proficiency: 5, seeking: false, sharing: true)
-# UserLanguage.create!(user: lynn, language: en, proficiency: 3, seeking: true, sharing: false)
-# UserLanguage.create!(user: lea, language: fr, proficiency: 5, seeking: false, sharing: true)
-# UserLanguage.create!(user: lea, language: en, proficiency: 4, seeking: true, sharing: false)
-# UserLanguage.create!(user: claire, language: en, proficiency: 4, seeking: false, sharing: true)
-# UserLanguage.create!(user: claire, language: fr, proficiency: 2, seeking: true, sharing: false)
+# LANGUAGE SEEDS
+en = Language.create!(name: "English (US)", code: "en-US")
+fr = Language.create!(name: "French", code: "fr")
+de = Language.create!(name: "German", code: "de")
+cn = Language.create!(name: "Chinese", code: "zh")
+es = Language.create!(name: "Spanish", code: "es")
 
 
-# # MEETUP SEEDS
+# USER LANGUAGE SEEDS
+UserLanguage.create!(user: malcolm, language: en, proficiency: 5, seeking: false, sharing: true)
+UserLanguage.create!(user: malcolm, language: fr, proficiency: 2, seeking: true, sharing: false)
+UserLanguage.create!(user: lynn, language: cn, proficiency: 5, seeking: false, sharing: true)
+UserLanguage.create!(user: lynn, language: en, proficiency: 3, seeking: true, sharing: false)
+UserLanguage.create!(user: lea, language: fr, proficiency: 5, seeking: false, sharing: true)
+UserLanguage.create!(user: lea, language: en, proficiency: 4, seeking: true, sharing: false)
+UserLanguage.create!(user: claire, language: en, proficiency: 4, seeking: false, sharing: true)
+UserLanguage.create!(user: claire, language: fr, proficiency: 2, seeking: true, sharing: false)
 
-# puts "Destorying meetups..."
-# # destroy is on the top because of the dependent destroy thing
-# puts "Creating meetups..."
 
-# 300.times do
-#   Meetup.create!(
-#     date: Date.parse("Tue, 10 Aug 2019 01:20:19 -0400 (EDT)"),
-#     start_time: Time.now,
-#     duration: 60,
-#     location: "5333 Ave Casgrain",
-#     sender: malcolm,
-#     recipient: lea,
-#     confirmed: false,
-#     greeting: "Yooooo let's meet"
-#     seeking_lang:
-#     sharing_lang:
-#     )
-# end
+User.all.each do |user|
+  user_language_seeking = UserLanguage.new(
+    proficiency: rand(1..3),
+    seeking: true,
+    sharing: false
+    )
+  user_language_seeking.language = Language.find(Language.pluck(:id).sample)
+  user_language_seeking.user = user
+  user_language_seeking.save!
+
+  user_language_sharing = UserLanguage.new(
+    proficiency: rand(4..5),
+    seeking: false,
+    sharing: true
+    )
+  user_language_sharing.language = Language.get_sharing_lang(user_language_seeking.language)
+  user_language_sharing.user = user
+  user_language_sharing.save!
+end
+
+# MEETUP SEEDS
+
+puts "Destorying meetups..."
+puts "Creating meetups..."
+
+duration = [30, 60, 90, 120]
+
+User.all.each do |user|
+  3.times do
+    meetup = Meetup.new(
+      date: Faker::Date.backward(days: 300),
+      start_time: Time.now,
+      duration: duration.sample,
+      location: "5333 avenue Casgrain, Montreal",
+      confirmed: false,
+      greeting: "Yooooo let's meet",
+      )
+    meetup.sender = user
+    meetup.recipient = User.where.not(id: user.id).sample
+    meetup.seeking_lang = user.user_languages.where(seeking: true).sample.language
+    meetup.sharing_lang = user.user_languages.where(sharing: true).sample.language
+    meetup.save!
+  end
+end
 # no need to put longitude & latitude here, it is does automatically
 
 # REVIEW SEEDS
-# puts "Destroying reviews.."
-# # destroy is on the top because of the dependent destroy thing
-# puts "Creating reviews..."
+puts "Destroying reviews.."
+puts "Creating reviews..."
 
-# qualities = %w(punctual patient outgoing fun curious chatty)
+qualities = %w(punctual patient outgoing fun curious chatty)
 
-# User.all.each do |user|
-#   3.times do
-#     review = Review.new(
-#       # reviewed_user: rand(1..300),
-#       # author: rand (1..300),
-#       date: Faker::Date.backward(days: 300),
-#       content: Faker::Lorem.sentence(word_count: 18),
-#       main_quality: qualities.sample
-#       )
-#     review.user = user
-#     review.author = User.where.not(id: user.id).sample
-#     review.save!
-#   end
-# end
+User.all.each do |user|
+  3.times do
+    review = Review.new(
+      date: Faker::Date.backward(days: 300),
+      content: Faker::Lorem.sentence(word_count: 18),
+      main_quality: qualities.sample
+      )
+    review.user = user
+    review.author = User.where.not(id: user.id).sample
+    review.save!
+  end
+end
 
-# puts "Seeding is done!"
+puts "Seeding is done!"
