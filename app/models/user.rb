@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :user_languages
   has_many :languages, through: :user_languages
 
+  has_many :reviews  # as a reviewee (user)
+  has_many :reviews, as: :author
+
   # has_many :meetups, as: :sender
   # has_many :meetups, as: :recipient
 
