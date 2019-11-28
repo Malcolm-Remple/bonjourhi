@@ -1,0 +1,36 @@
+<div class="bh-pushdown-content"></div>
+<div class="bh-nav-footer">
+  <div>
+    <%= link_to root_path do %>
+      <i class="fas fa-home bh-nav-i"></i>
+    <% end %>
+  </div>
+  <div>
+    <%= link_to meetups_path do %>
+      <i class="fas fa-calendar-check bh-nav-i"></i>
+    <% end %>
+  </div> 
+  <div>
+    <%= link_to users_path do %>
+      <i class="fas fa-search bh-nav-i"></i>
+    <% end %>
+  </div> 
+  <div>
+    <%= link_to "#" do %>
+      <i class="fas fa-envelope bh-nav-i"></i>
+    <% end %>
+  </div>  
+  <div>
+    
+    <% if user_signed_in? %> 
+      <%= link_to user_path(current_user) do %>
+        <i class="fas fa-user bh-nav-i"></i>
+      <% end %>
+    <% else %>
+      <%= link_to new_user_session_path do %>
+        <i class="fas fa-user bh-nav-i"></i>
+      <% end %>
+    <% end %>
+    
+  </div>
+</div>

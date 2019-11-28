@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_26_201256) do
+ActiveRecord::Schema.define(version: 2019_11_28_214727) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,8 +34,26 @@ ActiveRecord::Schema.define(version: 2019_11_26_201256) do
     t.integer "recipient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "longitude"
+    t.float "latitude"
+    t.bigint "sharing_lang_id"
+    t.bigint "seeking_lang_id"
     t.index ["recipient_id"], name: "index_meetups_on_recipient_id"
+    t.index ["seeking_lang_id"], name: "index_meetups_on_seeking_lang_id"
     t.index ["sender_id"], name: "index_meetups_on_sender_id"
+    t.index ["sharing_lang_id"], name: "index_meetups_on_sharing_lang_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.string "content"
+    t.string "main_quality"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "author_id"
+    t.bigint "user_id"
+    t.index ["author_id"], name: "index_reviews_on_author_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "user_languages", force: :cascade do |t|
@@ -61,10 +79,37 @@ ActiveRecord::Schema.define(version: 2019_11_26_201256) do
     t.string "first_name"
     t.string "last_name"
     t.string "city"
+    t.text "bio"
+    t.string "photo"
+    t.integer "num_of_past_meetups"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vocab_lists", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "language_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["language_id"], name: "index_vocab_lists_on_language_id"
+    t.index ["user_id"], name: "index_vocab_lists_on_user_id"
+  end
+
+  create_table "vocabs", force: :cascade do |t|
+    t.string "item"
+    t.bigint "vocab_list_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["vocab_list_id"], name: "index_vocabs_on_vocab_list_id"
+  end
+
+  add_foreign_key "meetups", "languages", column: "seeking_lang_id"
+  add_foreign_key "meetups", "languages", column: "sharing_lang_id"
+  add_foreign_key "reviews", "users"
+  add_foreign_key "reviews", "users", column: "author_id"
   add_foreign_key "user_languages", "languages"
   add_foreign_key "user_languages", "users"
+  add_foreign_key "vocab_lists", "languages"
+  add_foreign_key "vocab_lists", "users"
+  add_foreign_key "vocabs", "vocab_lists"
 end
