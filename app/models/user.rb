@@ -10,10 +10,12 @@ class User < ApplicationRecord
   has_many :reviews  # as a reviewee (user)
   has_many :reviews, as: :author
 
+
+  before_save :lowercase_city
   has_many :meetups, as: :sender
   has_many :meetups, as: :recipient
 
-  # returns all users excluding the user this method is called on
+# returns all users excluding the user this method is called on
   def all_users_except_me
     User.where.not(id: id)
   end
@@ -32,5 +34,13 @@ class User < ApplicationRecord
 
   def confirmed_meetups
     Meetup.where("(sender_id = ? OR recipient_id = ?) AND confirmed = true", id, id)
+  end
+
+  private
+
+  def lowercase_city
+    return if self.city.nil?
+
+    self.city = self.city.lowercase
   end
 end
