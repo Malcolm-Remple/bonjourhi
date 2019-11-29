@@ -3,7 +3,7 @@
       <%= image_tag user.photo || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80", class: "bh-avatar-sm" %>
     </div>
     <div class="bh-card-user-index-info">
-      <h3><%= user.first_name %></h3>
+      <p style="font-weight: bold;"><%= user.first_name %></p>
       <p><%= user.city %></p>
     </div>
     <div class="bh-card-user-index-languages">
