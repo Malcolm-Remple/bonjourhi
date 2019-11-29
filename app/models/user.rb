@@ -10,10 +10,8 @@ class User < ApplicationRecord
   has_many :reviews  # as a reviewee (user)
   has_many :reviews, as: :author
 
-  has_many :vocab_lists
-  has_many :vocabs, through: :vocab_lists
-  # has_many :meetups, as: :sender
-  # has_many :meetups, as: :recipient
+  has_many :meetups, as: :sender
+  has_many :meetups, as: :recipient
 
   # returns all users excluding the user this method is called on
   def all_users_except_me
