@@ -2,7 +2,7 @@
 <% if @meetup.confirmed %>
   <p>Confirmed</p>
 <% else %>
-  <p>Pendingq</p>
+  <p>Pending</p>
 <% end %>
 
 <h3><%= "#{@meetup.date}, #{@meetup.start_time} - #{@meetup.end_time}" %></h3>
@@ -17,4 +17,6 @@
 
 <% if current_user != @meetup.sender %>
   <%= link_to "Confirm meetup", meetup_path(@meetup), method: :patch %>
+<%= else %>
+  <%= link_to "Reschedule / Cancel", "#" %>
 <% end %>

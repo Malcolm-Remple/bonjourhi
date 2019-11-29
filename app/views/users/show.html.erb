@@ -1,17 +1,17 @@
 
 <div class="container">
 
-  <div class="mt-4 d-flex justify-content-around"> 
+  <div class="mt-4 d-flex justify-content-around">
     <div class="col-6">
-      <img class="bh-avatar-lg" src="https://kitt.lewagon.com/placeholder/users/ssaunier">
+      <img class="bh-avatar-lg" src="<%= @user.photo %>">
     </div>
     <div class="mt-3 col-6">
       <h3 class=""><b><%= @user.first_name %></b></h3>
       <p><%= @user.city %></p>
-    </div> 
+    </div>
   </div>
 
-  <div class="mt-4 d-flex justify-content-around"> 
+  <div class="mt-4 d-flex justify-content-around">
     <div class="col-6">
       <h3><b>Sharing</b></h3>
     </div>
@@ -21,10 +21,10 @@
         <li><%= ul.language.name %> (<%= ul.proficiency %>)
         <% end %>
       </ul>
-    </div> 
+    </div>
   </div>
-  
-  <div class="mt-4 d-flex justify-content-around"> 
+
+  <div class="mt-4 d-flex justify-content-around">
     <div class="col-6">
       <h3><b>Seeking</b></h3>
     </div>
@@ -34,26 +34,23 @@
           <li><%= ul.language.name %> (<%= ul.proficiency %>)
         <% end %>
       </ul>
-    </div> 
+    </div>
   </div>
-  
-  <div class="mt-4 d-flex justify-content-around"> 
+
+  <div class="mt-4 d-flex justify-content-around">
     <div class="col-12">
       <h3><b>Bio</b></h3>
     </div>
-  </div> 
-  
-  <div class="mt-2"> 
-    <div class="col-12">
-      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis netus et malesuada fames ac turpis </p>
-    </div>
-  </div> 
-  
-  
-   <!-- end of rows -->
-</div>
+  </div>
 
-  
+  <div class="mt-2">
+    <div class="col-12">
+      <p><%= @user.bio %></p>
+    </div>
+  </div>
+
+
+   <!-- end of rows -->
 
 <div class="container">
   <% if @user != current_user %>
@@ -63,3 +60,17 @@
   <% end %>
 </div>
 
+  <!-- <div class="mt-4 d-flex justify-content-around">
+    <div class="col-12">
+      <h3><b>Reviews</b></h3>
+    </div>
+  </div>
+
+  <div class="mt-2">
+      <div class="col-12">
+        <p><b></b></p>
+        <p></p>
+      </div>
+  </div> -->
+
+</div>

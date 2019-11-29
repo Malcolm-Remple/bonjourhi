@@ -2,8 +2,8 @@
 <h3><%= @user.city %></h3>
 
 <%= simple_form_for [@user, @meetup] do |f| %>
-  <%= f.input :seeking_lang, as: :select, label: "I want to practice:", required: true, collection: @seeking_langs %>
-  <%= f.input :sharing_lang, as: :select, label: "I want to share:", required: true, collection: @sharing_langs %>
+  <%= f.input :seeking_lang, as: :select, label: "I want to practice:", required: true, collection: @sharing_langs %>
+  <%= f.input :sharing_lang, as: :select, label: "I want to share:", required: true, collection: @seeking_langs %>
   <%= f.input :date, label: "Date", required: true %>
   <%= f.input :start_time, label: "Time", required: true %>
   <%= f.input :duration, label: "Duration (in minutes)", required: true %>
