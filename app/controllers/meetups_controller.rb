@@ -13,11 +13,15 @@ class MeetupsController < ApplicationController
   def new
     @user = User.find(params[:user_id])
     @meetup = Meetup.new
+    @seeking_langs = current_user.user_languages.filter(&:seeking).map {|user_languages| user_languages.language}
+    @sharing_langs = current_user.user_languages.filter(&:sharing).map {|user_languages| user_languages.language}
   end
 
   def create
     @user = User.find(params[:user_id])
     @meetup = Meetup.new(meetup_params)
+    @meetup.sharing_lang = Language.find(params[:meetup][:sharing_lang].to_i)
+    @meetup.seeking_lang = Language.find(params[:meetup][:seeking_lang].to_i)
     @meetup.sender = current_user
     @meetup.recipient = @user
     if @meetup.save
