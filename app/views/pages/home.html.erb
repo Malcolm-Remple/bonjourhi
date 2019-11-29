@@ -1,2 +1,29 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <div class="bh-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1500565534308-0db60f7116f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60);">
+    <div class="container">
+      <h2>Find a language partner</h2>
+      <div>
+        <form action="<%= users_path %>">
+          <p>What city?</p><input type="text" name="city" style="margin-bottom: 10px;">
+            <p>I want practice</p>
+        </form>
+      </div>
+      <div>
+        <p>I want practice</p>
+        
+      </div>
+
+      <!-- simple form  -->
+  
+      <%= simple_form_for @user do |f| %>
+        <%= f.association :languages %>
+        <%= f.button :Search, class: "bh-btn-solid-lg-home"  %>
+      <% end %>
+      
+      <div>
+        <a href=""><button class="bh-btn-solid-lg-home">Search</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

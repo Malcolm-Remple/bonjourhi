@@ -1,3 +1,4 @@
+
 # USER SEEDS
 puts "Destroying users..."
 
@@ -6,6 +7,7 @@ UserLanguage.destroy_all
 Review.destroy_all
 Meetup.destroy_all
 User.destroy_all
+Language.destroy_all
 
 puts "Creating users..."
 
@@ -34,11 +36,11 @@ counter = 7000
 end
 
 # LANGUAGE SEEDS
-en = Language.create!(name: "English (US)", code: "en-US")
-fr = Language.create!(name: "French", code: "fr")
-de = Language.create!(name: "German", code: "de")
-cn = Language.create!(name: "Chinese", code: "zh")
-es = Language.create!(name: "Spanish", code: "es")
+en = Language.create!(name: "English (US)", code: "EN")
+fr = Language.create!(name: "French", code: "FR")
+de = Language.create!(name: "German", code: "DE")
+cn = Language.create!(name: "Chinese", code: "ZH")
+es = Language.create!(name: "Spanish", code: "ES")
 
 
 # USER LANGUAGE SEEDS
