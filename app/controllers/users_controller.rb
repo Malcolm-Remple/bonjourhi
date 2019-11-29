@@ -1,6 +1,16 @@
 class UsersController < ApplicationController
   def index
-    @users = User.where.not("id = ?", current_user.id)
+    if params[:city].present?
+
+      city = params[:city]
+      language = params[:language]
+ 
+      @users = User.joins(:user_languages)
+          .where(city: city, user_languages: { language_id: language, sharing: true })
+      # @users.where("var = ? AND var = ?", city, montreal)
+    else
+      @users = User.where.not("id = ?", current_user.id)
+    end
   end
 
   def show

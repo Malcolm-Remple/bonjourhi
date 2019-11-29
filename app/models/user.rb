@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :vocabs, through: :vocab_lists
   # has_many :meetups, as: :sender
   # has_many :meetups, as: :recipient
+  before_save :lowercase_city
 
   # returns all users excluding the user this method is called on
   def all_users_except_me
@@ -34,5 +35,13 @@ class User < ApplicationRecord
 
   def confirmed_meetups
     Meetup.where("(sender_id = ? OR recipient_id = ?) AND confirmed = true", id, id)
+  end
+
+  private
+
+  def lowercase_city
+    return if self.city.nil?
+
+    self.city = self.city.lowercase
   end
 end
