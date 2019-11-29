@@ -1,6 +1,20 @@
-<h1>Your meetup with <%= @meetup.opposite_user(current_user).first_name %></h1>
-
-<% if current_user != @meetup.sender %>
-  <%= link_to "Confirm", meetup_path(@meetup), method: :patch %>
+<h1>With <%= @meetup.opposite_user(current_user).first_name %></h1>
+<% if @meetup.confirmed %>
+  <p>Confirmed</p>
+<% else %>
+  <p>Pending</p>
 <% end %>
 
+<h3><%= "#{@meetup.date}, #{@meetup.start_time} - #{@meetup.end_time}" %></h3>
+<h3><%= "At #{@meetup.location}" %></h3>
+<%= image_tag "https://res.cloudinary.com/dgxkozw6v/image/upload/v1575058085/cafe-myriade_kd2faq.png", style:'height:200px; width:500px; margin-bottom:20px; object-fit:cover;' %>
+<%= link_to "Open in maps", "#" %>
+
+<h3>Greeting message:</h3>
+<p>Hi! I really want to meet new people and improve my skills at speaking foreign languages! This app is a great idea, so why not having a coffee at Café Myriade?</p>
+<%= link_to "Open in messages", "#" %>
+
+
+<% if current_user != @meetup.sender %>
+  <%= link_to "Confirm meetup", meetup_path(@meetup), method: :patch %>
+<% end %>
