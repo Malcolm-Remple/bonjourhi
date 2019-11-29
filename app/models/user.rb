@@ -10,13 +10,12 @@ class User < ApplicationRecord
   has_many :reviews  # as a reviewee (user)
   has_many :reviews, as: :author
 
-  has_many :vocab_lists
-  has_many :vocabs, through: :vocab_lists
-  # has_many :meetups, as: :sender
-  # has_many :meetups, as: :recipient
-  before_save :lowercase_city
 
-  # returns all users excluding the user this method is called on
+  before_save :lowercase_city
+  has_many :meetups, as: :sender
+  has_many :meetups, as: :recipient
+
+# returns all users excluding the user this method is called on
   def all_users_except_me
     User.where.not(id: id)
   end
