@@ -1,3 +1,5 @@
+<div class="container">
+
 <h1>With <%= @meetup.opposite_user(current_user).first_name %></h1>
 <% if @meetup.confirmed %>
   <p>Confirmed</p>
@@ -11,12 +13,17 @@
 <%= link_to "Open in maps", "#" %>
 
 <h3>Greeting message:</h3>
-<p>Hi! I really want to meet new people and improve my skills at speaking foreign languages! This app is a great idea, so why not having a coffee at Café Myriade?</p>
+<p><%= @meetup.greeting %></p>
 <%= link_to "Open in messages", "#" %>
 
-
+<br><br><br>
+<div class="container">
 <% if current_user != @meetup.sender %>
   <%= link_to "Confirm meetup", meetup_path(@meetup), method: :patch %>
 <% else %>
-  <%= link_to "Reschedule / Cancel", "#" %>
+  <%= link_to "Reschedule / Cancel", "#", class: "bh-btn-solid-sm" %>
 <% end %>
+</div>
+
+</div>
+
