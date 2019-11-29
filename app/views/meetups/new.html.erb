@@ -1,10 +1,13 @@
-<h1>Meetups#new</h1>
+<h1><%= @user.first_name %></h1>
+<h3><%= @user.city %></h3>
 
 <%= simple_form_for [@user, @meetup] do |f| %>
-  <%= f.input :date, label: "Choose the date", required: true %>
-  <%= f.input :start_time, label: "Choose the time you want to meet?", required: true %>
-  <%= f.input :duration, label: "How long would you like to meet?", required: true %>
-  <%= f.input :location, label: "Where?", required: true %>
-  <%= f.input :greeting, label: "Greeting (Max 150 characters)", error: "Message too long (under 150 characters)" %>
-  <%= f.submit "Create the booking" %>
+  <%= f.input :seeking_lang, as: :select, label: "I want to practice:", required: true, collection: @seeking_langs %>
+  <%= f.input :sharing_lang, as: :select, label: "I want to share:", required: true, collection: @sharing_langs %>
+  <%= f.input :date, label: "Date", required: true %>
+  <%= f.input :start_time, label: "Time", required: true %>
+  <%= f.input :duration, label: "Duration (in minutes)", required: true %>
+  <%= f.input :location, label: "Location", required: true %>
+  <%= f.input :greeting, label: "Greeting (max 150 characters)", error: "Message too long (under 150 characters)" %>
+  <%= f.submit "Send request", class: "bh-btn-solid-lg" %>
 <% end %>
