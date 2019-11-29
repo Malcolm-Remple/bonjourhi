@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    @user_languages = UserLanguage.where("user_id = ?", current_user.id).to_a
+    @user_languages = UserLanguage.where("user_id = ?", params[:id])
   end
 
   def edit

@@ -1,5 +1,5 @@
 <% @users.each do |user| %>
   <%= link_to user_path(user) do %>
-    <%= render partial: 'shared/user-index-card', locals: {first_name: user.first_name, city: user.city, photo: user.photo} %>
-   <% end %>
+    <%= render partial: 'shared/user-index-card', locals: {user: user} %>
+  <% end %>
 <% end %>

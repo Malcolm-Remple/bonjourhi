@@ -3,6 +3,7 @@ ruby '2.6.3'
 
 gem 'faker'
 
+gem 'language_list', '~> 1.1'
 gem 'bootsnap', require: false
 gem 'devise'
 gem 'jbuilder', '~> 2.0'
