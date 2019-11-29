@@ -6,3 +6,6 @@
 <% end %>
 </ul>
 
+<% @users.each do |user| %>
+  <%= render partial: 'shared/user-index-card', locals: {first_name: user.first_name, city: user.city} %>
+<% end %>
