@@ -1,3 +1,4 @@
+
 # USER SEEDS
 puts "Destroying user languages, reviews, meetups, users..."
 
