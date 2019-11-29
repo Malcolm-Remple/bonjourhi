@@ -4,7 +4,7 @@
       <h2>Find a language partner</h2>
 
       <!-- simple form  -->
-  
+
     <%= form_tag users_path, method: :get do %>
       <% @language = Language.all %>
       <% @proficiency = UserLanguage.all.pluck(:proficiency).uniq.sort %>
@@ -15,7 +15,8 @@
         class: "form-control",
         placeholder: "Choose a city!"
       %>
-      <%= select_tag :language, options_from_collection_for_select(@language, 'id', 'name') 
+      <p>I want to practice:</p>
+      <%= select_tag :language, options_from_collection_for_select(@language, 'id', 'name')
       %>
       <!-- proficiency -->
       <!-- <select  name="proficiency" class="bh-select-list">
@@ -27,7 +28,7 @@
       </select> -->
       <%= submit_tag "Search", class: "bh-btn-solid-lg-home" %>
     <% end %>
-      
+
     </div>
   </div>
 <!-- </div> -->

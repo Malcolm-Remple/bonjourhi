@@ -17,6 +17,6 @@
 
 <% if current_user != @meetup.sender %>
   <%= link_to "Confirm meetup", meetup_path(@meetup), method: :patch %>
-<%= else %>
+<% else %>
   <%= link_to "Reschedule / Cancel", "#" %>
 <% end %>
