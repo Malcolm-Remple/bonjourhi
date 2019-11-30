@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
       city = params[:city]
       language = params[:language]
- 
+
       @users = User.joins(:user_languages)
           .where(city: city, user_languages: { language_id: language, sharing: true })
       # @users.where("var = ? AND var = ?", city, montreal)
@@ -21,6 +21,15 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+  end
+
+  def account_show
+    @user = current_user
+    @sharing_user_langs = @user.user_languages.filter(&:sharing)
+    @seeking_user_langs = @user.user_languages.filter(&:seeking)
+  end
+
+  def account_update
   end
 
   private

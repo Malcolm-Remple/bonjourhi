@@ -1,0 +1,9 @@
+<h3>Add a new <%= @ul_string %></h3>
+
+<%= simple_form_for(@user_language) do |f| %>
+  <%= f.association :language, label_method: :name, value_method: :id, include_blank: false, include_hidden: false %>
+  <%= f.input :proficiency, collection: @proficiencies, include_blank: false, include_hidden: false %>
+  <%= f.input :seeking, as: :hidden, input_html: { value: @seeking_bool } %>
+  <%= f.input :sharing, as: :hidden, input_html: { value: @sharing_bool } %>
+  <%= f.submit "Add Language"%>
+<% end %>

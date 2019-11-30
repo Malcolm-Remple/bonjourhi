@@ -1,0 +1,38 @@
+<h1>Your account details</h1>
+
+<label for="display-lang">App display language</label>
+<select name="display-lang" id="display-lang">
+  <option value="">English</option>
+  <option value="">Français</option>
+  <option value="">Español</option>
+  <option value="">中文(简体)</option>
+  <option value="">中文(繁体)</option>
+  <option value="">日本語</option>
+</select>
+<p>Number of meetups attended:  <%= @user.num_of_past_meetups %></p>
+
+
+<h3>You're sharing</h3>
+
+<ul>
+  <% @sharing_user_langs.each do |ul| %>
+    <li><%= ul.language.name %> <%= link_to "delete", user_language_path(ul), method: :delete %></li>
+  <% end %>
+</ul>
+
+<%= link_to new_user_language_path(ul_type: 'sharing') do %>
+  <i class="fas fa-plus-circle"></i>
+<% end %>
+
+<h3>You want to practice speaking</h3>
+<ul>
+  <% @seeking_user_langs.each do |ul| %>
+    <li><%= ul.language.name %> <%= link_to "delete", user_language_path(ul), method: :delete %></li>
+  <% end %>
+</ul>
+
+<%= link_to new_user_language_path(ul_type: 'seeking') do %>
+  <i class="fas fa-plus-circle"></i>
+<% end %>
+
+
