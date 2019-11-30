@@ -1,8 +1,14 @@
-<div class="bh-nav-header">  
-  <div class="bh-nav-back">
+<div class="bh-nav-header">
+  <!-- <div class="bh-nav-back">
     <button onclick="goBack()"><i class="fas fa-angle-left bh-nav-i"></i></button>
-  </div> 
-  
+  </div>  -->
+
+  <div class="bh-nav-back">
+    <%= link_to :back do %>
+      <i class="fas fa-angle-left bh-nav-i"></i>
+    <% end %>
+  </div>
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -24,7 +30,7 @@
         </li>
       <% end %>
     </ul>
-  </div> 
+  </div>
 </div>
 
 <script>

@@ -1,13 +1,14 @@
 .bh-select-list {
   width: 100%;
-  color: white;
-  height: 30px;
-  
+  color: black;
+  height: 40px;
+  border-radius: 4px;
+  background-color: white;
+  padding: 0.375rem 0.75rem;
+
+  option {
+    color: black;
+  }
 }
 
-#language {
-  width: 100%;
-  color: white;
-  margin-top: 7px;
-  font-style: italic;
-}
+
