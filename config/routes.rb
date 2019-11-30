@@ -10,5 +10,8 @@ Rails.application.routes.draw do
   resources :user_languages, only: [:edit, :update, :new, :create, :destroy]
   resources :meetups, only: [:index, :show, :update]
 
+  get '/my_account', to: "users#account_show", as: 'my_account'
+  patch '/my_account', to: "users#account_update"
+
   get '/style', to: "pages#style"
 end
