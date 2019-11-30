@@ -2,6 +2,7 @@ class UserLanguage < ApplicationRecord
   belongs_to :user
   belongs_to :language
 
+  # for rendering progress bar css
   def level
       case proficiency
     when 1
@@ -17,6 +18,7 @@ class UserLanguage < ApplicationRecord
     end
   end
 
+  # displays UserLangauge proficiency as human-friendly string
   def proficiency_string
       case proficiency
     when 1

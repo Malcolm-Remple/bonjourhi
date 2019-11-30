@@ -7,8 +7,8 @@
 
     <%= form_tag users_path, method: :get do %>
       <% @language = Language.all %>
-      <% @proficiency = UserLanguage.all.pluck(:proficiency).uniq.sort %>
-      <% @ul = UserLanguage.all %>
+      <!-- <%# @proficiency = UserLanguage.all.pluck(:proficiency).uniq.sort %> -->
+      <!-- <%# @ul = UserLanguage.all %> -->
 
       <%= text_field_tag :city,
         params[:city],
