@@ -1,5 +1,5 @@
 class UserLanguagesController < ApplicationController
-  before_action :set_user_language, only: [:edit, :update]
+  before_action :set_user_language, only: [:edit, :update, :destroy]
 
   def edit
   end
@@ -36,10 +36,7 @@ class UserLanguagesController < ApplicationController
 
   def create
     user_language = UserLanguage.new(user_language_params)
-    # language_id = params[:language_id].to_i
     user_language.user = current_user
-    # user_language.language_id = language_id
-
     if user_language.save
       redirect_to my_account_path
     else
@@ -50,7 +47,7 @@ class UserLanguagesController < ApplicationController
   def destroy
     @user_language.destroy
 
-    redirect_to user_path(current_user)
+    redirect_to my_account_path
   end
 
   private
@@ -60,6 +57,6 @@ class UserLanguagesController < ApplicationController
   end
 
   def user_language_params
-    params.require(:user_language).permit(:language, :proficiency, :seeking, :sharing)
+    params.require(:user_language).permit(:language_id, :proficiency, :seeking, :sharing)
   end
 end

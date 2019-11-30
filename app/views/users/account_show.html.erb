@@ -16,7 +16,7 @@
 
 <ul>
   <% @sharing_user_langs.each do |ul| %>
-    <li><%= ul.language.name %> <%= link_to "delete", user_language_path(ul), method: :delete %></li>
+    <li><%= ul.language.name %> (<%= ul.proficiency_string %>) <%= link_to "delete", user_language_path(ul), method: :delete %></li>
   <% end %>
 </ul>
 
@@ -27,7 +27,7 @@
 <h3>You want to practice speaking</h3>
 <ul>
   <% @seeking_user_langs.each do |ul| %>
-    <li><%= ul.language.name %> <%= link_to "delete", user_language_path(ul), method: :delete %></li>
+    <li><%= ul.language.name %> (<%= ul.proficiency_string %>) <%= link_to "delete", user_language_path(ul), method: :delete %></li>
   <% end %>
 </ul>
 
