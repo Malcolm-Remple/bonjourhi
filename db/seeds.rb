@@ -74,7 +74,7 @@ antoine = User.create!(
   password: "aaaaaa",
   city: "Montreal",
   photo: 'https://images.unsplash.com/photo-1511546395756-590dffdcdbd1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60',
-  bio: "Salut! I'm looking for persons to practice Enlgish with",
+  bio: "Salut! I'm looking for persons to practice English with me. I just want to talk about rugby, nothing else.",
   num_of_past_meetups: 5
   )
 isabelle = User.create!(
@@ -83,8 +83,8 @@ isabelle = User.create!(
   email: "isabelle@example.com",
   password: "aaaaaa",
   city: "Montreal",
-  photo: 'https://images.unsplash.com/photo-1511546395756-590dffdcdbd1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60',
-  bio: "Allo! I love catepillars",
+  photo: 'https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
+  bio: "Allo! I love catepillars and travelling, let's have a chat (and not cat)!",
   num_of_past_meetups: 28
   )
 

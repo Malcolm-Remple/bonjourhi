@@ -15,7 +15,21 @@ class User < ApplicationRecord
   has_many :meetups, as: :sender
   has_many :meetups, as: :recipient
 
-# returns all users excluding the user this method is called on
+  # for chat
+  has_many :messages
+  has_many :subscriptions
+  has_many :chats, through: :subscriptions
+
+
+  def existing_chats_users
+    existing_chat_users = []
+    self.chats.each do |chat|
+    existing_chat_users.concat(chat.subscriptions.where.not(user_id: self.id).map {|subscription| subscription.user})
+    end
+    existing_chat_users.uniq
+  end
+
+  # returns all users excluding the user this method is called on
   def all_users_except_me
     User.where.not(id: id)
   end

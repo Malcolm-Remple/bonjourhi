@@ -1,20 +1,40 @@
-<h1>With <%= @meetup.opposite_user(current_user).first_name %></h1>
-<% if @meetup.confirmed %>
-  <p>Confirmed</p>
-<% else %>
-  <p>Pending</p>
-<% end %>
+<div class="container">
 
-<h3><%= "#{@meetup.date}, #{@meetup.start_time} - #{@meetup.end_time}" %></h3>
-<h3><%= "At #{@meetup.location}" %></h3>
-<%= image_tag "https://res.cloudinary.com/dgxkozw6v/image/upload/v1575058085/cafe-myriade_kd2faq.png", style:'height:200px; width:500px; margin-bottom:20px; object-fit:cover;' %>
-<%= link_to "Open in maps", "#" %>
+  <div class="mt-4 d-flex justify-content-around">
+    <div class="col-6">
+      <img class="bh-avatar-lg" src="<%= @meetup.opposite_user(current_user).photo %>">
+    </div>
+    <div class="mt-3 col-6">
+      <h3 class=""><b>With <%= @meetup.opposite_user(current_user).first_name %></b></h3>
+      <% if @meetup.confirmed %>
+        <p>Status: Confirmed</p>
+      <% else %>
+        <p>Status: Pending</p>
+      <% end %>
+    </div>
+  </div>
 
-<h3>Greeting message:</h3>
-<p>Hi! I really want to meet new people and improve my skills at speaking foreign languages! This app is a great idea, so why not having a coffee at Café Myriade?</p>
-<%= link_to "Open in messages", "#" %>
+  <div class="mt-3">
+    <p>When: <%= "#{@meetup.date.strftime("%d/%m/%Y")}, #{@meetup.start_time.strftime('%H:%M')} - #{@meetup.end_time.strftime('%H:%M')}" %></p>
+    <p>Where: <%= @meetup.location %></p>
+    <%= image_tag "https://res.cloudinary.com/dgxkozw6v/image/upload/v1575058085/cafe-myriade_kd2faq.png", style:'height:200px; width:500px; margin-bottom:20px; object-fit:cover;' %>
+    <div class="d-flex justify-content-end"><%= link_to "Open in Maps >>", "#" %></div>
+  </div>
 
+  <div>
+    <h3>Greeting message:</h3>
+    <p><%= @meetup.greeting %></p>
+    <div class="d-flex justify-content-end"><%= link_to "Reply in Messages >>", "#" %></div>
+  <div>
 
+<br>
+<div class="container">
 <% if current_user != @meetup.sender %>
-  <%= link_to "Confirm meetup", meetup_path(@meetup), method: :patch %>
+  <%= link_to "Confirm meetup", meetup_path(@meetup), method: :patch, class: "bh-btn-solid-sm" %>
+<% else %>
+  <%= link_to "Reschedule / Cancel", "#", class: "bh-btn-solid-sm" %>
 <% end %>
+</div>
+
+</div>
+
