@@ -4,12 +4,12 @@ function createMessageChannel() {
         },
         {
         received: function(data) {
+          console.log(data)
           $("#messages").removeClass('hidden')
           return $('#messages').append(this.renderMessage(data));
         },
         renderMessage: function(data) {
-    return "<p> <b>" + data.user + ": </b>" + data.message + "</p>";
-       // return "<p><img src=" + data.message.user.photo + " alt: 'photo', class: 'bh-avatar-sm'> " data.message "</p>"
+    return "<p><img src='" + data.user_photo_url + "' class='bh-avatar-sm'> " + data.message + "</p>";
   },
       });
 return App.messages;

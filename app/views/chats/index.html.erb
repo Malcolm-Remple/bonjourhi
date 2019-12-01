@@ -1,9 +1,10 @@
+Your chats:
 <ul>
  <% if @existing_chats_users %>
    <% @existing_chats_users.each do |other_user| %>
     <% if other_user != current_user %>
       <li>
-        <%= link_to(user_chats_path(current_user, other_user: other_user.id), method: :post) do %>
+        <%= button_to(user_chats_path(current_user, other_user: other_user.id), method: :post ) do %>
         <%= other_user.first_name %>
         <% end %>
       </li>
@@ -16,7 +17,8 @@ All Users:
   <% User.all.each do |other_user| %>
    <% if other_user != current_user %>
      <li>
-       <%= link_to(user_chats_path(current_user, other_user: other_user.id), method: :post) do %>
+       <!-- create or show chat -->
+       <%= button_to(user_chats_path(current_user, other_user: other_user.id), method: :post) do %>
        <%= other_user.first_name %>
        <% end %>
      </li>

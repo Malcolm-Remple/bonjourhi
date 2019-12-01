@@ -16,8 +16,14 @@
     <% end %>
   </div>
   <div>
-    <%= link_to "#" do %>
-      <i class="fas fa-envelope bh-nav-i"></i>
+    <% if user_signed_in? %>
+      <%= link_to user_chats_path(current_user) do %>
+        <i class="fas fa-envelope bh-nav-i"></i>
+      <% end %>
+    <% else %>
+      <%= link_to new_user_session_path do %>
+        <i class="fas fa-envelope bh-nav-i"></i>
+      <% end %>
     <% end %>
   </div>
   <div>

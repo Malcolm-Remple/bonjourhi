@@ -12,6 +12,14 @@ function messageForm(){
           }
       }
   });
+
+// allow message send with button click (claire added)
+$('#send-msg-button').click(function (e) {
+  e.preventDefault();
+  chatForm.submit();
+  $(chatForm).trigger('reset');
+});
+
 $(document).keydown(function (e) {
       if(e.keyCode == 16) shiftDown = true;
   });
