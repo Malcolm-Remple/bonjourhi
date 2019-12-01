@@ -9,6 +9,7 @@ function createMessageChannel() {
         },
         renderMessage: function(data) {
     return "<p> <b>" + data.user + ": </b>" + data.message + "</p>";
+       // return "<p><img src=" + data.message.user.photo + " alt: 'photo', class: 'bh-avatar-sm'> " data.message "</p>"
   },
       });
 return App.messages;
