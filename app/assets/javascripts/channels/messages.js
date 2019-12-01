@@ -9,6 +9,7 @@ function createMessageChannel() {
           return $('#messages').append(this.renderMessage(data));
         },
         renderMessage: function(data) {
+    // returns html that mimics _message.html.erb template
     return "<p><img src='" + data.user_photo_url + "' class='bh-avatar-sm'> " + data.message + "</p>";
   },
       });
