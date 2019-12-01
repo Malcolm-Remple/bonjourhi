@@ -1,14 +1,13 @@
-<div>
+<div id="chat-window-body" class="bh-no-scroll">
   <h5>Chat with <%= @other_user.first_name %></h5>
   <% if @chat.messages.any? %>
-    <div id="messages">
+    <div id="messages" class="bh-chat-scrollbox">
       <%= render partial: 'messages/message', collection: @chat.messages.order(id: :asc)%>
     </div>
   <% else %>
     <div id="messages">
     </div>
   <% end %>
-</div>
 <%= render partial: 'messages/message_form', locals: {message: @message, chat: @chat}%>
 </div>
 
@@ -18,4 +17,10 @@
   // app/assets/javascripts/channels/messages.js
   messageForm();
   // app/assets/javascripts/messages_form.js
+
+  // scroll to bottom of chat on load
+  window.onload=function () {
+     var chatBox = document.getElementById("messages");
+     chatBox.scrollTop = chatBox.scrollHeight;
+}
 </script>

@@ -1,0 +1,11 @@
+.bh-chat-scrollbox {
+  overflow: scroll;
+  height: 65vh;
+  width: 100vw;
+}
+
+#chat-window-body {
+  height:100vh;
+  margin: 0;
+  position: fixed;
+}
