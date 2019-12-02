@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.6.3'
 
 gem 'faker'
+gem 'google-api-client', require: 'google/apis/calendar_v3'
 
 gem 'language_list', '~> 1.1'
 gem 'bootsnap', require: false
