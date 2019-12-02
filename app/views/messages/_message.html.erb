@@ -1,6 +1,18 @@
-<div class="bh-message">
-  <%= image_tag message.user.photo, alt: "photo", class: 'bh-avatar-xs' %>
-  <div class="bh-message-content">
-    <%=message.content%>
-  </div>
+<% if message.user == current_user %>
+ <!-- align right -->
+<div class="bh-message-container">
+    <div class="bh-message">
+      <div class="bh-message-content">
+        <%=message.content%>
+      </div>
+      <%= image_tag message.user.photo, alt: "photo", class: 'bh-avatar-xs' %>
+    </div>
 </div>
+<% else %>
+  <div class="bh-message">
+    <%= image_tag message.user.photo, alt: "photo", class: 'bh-avatar-xs' %>
+    <div class="bh-message-content">
+      <%=message.content%>
+    </div>
+  </div>
+<% end %>

@@ -8,7 +8,8 @@ class MessagesController < ApplicationController
       # message and user hold the data we render on the page using javascript
       message: message.content,
       user: message.user.first_name,
-      user_photo_url: message.user.photo
+      user_photo_url: message.user.photo,
+      user_id: message.user.id.to_s
       )
     else
       redirect_to chats_path

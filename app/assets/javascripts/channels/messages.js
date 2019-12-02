@@ -10,11 +10,27 @@ function createMessageChannel() {
         },
         renderMessage: function(data) {
     // returns html that mimics _message.html.erb template
-    return `<div class="bh-message">
-              <img src='${data.user_photo_url}' class='bh-avatar-xs'>
-              <div class="bh-message-content">
-              ${data.message}
-              </div></div>`;
+    if (window.userId == data.user_id) {
+      return `
+        <div class="bh-message-container">
+          <div class="bh-message">
+            <div class="bh-message-content">
+            ${data.message}
+            </div>
+            <img src='${data.user_photo_url}' class='bh-avatar-xs'>
+          </div>
+        </div>
+      `
+
+
+    } else {
+      return `<div class="bh-message">
+                <img src='${data.user_photo_url}' class='bh-avatar-xs'>
+                <div class="bh-message-content">
+                ${data.message}
+                </div></div>`;
+
+    }
   },
       });
 return App.messages;
