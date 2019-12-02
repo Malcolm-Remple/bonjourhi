@@ -11,6 +11,10 @@
     <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet"> -->
     <!-- for animated css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <!-- define current user id as global variable -->
+    <%= javascript_tag do %>
+      window.userId = '<%= j current_user ? current_user.id.to_s : "" %>'
+    <% end %>
   </head>
   <body>
     <%= render 'shared/bh-nav-header' %>
