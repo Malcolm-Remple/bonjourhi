@@ -11,6 +11,10 @@ $color: #393E46;
   padding-top: 7px;
 }
 
+.bh-card-user-index:hover, .bh-card-user-index:focus, .bh-card-user-index:active{
+    text-decoration-line: underline;
+    }
+
 .bh-card-user-index-info {
   display:flex;
   flex-direction: column;
