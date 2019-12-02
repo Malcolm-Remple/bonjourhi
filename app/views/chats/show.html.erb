@@ -11,8 +11,12 @@
 <%= render partial: 'messages/message_form', locals: {message: @message, chat: @chat}%>
 </div>
 
-<%= javascript_include_tag "application" %>
-<script type="text/javascript">
+
+<!-- <script type="text/javascript">
+
+
+
+
   createMessageChannel();
   // app/assets/javascripts/channels/messages.js
   messageForm();
@@ -23,4 +27,4 @@
      var chatBox = document.getElementById("messages");
      chatBox.scrollTop = chatBox.scrollHeight;
 }
-</script>
+</script> -->
