@@ -1,0 +1,26 @@
+.bh-flex-container {
+  display: flex;
+  width: 100%;
+  margin: 8px;
+  padding: 8px;
+}
+
+.bh-flex-element {
+  width: 50%;
+}
+
+.bh-text-body {
+  width: 100%;
+  margin: 8px;
+  padding: 8px;
+}
+
+.bh-button-sticky-bottom {
+  display: flex;
+  position: sticky;
+  width: 100%;
+  height: 88px;
+  bottom: 52px;
+  margin: 0;
+  background-color: $light-gray;
+}
