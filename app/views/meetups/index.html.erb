@@ -1,21 +1,28 @@
-<h1>Outbound meetup requests</h1>
-<ul>
-<% @outbound_meetup_requests.each do |m| %>
-  <li><%= link_to m.opposite_user(current_user).first_name, meetup_path(m) %></li>
-<% end %>
-</ul>
+<div class="container mt-3">
+  <h3 class="bh-text-bg">Outbound meetup requests</h3>
+  <div>
+    <ul>
+    <% @outbound_meetup_requests.each do |m| %>
+      <li><%= link_to m.opposite_user(current_user).first_name, meetup_path(m) %></li>
+    <% end %>
+    </ul>
+  </div>
 
-<h1>Inbound meetup requests</h1>
-<ul>
-<% @inbound_meetup_requests.each do |m| %>
-  <li><%= link_to m.opposite_user(current_user).first_name, meetup_path(m) %></li>
-<% end %>
-</ul>
+  <h3 class="bh-text-bg">Inbound meetup requests</h3>
+  <div>
+    <ul>
+    <% @inbound_meetup_requests.each do |m| %>
+      <li><%= link_to m.opposite_user(current_user).first_name, meetup_path(m) %></li>
+    <% end %>
+    </ul>
+  </div>
 
-
-<h1>Confirmed meetups</h1>
-<ul>
-<% @confirmed_meetups.each do |m| %>
-  <li><%= link_to m.opposite_user(current_user).first_name, meetup_path(m) %></li>
-<% end %>
-</ul>
+  <h3 class="bh-text-bg">Confirmed meetups</h3>
+  <div>
+    <ul>
+    <% @confirmed_meetups.each do |m| %>
+      <li><%= link_to m.opposite_user(current_user).first_name, meetup_path(m) %></li>
+    <% end %>
+    </ul>
+  </div>
+</div>
