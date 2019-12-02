@@ -18,11 +18,10 @@
           <p class="language">
             <% user.user_languages.filter(&:sharing).each do |user_language| %>
             <div class="lang-pro">
-             
-                <%=  user_language.language.code %>
-                <div style="background-color: lightgrey; width: 20px;">
-                  <div style ="width: <%= user_language.level %>; background-color: blue; height: 7px;"></div>
-                </div>
+              <%=  user_language.language.code %>
+              <div style="background-color: lightgrey; width: 20px;">
+                <div style ="width: <%= user_language.level %>; background-color: blue; height: 7px;"></div>
+              </div>
             </div>
             <% end %>
           </p>
@@ -35,7 +34,6 @@
         <div class="language-part">
           <p class="language">
             <% user.user_languages.filter(&:seeking).each do |user_language| %>
-              <%=  user_language.language.code %>
               <div class="lang-pro">
                 <%=  user_language.language.code %>
                 <div style="background-color: lightgrey; width: 20px;">
