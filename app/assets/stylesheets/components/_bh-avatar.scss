@@ -2,10 +2,27 @@
   width: 130px;
   height: 130px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .bh-avatar-sm {
   width: 60px;
   height: 60px;
   border-radius: 50%;
+  object-fit: cover;
+}
+// chat message icon
+.bh-avatar-xs {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+// chat header
+.bh-avatar-xxs {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  object-fit: cover;
 }

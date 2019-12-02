@@ -1,7 +1,13 @@
+.bh-grid-user-index {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr 2fr;
+  width: 100%;
+  height: 300px;
+}
 .bh-grid-container {
   display: grid;
   grid-template-columns: repeat (14, 1fr);
-  grid-template-rows: 1fr, 1fr;
+  grid-template-rows: 1fr 1fr;
   height: 120px;
   align-content: center;
   width: 100%;

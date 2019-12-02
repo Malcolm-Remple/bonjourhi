@@ -2,22 +2,19 @@
   <div>
     <%= image_tag user.photo || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80", class: "bh-avatar-sm" %>
   </div>
-
   <div class="bh-card-user-index-info">
     <p style="font-weight: bold; color: black;"><%= user.first_name %></p>
-    <p><%= user.city %></p>
+    <p style="font-weight: light;"><%= user.city %></p>
   </div>
-
-  <div class="bh-card-user-index-languages">
-
-    <div class="bh-card-user-index-sharing">
-      <div>
-        <p>sharing</p>
+  <!-- <div class="bh-card-user-index-languages"> -->
+  <div class="bh-card-user-index-sharing">
+    <div class="language-sharing">
+      <div class="text-style">sharing</div>
       <!-- build the progress bar by self -->
       <!-- filter(&:sharing) == filter{|user_language| user_language.sharing} -->
 
       <div class="language-part">
-        <p class="language">
+ 
           <% user.user_languages.filter(&:sharing).each do |user_language| %>
           <div class="lang-pro">
             <%=  user_language.language.code %>
@@ -26,35 +23,26 @@
             </div>
           </div>
           <% end %>
-        </p>
+
       </div>
     </div>
-      </div>
-
-
-    <div class="bh-card-user-index-practicing">
-      <div>
-        <p>practicing</p>
-      </div>
+  </div>
+  <div class="bh-card-user-index-practicing">
+    <div class="language-practicing">
+      <div class="text-style">practicing</div>
       <div class="language-part">
-        <p class="language">
           <% user.user_languages.filter(&:seeking).each do |user_language| %>
             <div class="lang-pro">
               <%=  user_language.language.code %>
               <div style="background-color: #DDDDDD; width: 20px;">
                 <div style ="width: <%= user_language.level %>; background-color: #F49342; height: 7px;"></div>
               </div>
-
+           
           </div>
           <% end %>
-        </p>
       </div>
-<!--         <div class="bh-language-icon">
-      </div> -->
     </div>
-
   </div>
-
-
 </div>
+
 
