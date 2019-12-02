@@ -5,8 +5,7 @@ import { scrollToChatBottomOnLoad, scrollToChatBottomOnMessageAppend } from './p
 // import {method_name} from './plugins/filename'
 // call the imported function here in application.js
 
-scrollToChatBottomOnLoad();
-scrollToChatBottomOnMessageAppend();
+
 
 // only load this for /chats/*
 if(window.location.href.match(/chats/)){
@@ -46,4 +45,6 @@ if(window.location.href.match(/chats/)){
   // app/assets/javascripts/channels/messages.js
   messageForm();
   // app/assets/javascripts/messages_form.js
+  scrollToChatBottomOnLoad();
+  scrollToChatBottomOnMessageAppend();
 }
