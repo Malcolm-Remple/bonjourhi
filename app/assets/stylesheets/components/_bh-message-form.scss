@@ -1,0 +1,22 @@
+$color: #F49342;
+
+#new-message-form-container {
+  display: flex;
+  button {
+    width: 20%;
+    height: 57px;
+    background-color: $color;
+    border: none;
+    text-align: center;
+    color: white;
+    border-radius: 8px;
+  }
+  form {
+    width: 80%;
+    textarea {
+      width: 100%;
+      height: 57px;
+
+    }
+  }
+}

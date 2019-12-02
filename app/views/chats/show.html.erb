@@ -1,5 +1,9 @@
 <div id="chat-window-body" class="bh-no-scroll">
-  <h5>Chat with <%= @other_user.first_name %></h5>
+  <div class="bh-chat-header">
+    <%= image_tag @other_user.photo, alt: "user photo", class: "bh-avatar-xxs"%>
+    <h5>Chat with <%= @other_user.first_name %></h5>
+  </div>
+
   <% if @chat.messages.any? %>
     <div id="messages" class="bh-chat-scrollbox">
       <%= render partial: 'messages/message', collection: @chat.messages.order(id: :asc)%>
