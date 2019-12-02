@@ -11,6 +11,7 @@ function createMessageChannel() {
         renderMessage: function(data) {
     // returns html that mimics _message.html.erb template
     if (window.userId == data.user_id) {
+      // if current user is the one sending message
       return `
         <div class="bh-message-container">
           <div class="bh-message">
@@ -21,7 +22,6 @@ function createMessageChannel() {
           </div>
         </div>
       `
-
 
     } else {
       return `<div class="bh-message">
