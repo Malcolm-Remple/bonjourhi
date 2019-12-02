@@ -17,6 +17,7 @@
   <div class="mt-3">
     <p>When: <%= "#{@meetup.date.strftime("%d/%m/%Y")}, #{@meetup.start_time.strftime('%H:%M')} - #{@meetup.end_time.strftime('%H:%M')}" %></p>
     <p>Where: <%= @meetup.location %></p>
+    <div class="d-flex justify-content-end"><%= link_to "add event to calendar", meetup_get_token_url(@meetup)  %></div>
     <%= image_tag "https://res.cloudinary.com/dgxkozw6v/image/upload/v1575058085/cafe-myriade_kd2faq.png", style:'height:200px; width:500px; margin-bottom:20px; object-fit:cover;' %>
     <div class="d-flex justify-content-end"><%= link_to "Open in Maps >>", "#" %></div>
   </div>
