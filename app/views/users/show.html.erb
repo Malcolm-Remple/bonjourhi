@@ -53,7 +53,7 @@
 
 <div class="container">
   <% if @user != current_user %>
-    <button class="bh-btn-solid-lg"><%= link_to "Request a Meetup", new_user_meetup_path(@user) %></button>
+    <button class="bh-btn-solid-lg-show"><%= link_to "Request a Meetup", new_user_meetup_path(@user) %></button>
   <% else %>
     <p><%= link_to "Edit #{@user.first_name}'s profile", edit_user_path(@user) %></p>
   <% end %>
