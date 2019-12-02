@@ -15,8 +15,9 @@ const scrollToChatBottomOnMessageAppend = () => {
   document.getElementById('messages').addEventListener('DOMNodeInserted', (e) => {
     scrollChatBox();
     // animate entrance
-    const new_message =  document.querySelector('#messages').lastChild;
-    new_message.classList.add('animated', 'slideInUp', 'faster');
+    // const new_message = document.querySelector('#messages').lastChild;
+    // console.log(new_message);
+    // new_message.classList.add('animated', 'slideInUp', 'faster');
   });
 };
 
