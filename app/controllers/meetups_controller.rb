@@ -37,7 +37,58 @@ class MeetupsController < ApplicationController
     redirect_to meetups_path
   end
 
+  def get_token
+    current_user.update(pending_event_confirmation: params[:meetup_id])
+    client = Signet::OAuth2::Client.new(client_options)
+    redirect_to client.authorization_uri.to_s
+  end
+
+  def new_event
+    client = Signet::OAuth2::Client.new(client_options)
+
+    client.code = params[:code]
+
+    response = client.fetch_access_token!
+
+    session[:authorization] = response
+    client.update!(session[:authorization])
+
+    service = Google::Apis::CalendarV3::CalendarService.new
+    service.authorization = client
+
+     today = Date.today
+    # @user = User.find(params[:user_id])
+    @meetup = Meetup.find(current_user.pending_event_confirmation)
+
+    event = Google::Apis::CalendarV3::Event.new({
+      start: Google::Apis::CalendarV3::EventDateTime.new(date_time: DateTime.now),
+      end: Google::Apis::CalendarV3::EventDateTime.new(date_time: DateTime.now + @meetup.duration.minute),
+      summary: "Meetup with #{@meetup.sender.first_name}"
+    })
+
+    # event = Google::Apis::CalendarV3::Event.new({
+    #   start: Google::Apis::CalendarV3::EventDateTime.new(date: @meetup.start_time.to_date),
+    #   end: Google::Apis::CalendarV3::EventDateTime.new(date: @meetup.end_time.to_date),
+    #   summary: "Meetup with #{@meetup.sender.first_name}"
+    # })
+
+    service.insert_event("leagrelou@gmail.com", event)
+
+    redirect_to meetups_url
+  end
+
   private
+
+  def client_options
+    {
+      client_id: ENV["GOOGLE_CLIENT_ID"],
+      client_secret: ENV["GOOGLE_CLIENT_SECRET"],
+      authorization_uri: 'https://accounts.google.com/o/oauth2/auth',
+      token_credential_uri: 'https://accounts.google.com/o/oauth2/token',
+      scope: Google::Apis::CalendarV3::AUTH_CALENDAR,
+      redirect_uri: new_event_url
+    }
+  end
 
   def meetup_params
     params.require(:meetup).permit(:date, :start_time, :duration, :location, :greeting)

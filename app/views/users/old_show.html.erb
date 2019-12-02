@@ -1,0 +1,61 @@
+<div class="container">
+
+  <div class="mt-4 d-flex justify-content-around">
+    <div class="col-6">
+      <img class="bh-avatar-lg" src="<%= @user.photo %>">
+    </div>
+    <div class="mt-3 col-6">
+      <h3 class=""><b><%= @user.first_name %></b></h3>
+      <p><%= @user.city %></p>
+    </div>
+  </div>
+
+  <div class="mt-4 d-flex justify-content-around">
+    <div class="col-6">
+      <h3><b>Sharing</b></h3>
+    </div>
+    <div class="col-6">
+      <ul>
+        <% @user_languages.filter(&:sharing).each do |ul| %>
+        <li><%= ul.language.name %> (<%= ul.proficiency %>)
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-4 d-flex justify-content-around">
+    <div class="col-6">
+      <h3><b>Seeking</b></h3>
+    </div>
+    <div class="col-6">
+      <ul>
+        <% @user_languages.filter(&:seeking).each do |ul| %>
+          <li><%= ul.language.name %> (<%= ul.proficiency %>)
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mt-4 d-flex justify-content-around">
+    <div class="col-12">
+      <h3><b>Bio</b></h3>
+    </div>
+  </div>
+
+  <div class="mt-2">
+    <div class="col-12">
+      <p><%= @user.bio %></p>
+    </div>
+  </div>
+
+   <!-- end of rows -->
+
+  <div class="container">
+    <% if @user != current_user %>
+      <button class="bh-btn-solid-lg-show"><%= link_to "Request a Meetup", new_user_meetup_path(@user) %></button>
+    <% else %>
+      <p><%= link_to "Edit #{@user.first_name}'s profile", edit_user_path(@user) %></p>
+    <% end %>
+  </div>
+
+</div>

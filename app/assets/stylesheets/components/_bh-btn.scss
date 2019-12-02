@@ -92,11 +92,28 @@
   text-decoration: none;
   // display: inline-block;
   font-size: 16px;
-  margin-top: 15px;
+  margin: 15px auto;
   margin-bottom: 10px;
   border-radius: 8px;
    a {
     color: white;
    }
 }
+
+.bh-btn-solid-lg-sticky{
+  background-color: darken($color, 10%);
+  width: 83%;
+  height: 57px;
+  border: none;
+  color: white;
+  padding: 15px 50px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 15px auto;
+  border-radius: 8px;
+   a {
+    color: white;
+   }
+} 
 

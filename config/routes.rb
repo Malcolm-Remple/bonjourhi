@@ -15,8 +15,13 @@ Rails.application.routes.draw do
   resources :messages, only:[:create]
 
   resources :user_languages, only: [:edit, :update, :new, :create, :destroy]
-  resources :meetups, only: [:index, :show, :update]
 
+  get '/meetups/callback', to: 'meetups#new_event', as: 'new_event'
+
+  resources :meetups, only: [:index, :show, :update] do
+    get '/events', to: 'meetups#get_token', as: 'get_token'
+    # get '/callback', to: 'meetups#new_event', as: 'new_event'
+  end
   # for user account page
   get '/my_account', to: "users#account_show", as: 'my_account'
   patch '/my_account', to: "users#account_update"
