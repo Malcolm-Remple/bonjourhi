@@ -1,1 +1,6 @@
-<p><%= image_tag message.user.photo, alt: "photo", class: 'bh-avatar-sm' %> <%=message.content%></p>
+<div class="bh-message">
+  <%= image_tag message.user.photo, alt: "photo", class: 'bh-avatar-xs' %>
+  <div class="bh-message-content">
+    <%=message.content%>
+  </div>
+</div>
