@@ -56,9 +56,6 @@
       <% end %>   
     </div> 
     
-      
-    
-    
   </div>
     
   <div class="bh-text-body">
@@ -66,13 +63,10 @@
     <p><%= @user.bio %></p>
   </div>
 
-
-<% if @user != current_user %>
-  <div class="bh-button-sticky-bottom">
-    <%= link_to "Request a Meetup", new_user_meetup_path(@user), class: "bh-btn-solid-lg-sticky" %>
-  </div>
-<% else %>
-  <p><%= link_to "Edit #{@user.first_name}'s profile", edit_user_path(@user) %></p>
-<% end %>
-
 </div>
+
+
+<div class="bh-button-sticky-bottom">
+  <%= link_to "Edit Your profile", edit_user_path(@user), class: "bh-btn-solid-lg-sticky" %>
+</div>
+
