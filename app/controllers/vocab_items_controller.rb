@@ -6,6 +6,7 @@ class VocabItemsController < ApplicationController
   end
 
   def new
+
   end
 
   def create

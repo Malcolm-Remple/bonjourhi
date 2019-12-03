@@ -1,2 +1,5 @@
-<h1>VocabLists#new</h1>
-<p>Find me in app/views/vocab_lists/new.html.erb</p>
+<h1>Add a new vocab list langauge</h1>
+<%= simple_form_for(@vocab_list) do |f|%>
+  <%= f.association :language, collection: @langauges, include_blank: false %>
+  <%= f.submit %>
+<% end %>

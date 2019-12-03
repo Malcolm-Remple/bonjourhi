@@ -4,3 +4,7 @@
     <li><%= link_to vl.language.name, vocab_list_path(vl) %></li>
   <% end %>
 </ul>
+
+<%= link_to new_vocab_list_path do %>
+  <i class="fas fa-plus-circle"> Add vocab</i>
+<% end %>
