@@ -119,11 +119,7 @@ end
 
 # LANGUAGE SEEDS
 
-en = Language.create!(name: "English (US)", code: "EN")
-fr = Language.create!(name: "French", code: "FR")
-de = Language.create!(name: "German", code: "DE")
-cn = Language.create!(name: "Chinese", code: "CN")
-es = Language.create!(name: "Spanish", code: "ES")
+
 
 random_users = User.all - [malcolm, claire, blair, lynn, lea, isabelle, antoine]
 

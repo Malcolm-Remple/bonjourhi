@@ -141,7 +141,7 @@
 
 
   <h3 class="bh-text-bg">Past</h3>
-  <% if @confirmed_meetups == [] %>
+  <% if !@confirmed_meetups.any? %>
     <p>There is no past meetup.</p>
   <% else %>
     <% @confirmed_meetups.each do |m| %>
