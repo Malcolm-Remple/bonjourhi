@@ -9,7 +9,7 @@
   margin-left: 8px;
   margin-right: 8px;
   word-wrap: break-word;
-  background-color: #fbdec6;
+  background-color: $bh-light-orange;
   width: 100%;
   padding: 6px 8px;
   border-radius: 8px;
@@ -19,5 +19,9 @@
   display: flex;
   justify-content: flex-end;
   margin-right: 0;
+  .bh-message-content{ 
+    color: white;
+    background-color: $bh-orange; 
+  }
 }
 

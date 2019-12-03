@@ -13,7 +13,7 @@ function createMessageChannel() {
     if (window.userId == data.user_id) {
       // if current user is the one sending message
       return `
-        <div class="bh-message-container animated slideInUp faster">
+        <div class="bh-message-container">
           <div class="bh-message">
             <div class="bh-message-content">
             ${data.message}
@@ -24,7 +24,7 @@ function createMessageChannel() {
       `
 
     } else {
-      return `<div class="bh-message animated slideInUp faster">
+      return `<div class="bh-message">
                 <img src='${data.user_photo_url}' class='bh-avatar-xs'>
                 <div class="bh-message-content">
                 ${data.message}
