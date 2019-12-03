@@ -1,3 +1,4 @@
+// Flex LG
 .bh-flex-container {
   display: flex;
   width: 100%;
@@ -9,12 +10,20 @@
   width: 50%;
 }
 
+
+.bh-flex-small-element {
+  display: flex;
+  justify-content: flex-start; 
+}
+
+// Body text
 .bh-text-body {
   width: 100%;
   margin: 8px;
   padding: 8px;
 }
 
+// Sticky Button
 .bh-button-sticky-bottom {
   display: flex;
   position: sticky;
@@ -23,4 +32,12 @@
   bottom: 49px;
   margin: 0;
   background-image: linear-gradient(to bottom, transparent, white);
+}
+
+
+.fa-minus-circle {
+  align-right: 12px;
+  color: red;
+  display: flex;
+  // margin-right: 10%;
 }
