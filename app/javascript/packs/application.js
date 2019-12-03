@@ -1,6 +1,7 @@
 // get jquery
 import * as $ from 'jquery';
 import { scrollToChatBottomOnLoad, scrollToChatBottomOnMessageAppend } from './plugins/chatScroll';
+import { listenForSpeakerClick } from './plugins/speechSynthesis';
 // IMPORT SYNTAX:
 // import {method_name} from './plugins/filename'
 // call the imported function here in application.js
@@ -47,4 +48,8 @@ if(window.location.href.match(/chats/)){
   // app/assets/javascripts/messages_form.js
   scrollToChatBottomOnLoad();
   scrollToChatBottomOnMessageAppend();
+}
+
+if(window.location.href.match(/vocab_lists/)) {
+  listenForSpeakerClick();
 }
