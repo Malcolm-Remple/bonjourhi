@@ -1,6 +1,6 @@
 class VocabList < ApplicationRecord
-  belongs_to :language
   belongs_to :user
+  belongs_to :language
 
-  has_many :vocab_items
+  has_many :vocabs
 end
