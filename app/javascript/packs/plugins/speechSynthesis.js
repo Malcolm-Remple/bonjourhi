@@ -8,17 +8,19 @@ const speakText = (text, lang) => {
 };
 
 const listenForSpeakerClick = () => {
-   const vocabItemList = document.getElementById('vocab-item-list');
-   vocabItemList.addEventListener('click', (e) => {
+   const vocabItemList = document.querySelectorAll('.vocab-item-list');
+   vocabItemList.forEach((vocabGroup) => {
+     vocabGroup.addEventListener('click', (e) => {
      console.log(e);
      // only fire if speaker icon (<i>) was clicked
-     if(e.target.nodeName === "I") {
-      const text = e.target.dataset.text;
-      const lang = e.target.dataset.isoCode;
-      console.log(text);
-      speakText(text,lang);
-     }
-   });
+      if(e.target.nodeName === "I") {
+        const text = e.target.dataset.text;
+        const lang = e.target.dataset.isoCode;
+        console.log(text);
+        speakText(text,lang);
+      }
+    });
+  });
 };
 
 

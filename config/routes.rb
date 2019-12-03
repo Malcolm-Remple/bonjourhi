@@ -1,18 +1,4 @@
 Rails.application.routes.draw do
-  get 'vocab_items/index'
-  get 'vocab_items/show'
-  get 'vocab_items/new'
-  get 'vocab_items/create'
-  get 'vocab_items/edit'
-  get 'vocab_items/update'
-  get 'vocab_items/destroy'
-  get 'vocab_items_controller/index'
-  get 'vocab_items_controller/show'
-  get 'vocab_items_controller/new'
-  get 'vocab_items_controller/create'
-  get 'vocab_items_controller/edit'
-  get 'vocab_items_controller/update'
-  get 'vocab_items_controller/destroy'
   # for chat
   mount ActionCable.server => '/cable'
 
@@ -37,9 +23,11 @@ Rails.application.routes.draw do
     # get '/callback', to: 'meetups#new_event', as: 'new_event'
   end
 
-  resources :vocab_lists do
-    resources :vocab_items
-  end
+
+
+  post '/vocab_items', to: 'vocab_items#create'
+  resources :vocab_items, except: [:create]
+
 
   # for user account page
   get '/my_account', to: "users#account_show", as: 'my_account'
