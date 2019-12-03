@@ -1,6 +1,15 @@
-<div class="container mt-3">
-  <h1><%= @user.first_name %></h1>
-  <h3><%= @user.city %></h3>
+<div class="container">
+  
+  <div class="bh-flex-container">
+    <div class="bh-flex-element">  
+      <img class="bh-avatar-lg" src="<%= @user.photo %>">
+    </div>
+    <div class="bh-flex-element">
+      <h3><b><%= @user.first_name %></b></h3>
+      <p>Past Meetups: <%= @user.num_of_past_meetups %></p>
+      <p>Favorite Meetup locations</p>
+    </div>   
+  </div>
 
   <%= simple_form_for [@user, @meetup] do |f| %>
     <%= f.input :seeking_lang, as: :select, label: "I want to practice", collection: @seeking_langs, include_blank: false, include_hidden: false %>
