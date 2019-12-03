@@ -9,7 +9,7 @@
       <% if @meetup.confirmed %>
         <p>Status: Confirmed</p>
       <% else %>
-        <p>Status: Pending</p>
+        <p>Status: <span id="pending">Pending</span></p>
       <% end %>
     </div>
   </div>
@@ -30,13 +30,13 @@
 
   <br>
   <div class="container">
-  <% if current_user != @meetup.sender %>
-    <button type="button" class="bh-btn-solid-lg-show" data-toggle="modal" data-target="#exampleModal">
-      <%= button_to "Confirm meetup", meetup_path(@meetup), method: :patch, :data => { :reload => false } %>
-    </button>
-  <% else %>
-    <%= link_to "Reschedule / Cancel", "#", class: "bh-btn-solid-sm" %>
-  <% end %>
+  <% #if current_user != @meetup.sender && @meetup.confirmed == false %>
+    <div id="confirmed-button" type="button" class="bh-button-sticky-bottom" data-toggle="modal" data-target="#exampleModal">
+      <%= link_to "Confirm meetup", meetup_path(@meetup), class: "bh-btn-solid-lg-sticky", method: :patch, remote: true %>
+      <%= link_to "Reschedule / Cancel", "#", class: "bh-btn-solid-lg-sticky d-none", id: "cancel-button" %>
+    </div>
+  <% #else %>
+  <% #end %>
   </div>
 
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
