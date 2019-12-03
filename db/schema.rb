@@ -133,11 +133,7 @@ ActiveRecord::Schema.define(version: 2019_12_03_111812) do
   add_foreign_key "reviews", "users", column: "author_id"
   add_foreign_key "user_languages", "languages"
   add_foreign_key "user_languages", "users"
-
-
-
   add_foreign_key "vocab_items", "vocab_lists"
   add_foreign_key "vocab_lists", "languages"
   add_foreign_key "vocab_lists", "users"
-
 end
