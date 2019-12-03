@@ -32,7 +32,7 @@
   <div class="container">
   <% if current_user != @meetup.sender %>
     <button type="button" class="bh-btn-solid-lg-show" data-toggle="modal" data-target="#exampleModal">
-      <%= link_to "Confirm meetup", meetup_path(@meetup), method: :patch %>
+      <%= button_to "Confirm meetup", meetup_path(@meetup), method: :patch, :data => { :reload => false } %>
     </button>
   <% else %>
     <%= link_to "Reschedule / Cancel", "#", class: "bh-btn-solid-sm" %>
