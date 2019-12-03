@@ -1,3 +1,4 @@
+// Flex LG
 .bh-flex-container {
   display: flex;
   width: 100%;
@@ -7,6 +8,18 @@
 
 .bh-flex-element {
   width: 50%;
+}
+
+// Flex SM
+.bh-flex-small-container {
+  display: flex;
+  width: 100%;
+  margin: 2px;
+  padding: 2px;
+}
+
+.bh-flex-small-element {
+  justify-content: flex-start;
 }
 
 .bh-text-body {

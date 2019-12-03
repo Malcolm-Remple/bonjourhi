@@ -11,8 +11,11 @@
   </div>
   
   <div class="bh-flex-container"> 
+    
     <div class="bh-flex-element">
+      
       <h3><b>Sharing</b></h3>
+      
       <% @user.user_languages.filter(&:sharing).each do |user_language| %> 
         <div class=“lang-pro”>
           <%=  user_language.language.code %>
@@ -21,18 +24,13 @@
           </div>
         </div>
       <% end %>
+      
       <%= link_to new_user_language_path(ul_type: 'sharing') do %>
         <i class="fas fa-plus-circle"></i>
       <% end %>
+      
     </div> 
-    
-    <ul>
-    <% @sharing_user_langs.each do |ul| %>
-      <li><%= ul.language.name %> (<%= ul.proficiency_string %>) <%= link_to "delete", user_language_path(ul), method: :delete %></li>
-    <% end %>
-    </ul>
-    
-    
+      
     <div class="bh-flex-element">
       <h3><b>Learning</b></h3>
         <% @user.user_languages.filter(&:seeking).each do |user_language| %>
