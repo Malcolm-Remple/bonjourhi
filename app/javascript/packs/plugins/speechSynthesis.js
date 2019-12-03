@@ -14,7 +14,7 @@ const listenForSpeakerClick = () => {
      // only fire if speaker icon (<i>) was clicked
      if(e.target.nodeName === "I") {
       const text = e.target.dataset.text;
-      const lang = 'en';
+      const lang = e.target.dataset.isoCode;
       console.log(text);
       speakText(text,lang);
      }
