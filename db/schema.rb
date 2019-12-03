@@ -110,7 +110,6 @@ ActiveRecord::Schema.define(version: 2019_12_03_111812) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-
   create_table "vocab_items", force: :cascade do |t|
     t.string "content"
     t.bigint "vocab_list_id"
@@ -128,17 +127,13 @@ ActiveRecord::Schema.define(version: 2019_12_03_111812) do
     t.index ["user_id"], name: "index_vocab_lists_on_user_id"
   end
 
-
   add_foreign_key "meetups", "languages", column: "seeking_lang_id"
   add_foreign_key "meetups", "languages", column: "sharing_lang_id"
   add_foreign_key "reviews", "users"
   add_foreign_key "reviews", "users", column: "author_id"
   add_foreign_key "user_languages", "languages"
   add_foreign_key "user_languages", "users"
-
-
   add_foreign_key "vocab_items", "vocab_lists"
   add_foreign_key "vocab_lists", "languages"
   add_foreign_key "vocab_lists", "users"
-
 end
