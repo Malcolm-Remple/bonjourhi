@@ -1,4 +1,3 @@
-require 'i18n_data'
 # USER SEEDS
 puts "Destroying user languages, reviews, meetups, users..."
 
