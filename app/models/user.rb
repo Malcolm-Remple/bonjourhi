@@ -50,7 +50,7 @@ class User < ApplicationRecord
   end
 
   def confirmed_meetups
-    Meetup.where("(sender_id = ? OR recipient_id = ?) AND confirmed = true", id, id)
+    Meetup.where("(sender_id = ? OR recipient_id = ?) AND confirmed = true", id, id).order(:date)
   end
 
   private
