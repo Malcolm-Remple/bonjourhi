@@ -27,7 +27,7 @@
             </div>
           </div>
           <%= button_to user_language_path(user_language), method: :delete do %>
-          <i class="fas fa-minus-circle "></i>
+            <i class="fas fa-minus-circle mr-4"></i>
           <% end %>                 
         </div>
       <% end %> 
@@ -50,7 +50,9 @@
               </div>
             </div>
           </div>
-          <i class="fas fa-minus-circle "></i>            
+          <%= button_to user_language_path(user_language), method: :delete do %>
+            <i class="fas fa-minus-circle mr-4"></i>
+          <% end %>           
         </div>
       <% end %>
       <%= link_to new_user_language_path(ul_type: 'seeking') do %>
