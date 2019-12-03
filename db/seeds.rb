@@ -119,6 +119,8 @@ end
 
 random_users = User.all - [malcolm, claire, blair, lynn, lea, isabelle, antoine]
 
+
+puts "creating languages.."
 # LANGUAGE SEEDS
 en = Language.create!(name: "English", code: "EN", iso_code: 'en-GB')
 fr = Language.create!(name: "French", code: "FR",iso_code:'fr-FR')
@@ -133,6 +135,7 @@ pt = Language.create!(name: "Portuguese", code: "PT", iso_code:'pt-BR')
 
 bh_languages = [en,fr,de,cn,es,it,jp,ko,ru,pt]
 
+puts "create user languages..."
 # USER LANGUAGE SEEDS
 
 # for random users
@@ -182,7 +185,14 @@ isabelle.user_languages.create!(language: es, proficiency: 4, seeking: false, sh
 
 
 # MEETUP SEEDS
+puts "creating vocab lists.."
+blair.vocab_lists.create!(language: es)
 
+puts "creating vocab items..."
+blair.vocab_lists.first.vocab_items.create!(content: "la libélula")
+blair.vocab_lists.first.vocab_items.create!(content: "el hígado")
+blair.vocab_lists.first.vocab_items.create!(content: "estar como una cabra")
+blair.vocab_lists.first.vocab_items.create!(content: "ser pan comido")
 
 puts "Creating meetups..."
 
