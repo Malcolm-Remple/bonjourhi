@@ -1,0 +1,13 @@
+<div class="container">
+  <h3>Your <%= @vocab_list.language.name %> vocab list</h3>
+  <ul id="vocab-item-list">
+    <% @vocab_items.each do |vi| %>
+      <li>
+        <%= vi.content %>
+        <i class="fas fa-volume-up" data-text="<%= vi.content %>" data-iso-code="<%= vi.vocab_list.language.iso_code %>"></i>
+      </li>
+    <% end %>
+  </ul>
+
+</div>
+
