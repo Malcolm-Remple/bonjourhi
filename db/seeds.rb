@@ -98,6 +98,8 @@ isabelle = User.create!(
   availibility: "Mon-Fri after 18:00"
   )
 
+
+
 counter = 7000
 70.times do
   first_name = Faker::Name.first_name
@@ -114,6 +116,8 @@ counter = 7000
     availibility: "M-F after 17:30, Saturdays"
     )
 end
+
+random_users = User.all - [malcolm, claire, blair, lynn, lea, isabelle, antoine]
 
 # LANGUAGE SEEDS
 en = Language.create!(name: "English", code: "EN", iso_code: 'en-GB')
@@ -132,48 +136,50 @@ bh_languages = [en,fr,de,cn,es,it,jp,ko,ru,pt]
 # USER LANGUAGE SEEDS
 
 # for random users
-User.all.each do |user|
-  user_language_seeking = UserLanguage.new(
-    proficiency: rand(1..3),
-    seeking: true,
-    sharing: false
-    )
-  # user_language_seeking.language = Language.find(Language.pluck(:id).sample)
-  user_language_seeking.language = en
-  user_language_seeking.user = user
-  user_language_seeking.save!
+random_users.each do |user|
 
-  user_language_sharing = UserLanguage.new(
-    proficiency: rand(4..5),
-    seeking: false,
-    sharing: true
-    )
-  # user_language_sharing.language = Language.get_sharing_lang(user_language_seeking.language)
-  user_language_sharing.language = (bh_languages - [en]).sample
-  user_language_sharing.user = user
-  user_language_sharing.save!
+  # all randos are seeking englsih
+  user.user_languages.create!(language: en, proficiency: rand(1..4), seeking: true, sharing: false)
+  # 50-50 chance they're assigned a second seeking lang
+
+  # sharing
+  first_shared_lang = (bh_languages - [en]).sample
+  user.user_languages.create!(language: first_shared_lang, proficiency: rand(4..5), seeking: false, sharing: true)
+
+  # 50-50 chance they're assigned a second sharing lang
+  if [true, false].sample
+    user.user_languages.create!(language: (bh_languages - [en, first_shared_lang]).sample, proficiency: rand(4..5), seeking: false, sharing: true)
+  end
+
 end
 
-# update custom users
+# user languages for custom users
 # fab four
-malcolm.user_languages.where(seeking: true).first.update(language: fr, proficiency: 3)
-malcolm.user_languages.where(sharing: true).first.update(language: en, proficiency: 5)
-lea.user_languages.where(seeking: true).first.update(language: en, proficiency: 4)
-lea.user_languages.where(sharing: true).first.update(language: fr, proficiency: 5)
-lynn.user_languages.where(seeking: true).first.update(language: fr, proficiency: 4)
-lynn.user_languages.where(sharing: true).first.update(language: cn, proficiency: 5)
-claire.user_languages.where(seeking: true).first.update(language: fr, proficiency: 1)
-claire.user_languages.where(sharing: true).first.update(language: en, proficiency: 5)
+malcolm.user_languages.create!(language: fr, proficiency: 3, seeking: true, sharing: false)
+malcolm.user_languages.create!(language: en, proficiency: 5, seeking: false, sharing: true)
+
+lea.user_languages.create!(language: en, proficiency: 4, seeking: true, sharing: false)
+lea.user_languages.create!(language: fr, proficiency: 5, seeking: false, sharing: true)
+
+lynn.user_languages.create!(language: en, proficiency: 4, seeking: true, sharing: false)
+lynn.user_languages.create!(language: cn, proficiency: 5, seeking: false, sharing: true)
+lynn.user_languages.create!(language: de, proficiency: 5, seeking: false, sharing: true)
+
+claire.user_languages.create!(language: fr, proficiency: 1, seeking: true, sharing: false)
+claire.user_languages.create!(language: en, proficiency: 5, seeking: false, sharing: true)
+claire.user_languages.create!(language: jp, proficiency: 4, seeking: false, sharing: true)
 
 # demo
-blair.user_languages.where(seeking: true).first.update(language: fr, proficiency: 1)
-blair.user_languages.where(sharing: true).first.update(language: en, proficiency: 5)
+blair.user_languages.create!(language: es, proficiency: 4, seeking: true, sharing: false)
+blair.user_languages.create!(language: en, proficiency: 5, seeking: false, sharing: true)
 
-antoine.user_languages.where(seeking: true).first.update(language: en, proficiency: 3)
-antoine.user_languages.where(sharing: true).first.update(language: fr, proficiency: 5)
+antoine.user_languages.create!(language: en, proficiency: 3, seeking: true, sharing: false)
+antoine.user_languages.create!(language: fr, proficiency: 5, seeking: false, sharing: true)
 
-isabelle.user_languages.where(seeking: true).first.update(language: en, proficiency: 4)
-isabelle.user_languages.where(sharing: true).first.update(language: fr, proficiency: 5)
+isabelle.user_languages.create!(language: en, proficiency: 4, seeking: true, sharing: false)
+isabelle.user_languages.create!(language: fr, proficiency: 5, seeking: false, sharing: true)
+isabelle.user_languages.create!(language: es, proficiency: 4, seeking: false, sharing: true)
+
 
 # MEETUP SEEDS
 
