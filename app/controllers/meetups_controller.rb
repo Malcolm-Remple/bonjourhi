@@ -23,6 +23,9 @@ class MeetupsController < ApplicationController
     @meetup.sharing_lang = Language.find(params[:meetup][:sharing_lang].to_i)
     @meetup.seeking_lang = Language.find(params[:meetup][:seeking_lang].to_i)
     @meetup.sender = current_user
+    @seeking_langs = @user.user_languages.filter(&:sharing).map {|user_languages| user_languages.language}
+    @sharing_langs = current_user.user_languages.filter(&:sharing).map {|user_languages| user_languages.language}
+
     @meetup.recipient = @user
     if @meetup.save
       redirect_to meetups_path
@@ -34,7 +37,10 @@ class MeetupsController < ApplicationController
   def update
     @meetup = Meetup.find(params[:id])
     @meetup.update_attribute(:confirmed, true)
-    redirect_to meetups_path
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def get_token
@@ -56,15 +62,24 @@ class MeetupsController < ApplicationController
     service = Google::Apis::CalendarV3::CalendarService.new
     service.authorization = client
 
-     today = Date.today
+
     # @user = User.find(params[:user_id])
     @meetup = Meetup.find(current_user.pending_event_confirmation)
+    starting_at = @meetup.date.to_datetime + @meetup.start_time.hour.hour + @meetup.start_time.min.minute
+    ends_at     = starting_at + @meetup.duration.minute
 
     event = Google::Apis::CalendarV3::Event.new({
-      start: Google::Apis::CalendarV3::EventDateTime.new(date_time: DateTime.now),
-      end: Google::Apis::CalendarV3::EventDateTime.new(date_time: DateTime.now + @meetup.duration.minute),
-      summary: "Meetup with #{@meetup.sender.first_name}"
+      start: Google::Apis::CalendarV3::EventDateTime.new(date_time: starting_at),
+      end: Google::Apis::CalendarV3::EventDateTime.new(date_time: ends_at),
+      summary: "Meetup with #{@meetup.sender.first_name} at #{@meetup.location}"
     })
+
+
+    # event = Google::Apis::CalendarV3::Event.new({
+    #   start: Google::Apis::CalendarV3::EventDateTime.new(date_time: DateTime.now),
+    #   end: Google::Apis::CalendarV3::EventDateTime.new(date_time: DateTime.now + @meetup.duration.minute),
+    #   summary: "Meetup with #{@meetup.sender.first_name}"
+    # })
 
     # event = Google::Apis::CalendarV3::Event.new({
     #   start: Google::Apis::CalendarV3::EventDateTime.new(date: @meetup.start_time.to_date),
