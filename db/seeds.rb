@@ -1,13 +1,16 @@
 
 # USER SEEDS
-puts "Destroying user languages, reviews, meetups, users..."
+puts "Destroying user languages, vocab lists, reviews, meetups, chats, users..."
 
 # because of the pb with dependent destroy, we first need to destroy joint tables
 UserLanguage.destroy_all
+VocabList.destroy_all
+Chat.destroy_all
 Review.destroy_all
 Meetup.destroy_all
 User.destroy_all
 Language.destroy_all
+
 
 puts "Creating users..."
 
@@ -19,7 +22,8 @@ malcolm = User.create!(
   city: "Montreal",
   photo: "https://res.cloudinary.com/dgxkozw6v/image/upload/v1575053052/malcolm_h1tacj.png",
   bio: "Full-stack developer",
-  num_of_past_meetups: rand(4..44)
+  num_of_past_meetups: rand(4..44),
+  availibility: "M-F after 18:00"
   )
 
 lea = User.create!(
@@ -30,7 +34,8 @@ lea = User.create!(
   city: "Montreal",
   photo: "https://res.cloudinary.com/dgxkozw6v/image/upload/v1575053048/lea_r4vfxi.png",
   bio: "heya!",
-  num_of_past_meetups: rand(4..44)
+  num_of_past_meetups: rand(4..44),
+  availibility: "M-F after 18:00"
   )
 
 lynn = User.create!(
@@ -41,7 +46,8 @@ lynn = User.create!(
   city: "Montreal",
   photo: "https://res.cloudinary.com/dgxkozw6v/image/upload/v1575053050/lynn_xz1mor.png",
   bio: "Yoooooo!",
-  num_of_past_meetups: rand(4..44)
+  num_of_past_meetups: rand(4..44),
+  availibility: "M-F after 18:00"
   )
 
 claire = User.create!(
@@ -52,7 +58,8 @@ claire = User.create!(
   city: "Montreal",
   photo: "https://res.cloudinary.com/dgxkozw6v/image/upload/v1575053296/face-shot2_j2vpog.jpg",
   bio: "Hi!!!!!!!!",
-  num_of_past_meetups: rand(4..44)
+  num_of_past_meetups: rand(4..44),
+  availibility: "M-F after 18:00"
   )
 
 # DEMO USERS
@@ -64,7 +71,8 @@ blair = User.create!(
   city: "Montreal",
   photo: 'https://res.cloudinary.com/dgxkozw6v/image/upload/v1575053044/claire_uhozmk.png',
   bio: "Hi! I just moved to Montreal after traveling in South America for a year. I like to collect dead butterflies.",
-  num_of_past_meetups: 26
+  num_of_past_meetups: 26,
+  availibility: "M-F after 18:00"
   )
 
 antoine = User.create!(
@@ -75,7 +83,8 @@ antoine = User.create!(
   city: "Montreal",
   photo: 'https://images.unsplash.com/photo-1511546395756-590dffdcdbd1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60',
   bio: "Salut! I'm looking for persons to practice English with me. I just want to talk about rugby, nothing else.",
-  num_of_past_meetups: 5
+  num_of_past_meetups: 5,
+  availibility: "M-F after 17:30, Saturdays"
   )
 isabelle = User.create!(
   first_name: "Isabelle",
@@ -85,11 +94,12 @@ isabelle = User.create!(
   city: "Montreal",
   photo: 'https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
   bio: "Allo! I love catepillars and travelling, let's have a chat (and not cat)!",
-  num_of_past_meetups: 28
+  num_of_past_meetups: 28,
+  availibility: "Mon-Fri after 18:00"
   )
 
 counter = 7000
-20.times do
+70.times do
   first_name = Faker::Name.first_name
   counter += 1
   User.create!(
@@ -100,17 +110,24 @@ counter = 7000
     city: "Montreal",
     bio: "Hi, I'm looking forward to meeting you! I love talking foreign languages.",
     photo: "https://source.unsplash.com/random/120x120/?portrait&#{counter}",
-    num_of_past_meetups: rand(4..44)
+    num_of_past_meetups: rand(4..44),
+    availibility: "M-F after 17:30, Saturdays"
     )
 end
 
 # LANGUAGE SEEDS
-en = Language.create!(name: "English (US)", code: "EN")
-fr = Language.create!(name: "French", code: "FR")
-de = Language.create!(name: "German", code: "DE")
-cn = Language.create!(name: "Chinese", code: "CN")
-es = Language.create!(name: "Spanish", code: "ES")
+en = Language.create!(name: "English", code: "EN", iso_code: 'en-GB')
+fr = Language.create!(name: "French", code: "FR",iso_code:'fr-FR')
+de = Language.create!(name: "German", code: "DE",iso_code:'de-DE')
+cn = Language.create!(name: "Chinese", code: "CN",iso_code:'zh-CN')
+es = Language.create!(name: "Spanish", code: "ES",iso_code:'ja-JP')
+it = Language.create!(name: "Italian", code: "IT", iso_code:'it-IT')
+jp = Language.create!(name: "Japanese", code: "JP", iso_code:'ja-JP')
+ko = Language.create!(name: "Korean", code: "KR", iso_code:'ko-KR')
+ru = Language.create!(name: "Russian", code: "RU", iso_code:'ru-RU')
+pt = Language.create!(name: "Portuguese", code: "PT", iso_code:'pt-BR')
 
+bh_languages = [en,fr,de,cn,es,it,jp,ko,ru,pt]
 
 # USER LANGUAGE SEEDS
 
@@ -132,7 +149,7 @@ User.all.each do |user|
     sharing: true
     )
   # user_language_sharing.language = Language.get_sharing_lang(user_language_seeking.language)
-  user_language_sharing.language = fr
+  user_language_sharing.language = (bh_languages - [en]).sample
   user_language_sharing.user = user
   user_language_sharing.save!
 end
