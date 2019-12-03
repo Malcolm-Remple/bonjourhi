@@ -1,4 +1,3 @@
-
 # USER SEEDS
 puts "Destroying user languages, vocab lists, reviews, meetups, chats, users..."
 
@@ -117,7 +116,17 @@ counter = 7000
     )
 end
 
+
+# LANGUAGE SEEDS
+
+en = Language.create!(name: "English (US)", code: "EN")
+fr = Language.create!(name: "French", code: "FR")
+de = Language.create!(name: "German", code: "DE")
+cn = Language.create!(name: "Chinese", code: "CN")
+es = Language.create!(name: "Spanish", code: "ES")
+
 random_users = User.all - [malcolm, claire, blair, lynn, lea, isabelle, antoine]
+
 
 
 puts "creating languages.."
