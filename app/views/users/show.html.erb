@@ -1,75 +1,69 @@
 <div class="container">
-
-  <div class="mt-4 d-flex justify-content-around">
-    <div class="col-6">
+  
+  <div class="bh-flex-container"> 
+    <div class="bh-flex-element">  
       <img class="bh-avatar-lg" src="<%= @user.photo %>">
     </div>
-    <div class="mt-3 col-6">
-      <h3 class=""><b><%= @user.first_name %></b></h3>
-      <p><%= @user.city %></p>
+    <div class="bh-flex-element">
+      <h3><b><%= @user.first_name %></b></h3>
+      <p>Past Meetups: <%= @user.num_of_past_meetups %></p>
     </div>
   </div>
-
-  <div class="mt-4 d-flex justify-content-around">
-    <div class="col-6">
+  
+  <div class="bh-flex-container">
+    
+    <div class="bh-flex-element">
       <h3><b>Sharing</b></h3>
+      <% @user.user_languages.filter(&:sharing).each do |user_language| %>
+        <div class=“lang-pro”>
+          <%=  user_language.language.code %>
+          <div style="background-color: #DDDDDD; width: 70px;">
+            <div style ="width: <%= user_language.level %>; background-color: #80BD9E; height: 13px;"></div>
+          </div>
+        </div>
+      <% end %>
     </div>
-    <div class="col-6">
-      <ul>
-        <% @user_languages.filter(&:sharing).each do |ul| %>
-        <li><%= ul.language.name %> (<%= ul.proficiency %>)
-        <% end %>
-      </ul>
+    
+    <div class="bh-flex-element">
+      <h3><b>Learning</b></h3>
+        <% @user.user_languages.filter(&:seeking).each do |user_language| %>
+          <div class=“lang-pro”>
+            <%=  user_language.language.code %>
+            <div style="background-color: #DDDDDD; width: 70px;">
+              <div style ="width: <%= user_language.level %>; background-color: #F49342; height: 13px;"></div>
+            </div>
+          </div>
+          <% end %>
     </div>
+    
   </div>
-
-  <div class="mt-4 d-flex justify-content-around">
-    <div class="col-6">
-      <h3><b>Seeking</b></h3>
-    </div>
-    <div class="col-6">
-      <ul>
-        <% @user_languages.filter(&:seeking).each do |ul| %>
-          <li><%= ul.language.name %> (<%= ul.proficiency %>)
-        <% end %>
-      </ul>
-    </div>
+    
+  <div class="bh-text-body">
+    <h3><b>Bio</b></h3>
+    <p><%= @user.bio %></p>
   </div>
-
-  <div class="mt-4 d-flex justify-content-around">
-    <div class="col-12">
-      <h3><b>Bio</b></h3>
-    </div>
+    
+  <div class="bh-text-body">
+    <h3><b>Reviews</b></h3>
+    
+    <p><b>author | date</b></p>   
+    <p><%= @user.bio %></p>
+    
+    <p><b>author | date</b></p>   
+    <p><%= @user.bio %></p>
+    
+    <p><b>author | date</b></p>   
+    <p><%= @user.bio %></p>
   </div>
-
-  <div class="mt-2">
-    <div class="col-12">
-      <p><%= @user.bio %></p>
-    </div>
-  </div>
-
-
-   <!-- end of rows -->
-
-<div class="container">
-  <% if @user != current_user %>
-    <button class="bh-btn-solid-lg-show"><%= link_to "Request a Meetup", new_user_meetup_path(@user) %></button>
-  <% else %>
-    <p><%= link_to "Edit #{@user.first_name}'s profile", edit_user_path(@user) %></p>
-  <% end %>
+    
 </div>
 
-  <!-- <div class="mt-4 d-flex justify-content-around">
-    <div class="col-12">
-      <h3><b>Reviews</b></h3>
-    </div>
+
+<% if @user != current_user %>
+  <div class="bh-button-sticky-bottom">
+    <%= link_to "Request a Meetup", new_user_meetup_path(@user), class: "bh-btn-solid-lg-sticky" %>
   </div>
-
-  <div class="mt-2">
-      <div class="col-12">
-        <p><b></b></p>
-        <p></p>
-      </div>
-  </div> -->
-
-</div>
+<% else %>
+  <p><%= link_to "Edit #{@user.first_name}'s profile", edit_user_path(@user) %></p>
+<% end %>
+  
