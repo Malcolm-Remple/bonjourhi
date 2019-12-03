@@ -97,7 +97,6 @@ GEM
     httpclient (2.8.3)
     i18n (1.7.0)
       concurrent-ruby (~> 1.0)
-    i18n_data (0.10.0)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
     jquery-rails (4.3.5)
@@ -245,7 +244,6 @@ DEPENDENCIES
   faker
   font-awesome-sass (~> 5.6.1)
   google-api-client
-  i18n_data
   jbuilder (~> 2.0)
   jquery-rails
   language_list (~> 1.1)
