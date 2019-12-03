@@ -1,27 +1,76 @@
-Your chats:
-<ul>
- <% if @existing_chats_users %>
-   <% @existing_chats_users.each do |other_user| %>
-    <% if other_user != current_user %>
-      <li>
-        <%= button_to(user_chats_path(current_user, other_user: other_user.id), method: :post ) do %>
-        <%= other_user.first_name %>
+<div class="container mt-1">
+  <h3 class="bh-text-bg">Your chats:</h3>
+
+  <% if @existing_chats_users %>
+    <% @existing_chats_users.each do |other_user| %>
+      <% if other_user != current_user %>
+       
+        <%= button_to(user_chats_path(current_user, other_user: other_user.id), method: :post, class:"chat-butto_to" ) do %>
+          <div class="bh-chat-index">
+            <div class="chat-image">
+              <%= image_tag other_user.photo || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80", class: "bh-avatar-sm" %>
+            </div>
+            <div class="name-city">
+              <div>
+                <%= other_user.first_name %>
+              </div>
+              <div>
+                <%= other_user.city %>
+              </div>
+            </div>
+            <div class="chat-languagues">
+              <!-- <div class="bh-card-user-index-sharing"> -->
+                <div class="language-sharing">
+                  <div class="text-style">sharing</div>
+          <!-- build the progress bar by self -->
+          <!-- filter(&:sharing) == filter{|user_language| user_language.sharing} -->
+                  <div class="language-part">
+                    <% other_user.user_languages.filter(&:sharing).each do |user_language| %>
+                      <div class="lang-pro">
+                        <%=  user_language.language.code %>
+                        <div style="background-color: #DDDDDD; width: 20px;">
+                          <div style ="width: <%= user_language.level %>; background-color: #80BD9E; height: 7px;"></div>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              <!-- </div> -->
+
+              <!-- <div class="bh-card-user-index-practicing"> -->
+                <div class="language-practicing">
+                  <div class="text-style">practicing</div>
+                  <div class="language-part">
+                      <% other_user.user_languages.filter(&:seeking).each do |user_language| %>
+                        <div class="lang-pro">
+                          <%=  user_language.language.code %>
+                          <div style="background-color: #DDDDDD; width: 20px;">
+                            <div style ="width: <%= user_language.level %>; background-color: #F49342; height: 7px;"></div>
+                          </div>
+                        </div>
+                      <% end %>
+                  </div>
+                </div>
+              <!-- </div> -->
+            </div>
+          </div>
         <% end %>
-      </li>
-     <% end %>
-   <% end %>
-  <% end %>
-</ul>
-All Users:
-<ul>
-  <% User.all.each do |other_user| %>
-   <% if other_user != current_user %>
-     <li>
-       <!-- create or show chat -->
-       <%= button_to(user_chats_path(current_user, other_user: other_user.id), method: :post) do %>
-       <%= other_user.first_name %>
-       <% end %>
-     </li>
+        
+      <% end %>
     <% end %>
   <% end %>
-</ul>
+
+  All Users:
+  <ul>
+    <% User.all.each do |other_user| %>
+     <% if other_user != current_user %>
+       <li>
+         <!-- create or show chat -->
+         <%= button_to(user_chats_path(current_user, other_user: other_user.id), method: :post) do %>
+         <%= other_user.first_name %>
+         <% end %>
+       </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

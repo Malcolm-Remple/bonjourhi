@@ -1,4 +1,4 @@
-
+require 'i18n_data'
 # USER SEEDS
 puts "Destroying user languages, reviews, meetups, users..."
 
@@ -105,6 +105,10 @@ counter = 7000
 end
 
 # LANGUAGE SEEDS
+# puts "languages seeds"
+# data = I18NData.countries(language.upcase)
+# p data
+# puts "languages ends"
 en = Language.create!(name: "English (US)", code: "EN")
 fr = Language.create!(name: "French", code: "FR")
 de = Language.create!(name: "German", code: "DE")

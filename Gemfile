@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.6.3'
 
+gem 'i18n_data'
+
 gem 'faker'
 gem 'google-api-client', require: 'google/apis/calendar_v3'
 
