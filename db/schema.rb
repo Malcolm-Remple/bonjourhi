@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_02_182048) do
+ActiveRecord::Schema.define(version: 2019_12_03_105714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,21 +108,21 @@ ActiveRecord::Schema.define(version: 2019_12_02_182048) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vocab_items", force: :cascade do |t|
+    t.string "content"
+    t.bigint "vocab_list_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["vocab_list_id"], name: "index_vocab_items_on_vocab_list_id"
+  end
+
   create_table "vocab_lists", force: :cascade do |t|
-    t.bigint "user_id"
     t.bigint "language_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["language_id"], name: "index_vocab_lists_on_language_id"
     t.index ["user_id"], name: "index_vocab_lists_on_user_id"
-  end
-
-  create_table "vocabs", force: :cascade do |t|
-    t.string "item"
-    t.bigint "vocab_list_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["vocab_list_id"], name: "index_vocabs_on_vocab_list_id"
   end
 
   add_foreign_key "meetups", "languages", column: "seeking_lang_id"
@@ -131,7 +131,7 @@ ActiveRecord::Schema.define(version: 2019_12_02_182048) do
   add_foreign_key "reviews", "users", column: "author_id"
   add_foreign_key "user_languages", "languages"
   add_foreign_key "user_languages", "users"
+  add_foreign_key "vocab_items", "vocab_lists"
   add_foreign_key "vocab_lists", "languages"
   add_foreign_key "vocab_lists", "users"
-  add_foreign_key "vocabs", "vocab_lists"
 end
