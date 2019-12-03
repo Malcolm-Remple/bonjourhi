@@ -1,5 +1,6 @@
 class VocabListsController < ApplicationController
   def index
+    @vocab_lists = VocabList.where(user: current_user)
   end
 
   def show
