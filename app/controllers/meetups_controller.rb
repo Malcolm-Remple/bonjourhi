@@ -34,7 +34,7 @@ class MeetupsController < ApplicationController
   def update
     @meetup = Meetup.find(params[:id])
     @meetup.update_attribute(:confirmed, true)
-    redirect_to meetups_path
+    redirect_to meetup_path(@meetup)
   end
 
   def get_token
