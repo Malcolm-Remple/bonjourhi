@@ -26,13 +26,15 @@
               </div>
             </div>
           </div>
-          <i class="fas fa-minus-circle "></i>            
+          <%= button_to user_language_path(user_language), method: :delete do %>
+          <i class="fas fa-minus-circle "></i>
+          <% end %>                 
         </div>
       <% end %> 
       <%= link_to new_user_language_path(ul_type: 'sharing') do %>
         <i class="fas fa-plus-circle"></i>
       <% end %>   
-    </div>  
+    </div>
     
     <div class="bh-flex-element">  
       <h3><b>Learning</b></h3> 
@@ -50,7 +52,7 @@
           </div>
           <i class="fas fa-minus-circle "></i>            
         </div>
-      <% end %> 
+      <% end %>
       <%= link_to new_user_language_path(ul_type: 'seeking') do %>
         <i class="fas fa-plus-circle"></i>
       <% end %>   
@@ -69,4 +71,6 @@
 <div class="bh-button-sticky-bottom">
   <%= link_to "Edit Your profile", edit_user_path(@user), class: "bh-btn-solid-lg-sticky" %>
 </div>
+
+
 
