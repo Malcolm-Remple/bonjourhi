@@ -1,3 +1,5 @@
+users > show.html.erb
+
 <div class="container">
   
   <div class="bh-flex-container"> 
@@ -10,8 +12,7 @@
     </div>
   </div>
   
-  <div class="bh-flex-container">
-    
+  <div class="bh-flex-container">  
     <div class="bh-flex-element">
       <h3><b>Sharing</b></h3>
       <% @user.user_languages.filter(&:sharing).each do |user_language| %>
@@ -33,30 +34,22 @@
               <div style ="width: <%= user_language.level %>; background-color: #F49342; height: 13px;"></div>
             </div>
           </div>
-          <% end %>
-    </div>
-    
+        <% end %>
+    </div>   
   </div>
     
   <div class="bh-text-body">
     <h3><b>Bio</b></h3>
     <p><%= @user.bio %></p>
   </div>
-  
-  <!-- reviews -->
     
   <div class="bh-text-body">
-    <h3><b>Reviews</b></h3>
-      
-    <%= @user.user_reviews.each do |r|%>
-      <p><b> r.author | r.created_at </b></p>   
-      <p><%= r.content %></p>
-    <% end %>
-    
-  </div>
-    
+    <h3><b>Reviews</b></h3>    
+    <% @user.user_reviews.each do |r|%>
+      <p><b> <%= r.author.first_name %> | <%= r.date_to_string %></b> <br> <%= r.content %></p>  
+    <% end %>   
+  </div> 
 </div>
-
 
 <% if @user != current_user %>
   <div class="bh-button-sticky-bottom">
