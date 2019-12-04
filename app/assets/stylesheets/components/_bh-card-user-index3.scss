@@ -1,4 +1,7 @@
 $color: #393E46;
+.container {
+  height: 80px;
+}
 .bh-card-user-index{
   width: 100%;
   height: 71px;
@@ -7,7 +10,7 @@ $color: #393E46;
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
-  // color: initial;
+  color: initial;
   padding-top: 7px;
   padding-bottom: 7px;
 }
@@ -19,6 +22,9 @@ $color: #393E46;
 .bh-card-user-index-info {
   display:flex;
   flex-direction: column;
+  margin-left: 15px;
+  margin-right: 7px;
+  min-width: 100px;
   p {
     margin-bottom: 0px;
     color: $color;
@@ -30,7 +36,7 @@ $color: #393E46;
 
 .bh-card-user-index-languages {
   display: flex;
-  flex-direction: column;
+  margin-left: 10px;
  p {
     margin-bottom: 0px;
   }
@@ -52,6 +58,9 @@ $color: #393E46;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  margin-left: 7px;
+  margin-right: 7px;
+  min-width: 60px;
 }
 
 .bh-card-user-index-sharing {
@@ -67,7 +76,7 @@ $color: #393E46;
   color: $color;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-around;
   min-width: 45px;
   font-size: 14px;
   margin: 0px;
@@ -98,55 +107,14 @@ $color: #393E46;
   height: 10px;
 }
 
-.bh-card-meetup-index {
-  width: 100%;
-  height: 71px;
-  background: white;
-  // box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
-.meetup-avatar-info {
-  display: flex;
-}
-
-.bh-meetup-avatar {
-  margin-left: 10px;
-}
-
-.bh-card-meetup-index-date {
-  display: flex;
-  flex-direction: column;
-  p {
-    margin-bottom: 0px;
-  }
-  margin-right: 10px;
-}
-
-.bh-card-meetup-index-info {
-  display:flex;
-  flex-direction: column;
-  margin-left: 20px;
-    p {
-    margin-bottom: 0px;
-  }
-    h3 {
-    margin-bottom: 0px;
-  }
-  justify-content: center;
-}
-
-.bh-card-meetup-index-languages {
-  display: flex;
-  h3 {
-    margin-bottom: 0px;
-  }
-}
 
 .text-style {
   color: #CBCBCB;
+}
+
+.progress-bar {
+  margin-left: -15px;
 }
 
 .line-user-index {

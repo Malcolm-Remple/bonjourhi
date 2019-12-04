@@ -1,6 +1,6 @@
 <div class="container mt-3">
   <h3 class="bh-text-bg">Upcoming</h3>
-  <% if @confirmed_meetups == [] %>
+  <% if !@confirmed_meetups.any? %>
     <p>There is no upcoming meetup</p>
   <% else %>
     <% @confirmed_meetups.each do |m| %>
@@ -102,15 +102,16 @@
           <div>
             <%= image_tag m.opposite_user(current_user).photo || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80", class: "bh-avatar-sm" %>
           </div>
+          
           <div class="user-info">
-            <%=  m.opposite_user(current_user).first_name %>
+            <div> <%=  m.opposite_user(current_user).first_name %></div>
             <div>pending</div>
           </div>
 
           <div class="date-languages">
-            <%=  m.date %>
+            <div><%=  m.date %></div> 
             <div class="languages">
-            <!-- sharing -->
+              <!-- sharing -->
               <!-- <div class="language-part"> -->
                 <% m.opposite_user(current_user).user_languages.filter(&:sharing).each do |user_language| %>
                   <div class="lang-pro">
