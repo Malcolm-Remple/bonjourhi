@@ -4,7 +4,7 @@
     <p>There is no upcoming meetup</p>
   <% else %>
     <% @confirmed_meetups.each do |m| %>
-      <% if m.meetup_occurred? %>
+      <% if !m.meetup_occurred? %>
         <%= link_to meetup_path(m) do %>
         <div class="bh-card-meetup-index">
           <!-- <div class="image-user"> -->
@@ -144,7 +144,7 @@
   <% if !@confirmed_meetups.any? %>
     <p>There is no past meetup</p>
   <% else %>
-    <% @confirmed_meetups.select { |cm| !cm.meetup_occurred? }.reverse.each do |m| %>
+    <% @confirmed_meetups.select { |cm| cm.meetup_occurred? }.reverse.each do |m| %>
         <%= link_to meetup_path(m) do %>
         <div class="bh-card-meetup-index">
           <!-- <div class="image-user"> -->

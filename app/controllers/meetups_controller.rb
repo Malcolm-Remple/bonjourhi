@@ -69,8 +69,8 @@ class MeetupsController < ApplicationController
     ends_at     = starting_at + @meetup.duration.minute
 
     event = Google::Apis::CalendarV3::Event.new({
-      start: Google::Apis::CalendarV3::EventDateTime.new(date_time: starting_at),
-      end: Google::Apis::CalendarV3::EventDateTime.new(date_time: ends_at),
+      start: Google::Apis::CalendarV3::EventDateTime.new(date_time: starting_at.rfc3339),
+      end: Google::Apis::CalendarV3::EventDateTime.new(date_time: ends_at.rfc3339),
       summary: "Meetup with #{@meetup.sender.first_name} at #{@meetup.location}"
     })
 

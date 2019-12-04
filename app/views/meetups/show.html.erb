@@ -46,13 +46,19 @@
 
   <br>
   <div class="container">
-    <% if (@meetup.confirmed && !@meetup.meetup_occurred) || (!@meetup.confirmed && @meetup.sender == current_user) %>
+    <% if @meetup.confirmed && !@meetup.meetup_occurred? %>
       <%= link_to "" do %>
         <button type="button" class="bh-btn-solid-lg-show">
           Reschedule / Cancel
         </button>
       <% end %>
-    <% elsif %>
+    <% elsif !@meetup.confirmed && @meetup.sender == current_user %>
+      <%= link_to "" do %>
+        <button type="button" class="bh-btn-solid-lg-show">
+          Reschedule / Cancel
+        </button>
+      <% end %>
+    <% elsif @meetup.confirmed && @meetup.meetup_occurred? %>
       <%= link_to "" do %>
         <button type="button" class="bh-btn-solid-lg-show">
           Leave a review
