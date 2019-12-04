@@ -1,10 +1,9 @@
 const filterVocabByLang = () => {
-
   const vocabItems = document.querySelectorAll('.vocab-item');
   const langSelector = document.getElementById('vocab_item_language_id');
-  langSelector.addEventListener('change', (e) => {
 
-  const langId = e.currentTarget.value;
+  langSelector.addEventListener('change', (e) => {
+    const langId = e.currentTarget.value;
 
     // loop trough lang groups and display none on all but current lang
     Array.from(vocabItems).forEach((vocabItem) => {
