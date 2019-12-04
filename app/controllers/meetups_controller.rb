@@ -65,8 +65,8 @@ class MeetupsController < ApplicationController
 
     # @user = User.find(params[:user_id])
     @meetup = Meetup.find(current_user.pending_event_confirmation)
-    starting_at = @meetup.date.to_datetime + @meetup.start_time.hour.hour + @meetup.start_time.min.minute
-    ends_at     = starting_at + @meetup.duration.minute
+    starting_at = @meetup.date.to_datetime + @meetup.start_time.hour.hour + @meetup.start_time.min.minute - 6
+    ends_at     = starting_at + @meetup.duration.minute - 6
 
     event = Google::Apis::CalendarV3::Event.new({
       start: Google::Apis::CalendarV3::EventDateTime.new(date_time: starting_at),
