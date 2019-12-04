@@ -1,6 +1,6 @@
 
 <%= simple_form_for(vocab_item, method: :post, remote: true) do |f| %>
-  <%= f.association :language, collection: @languages, include_blank: false %>
+  <%= f.association :language, collection: @new_vocab_form_languages, include_blank: false %>
   <%= f.input :content %>
   <%= f.submit %>
 <% end %>

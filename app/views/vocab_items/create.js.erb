@@ -1,4 +1,4 @@
-console.log('start create.js');
+
 
 function refreshForm(innerHTML) {
   const newVocabForm = document.getElementById('new_vocab_item');
@@ -10,8 +10,9 @@ function addVocab(vocabHTML) {
   const formLang = document.getElementById('vocab_item_language_id').value;
   console.log(formLang);
 
-  const targetElement = document.getElementById(`language-${formLang}`);
-  targetElement.insertAdjacentHTML('beforeend', vocabHTML);
+  const targetElement = document.getElementById('vocab-item-list');
+  targetElement.insertAdjacentHTML('afterbegin', vocabHTML);
+
 }
 
 <% if @vocab_item.errors.any? %>
