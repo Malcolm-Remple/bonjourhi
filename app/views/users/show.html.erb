@@ -42,18 +42,17 @@
     <h3><b>Bio</b></h3>
     <p><%= @user.bio %></p>
   </div>
+  
+  <!-- reviews -->
     
   <div class="bh-text-body">
     <h3><b>Reviews</b></h3>
+      
+    <%= @user.user_reviews.each do |r|%>
+      <p><b> r.author | r.created_at </b></p>   
+      <p><%= r.content %></p>
+    <% end %>
     
-    <p><b>author | date</b></p>   
-    <p><%= @user.bio %></p>
-    
-    <p><b>author | date</b></p>   
-    <p><%= @user.bio %></p>
-    
-    <p><b>author | date</b></p>   
-    <p><%= @user.bio %></p>
   </div>
     
 </div>

@@ -7,8 +7,8 @@ class User < ApplicationRecord
   has_many :user_languages
   has_many :languages, through: :user_languages
 
-  has_many :reviews  # as a reviewee (user)
-  has_many :reviews, as: :author
+  has_many :user_reviews, foreign_key: :user_id, class_name: "Review"
+  has_many :authored_reviews, foreign_key: :author_id, class_name: "Review"
 
 
   # before_save :lowercase_city
