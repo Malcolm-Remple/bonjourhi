@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+        <!-- <link rel="stylesheet" href="css/icon-font.css"> -->
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+        <title>Natours | Exciting tours for adventurous people</title>
+        <style>
+          .visible {
+            opacity: 1;
+            transition: 0.3s;
+          }
+          .invisible {
+            opacity: 0;
+            transition: 0.3s;
+          }
+        </style>
+    </head>
+    <body>
+      <header class="header">
+        <div class="header__logo-box">
+          <img class="header__logo" src="img/logo-white.png" alt="logo">
+        </div>
+        <div class="header__text-box">
+          <h1 class="heading-primary">
+            <span class="heading-primary--main">Outdoors</span>
+            <span class="heading-primary--sub">is where life happens</span>
+          </h1>
+          <a href="#" class="btn btn--white btn--animated">Discover Our Tours</a>
+        </div>
+      </header>
+      <div class="texts">
+        <p class="invisible" id="textBubble1">hello</p>
+      </div>
+      <script>
+        const textArray = ['Bonjour', '你好', 'hello'];
+        const textBlock = document.getElementById('textBubble1');
+        setInterval(() => {
+          textBlock.classList.toggle('visible');
+          textBlock.classList.toggle('invisible');
+          // timing wrong with following lines
+          const newWord = textArray[0];
+          textBlock.innerText = newWord;
+          textArray.splice(0, 1);
+          textArray.push(newWord);
+        }, 2500);
+      </script>
+    </body>
+</html>

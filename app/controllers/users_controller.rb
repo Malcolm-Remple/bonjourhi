@@ -3,10 +3,14 @@ class UsersController < ApplicationController
     if params[:city].present?
 
       city = params[:city]
-      language = params[:language]
-
-      @users = User.joins(:user_languages).where(city: city, user_languages: { language_id: language, sharing: true })
-
+      language_id = params[:language]
+  
+      @users = User.joins(:user_languages).where(
+        "city ILIKE :city
+        AND user_languages.language_id = :language_id
+        AND user_languages.sharing = true
+      ", city: city, language_id: language_id)
+   
       # @users.where("var = ? AND var = ?", city, montreal)
     else
       @users = User.where.not("id = ?", current_user.id)
@@ -37,5 +41,4 @@ class UsersController < ApplicationController
   def user_params
     # params.require(:user).permit(:)
   end
-
 end

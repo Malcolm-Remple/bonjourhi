@@ -7,8 +7,9 @@ $color: #393E46;
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
-  color: initial;
+  // color: initial;
   padding-top: 7px;
+  padding-bottom: 7px;
 }
 
 .bh-card-user-index:hover, .bh-card-user-index:focus, .bh-card-user-index:active{
@@ -68,7 +69,8 @@ $color: #393E46;
   align-items: center;
   justify-content: space-evenly;
   min-width: 45px;
-  font-size: 15px;
+  font-size: 14px;
+  margin: -3px;
 }
 
 
@@ -145,4 +147,12 @@ $color: #393E46;
 
 .text-style {
   color: #CBCBCB;
+}
+
+.line-user-index {
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    border: 0;
+    border-top: 1px solid rgba(0,0,0,.1);
+
 }
