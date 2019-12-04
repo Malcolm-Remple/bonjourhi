@@ -1,26 +1,16 @@
 <div class="container">
-  <h1>Your vocab</h1>
 
-  <%= select_tag "lang-selector", options_for_select(@language_option_array) %>
-  <ul>
-    <% @languages.each do |l| %>
-    <li>
-    <ul class="vocab-item-list vocab-<%= l.name %>" id="language-<%= l.id %>">
-        <% @vocab_items.where(language: l).each do |vi| %>
-          <li>
+<div class="bh-form-container">
+  <%= render 'vocab_items/vocab_item_form'%>
+</div>
+
+    <ul class="vocab-item-list" id="vocab-item-list">
+        <% @vocab_items.each do |vi| %>
+          <li class="vocab-item" data-lang-id="<%= vi.language.id %>">
             <%= vi.content %>
             <i class="fas fa-volume-up" data-text="<%= vi.content %>" data-iso-code="<%= vi.language.iso_code %>"></i>
           </li>
         <% end %>
       </ul>
-    </li>
-    <% end %>
-
-  </ul>
 </div>
-<h1>Add a new vocab item</h1>
-<%= render 'vocab_items/vocab_item_form', { vocab_item: @vocab_item }%>
 
-<%= link_to new_vocab_item_path do %>
-  <i class="fas fa-plus-circle"> Add vocab</i>
-<% end %>

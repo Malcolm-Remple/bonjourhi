@@ -1,4 +1,3 @@
-console.log('start create.js');
 
 function refreshForm(innerHTML) {
   const newVocabForm = document.getElementById('new_vocab_item');
@@ -10,13 +9,36 @@ function addVocab(vocabHTML) {
   const formLang = document.getElementById('vocab_item_language_id').value;
   console.log(formLang);
 
-  const targetElement = document.getElementById(`language-${formLang}`);
-  targetElement.insertAdjacentHTML('beforeend', vocabHTML);
+  const targetElement = document.getElementById('vocab-item-list');
+  targetElement.insertAdjacentHTML('afterbegin', vocabHTML);
 }
+
+
+function refilterVocab() {
+  const vocabItems = document.querySelectorAll('.vocab-item');
+  const langSelector = document.getElementById('vocab_item_language_id');
+
+  langSelector.addEventListener('change', (e) => {
+    const langId = e.currentTarget.value;
+
+    // loop trough lang groups and display none on all but current lang
+    Array.from(vocabItems).forEach((vocabItem) => {
+      if(vocabItem.dataset.langId !== langId) {
+         vocabItem.style.display = 'none';
+      } else {
+         vocabItem.style.display = 'block';
+      }
+    });
+  });
+
+};
 
 <% if @vocab_item.errors.any? %>
   refreshForm('<%= j render "vocab_items/vocab_item_form", vocab_item: @vocab_item %>');
 <% else %>
   addVocab('<%= j render "vocab_items/vocab_item", vocab_item: @vocab_item %>');
   refreshForm('<%= j render "vocab_items/vocab_item_form", vocab_item: @vocab_item %>');
+  refilterVocab();
 <% end %>
+
+
