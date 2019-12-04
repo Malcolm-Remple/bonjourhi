@@ -17,9 +17,23 @@
   color: white;
 }
 
+.bh-nav-title {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  padding-top: 8px;
+  color: white;
+}
+
 .bh-nav-back {
   display: flex;
   align-items: center;
   padding-left: 16px;
   font-size: 33px;
+}
+
+.signin a {
+  color: #495157;
+  font-size: 11px;
+  margin: 15px;
 }

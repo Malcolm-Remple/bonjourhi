@@ -1,6 +1,6 @@
 .bh-chat-scrollbox {
   overflow: scroll;
-  height: calc(100vh - 200px);
+  // height: calc(100vh - 200px);
   width: 100vw;
   padding: 6px;
 }
@@ -9,4 +9,10 @@
   height:100vh;
   margin: 0;
   position: fixed;
+  width:100%;
+}
+
+#messages {
+  padding-top: 6px;
+  height: calc(100vh - 200px);
 }

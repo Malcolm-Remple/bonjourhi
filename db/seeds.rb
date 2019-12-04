@@ -3,7 +3,7 @@ puts "Destroying user languages, vocab lists, reviews, meetups, chats, users..."
 
 # because of the pb with dependent destroy, we first need to destroy joint tables
 UserLanguage.destroy_all
-VocabList.destroy_all
+VocabItem.destroy_all
 Chat.destroy_all
 Review.destroy_all
 Meetup.destroy_all
@@ -190,14 +190,13 @@ isabelle.user_languages.create!(language: es, proficiency: 4, seeking: false, sh
 
 
 # MEETUP SEEDS
-puts "creating vocab lists.."
-blair.vocab_lists.create!(language: es)
+
 
 puts "creating vocab items..."
-blair.vocab_lists.first.vocab_items.create!(content: "la libélula")
-blair.vocab_lists.first.vocab_items.create!(content: "el hígado")
-blair.vocab_lists.first.vocab_items.create!(content: "estar como una cabra")
-blair.vocab_lists.first.vocab_items.create!(content: "ser pan comido")
+blair.vocab_items.create!(content: "la libélula", language: es)
+blair.vocab_items.create!(content: "el hígado", language: es)
+blair.vocab_items.create!(content: "estar como una cabra", language: es)
+blair.vocab_items.create!(content: "ser pan comido", language: es)
 
 puts "Creating meetups..."
 

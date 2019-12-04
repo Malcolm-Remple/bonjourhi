@@ -20,9 +20,7 @@ class User < ApplicationRecord
   has_many :subscriptions
   has_many :chats, through: :subscriptions
 
-  has_many :vocab_lists
-  has_many :vocab_items, through: :vocab_lists
-
+  has_many :vocab_items
 
   def existing_chats_users
     existing_chat_users = []
@@ -50,7 +48,7 @@ class User < ApplicationRecord
   end
 
   def confirmed_meetups
-    Meetup.where("(sender_id = ? OR recipient_id = ?) AND confirmed = true", id, id)
+    Meetup.where("(sender_id = ? OR recipient_id = ?) AND confirmed = true", id, id).order(:date)
   end
 
   private

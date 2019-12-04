@@ -1,3 +1,4 @@
 class VocabItem < ApplicationRecord
-  belongs_to :vocab_list
+  belongs_to :language
+  belongs_to :user
 end

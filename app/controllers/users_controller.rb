@@ -19,12 +19,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-
+    @header_title = ""
     @user_languages = UserLanguage.where("user_id = ?", params[:id])
   end
 
   def edit
     @user = User.find(params[:id])
+    @header_title = "Edit Your Info"
   end
 
   def account_show

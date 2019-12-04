@@ -13,6 +13,9 @@ class VocabListsController < ApplicationController
     @vocab_list = VocabList.new
     # get langauges current user is seeking
     @langauges = current_user.user_languages.filter(&:seeking).map {|ul| ul.language}
+
+    # create new vocab list through new vocab item
+    @vocab_item = VocabItem.new
   end
 
   def create
