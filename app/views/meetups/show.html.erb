@@ -15,6 +15,19 @@
   </div>
 
   <div class="mt-3">
+    <div class="meetup-languagues">
+      <p>Languages: </p>
+      <div>
+        <%= @meetup.opposite_user(current_user).user_languages.filter(&:sharing).each do |user_language| %>
+        <p><%=  user_language.language.code %></p> 
+        <% end %>
+      </div>
+      <div>
+        <%= @meetup.opposite_user(current_user).user_languages.filter(&:seeking).each do |user_language| %>
+        <p><%=  user_language.language.code %></p> 
+        <% end %>
+      </div>
+    </div>
     <p>When: <%= "#{@meetup.date.strftime("%d/%m/%Y")}, #{@meetup.start_time.strftime('%H:%M')} - #{@meetup.end_time.strftime('%H:%M')}" %></p>
     <p>Where: <%= @meetup.location %></p>
     <% if @meetup.confirmed %>
