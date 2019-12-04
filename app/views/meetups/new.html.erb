@@ -5,9 +5,9 @@
       <img class="bh-avatar-lg" src="<%= @user.photo %>">
     </div>
     <div class="bh-flex-element">
-      <h3><b><%= @user.first_name %></b></h3>
-      <p>Past Meetups: <%= @user.num_of_past_meetups %></p>
-      <p>Favorite Meetup locations</p>
+      <h2><b><%= @user.first_name %></b></h2>
+      <p><b>Availibile: <br> <%= @user.availibility %></b></p>
+      <p><b>Favorite Meetup locations</b></p>
     </div>   
   </div>
 
@@ -19,6 +19,7 @@
     <%= f.input :duration, label: "Duration", collection: [['1 hour', 60], ['1.5 hours', 90], ['2 hours', 120]], include_blank: false, include_hidden: false %>
     <%= f.input :location, label: "Location", required: true %>
     <%= f.input :greeting, label: "Greeting (max 150 characters)", error: "Message too long (under 150 characters)" %>
-    <%= f.submit "Send request", class: "bh-btn-solid-lg-show" %>
+    <%= f.submit "Send request", class: "bh-btn-solid-lg-show mb-4" %>
   <% end %>
+  
 </div>
