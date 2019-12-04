@@ -1,5 +1,5 @@
 const filterVocabByLang = () => {
-  const langSelector = document.getElementById('lang-selector');
+  const langSelector = document.getElementById('vocab_item_language_id');
 
   // get all vocab groups (by lang)
   const vocabItems = document.querySelectorAll('.vocab-item');
