@@ -20,9 +20,7 @@ class User < ApplicationRecord
   has_many :subscriptions
   has_many :chats, through: :subscriptions
 
-  has_many :vocab_lists
-  has_many :vocab_items, through: :vocab_lists
-
+  has_many :vocab_items
 
   def existing_chats_users
     existing_chat_users = []

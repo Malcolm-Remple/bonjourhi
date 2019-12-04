@@ -1,7 +1,6 @@
-<h1>Add a new vocab item</h1>
-<%= simple_form_for(@vocab_item) do |f|%>
+
+<%= simple_form_for(vocab_item, method: :post, remote: true) do |f| %>
   <%= f.association :language, collection: @languages, include_blank: false %>
   <%= f.input :content %>
   <%= f.submit %>
 <% end %>
-

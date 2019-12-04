@@ -1,0 +1,22 @@
+console.log('start create.js');
+
+function refreshForm(innerHTML) {
+  const newVocabForm = document.getElementById('new_vocab_item');
+  newVocabForm.innerHTML = innerHTML;
+}
+
+function addVocab(vocabHTML) {
+  console.log(vocabHTML);
+  const formLang = document.getElementById('vocab_item_language_id').value;
+  console.log(formLang);
+
+  const targetElement = document.getElementById('language-15');
+  targetElement.insertAdjacentHTML('beforeend', vocabHTML);
+}
+
+<% if @vocab_item.errors.any? %>
+  refreshForm('<%= j render "vocab_items/vocab_item_form", vocab_item: @vocab_item %>');
+<% else %>
+  addVocab('<%= j render "vocab_items/vocab_item", vocab_item: @vocab_item %>');
+  refreshForm('<%= j render "vocab_items/vocab_item_form", vocab_item: @vocab_item %>');
+<% end %>

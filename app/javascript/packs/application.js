@@ -2,6 +2,7 @@
 import * as $ from 'jquery';
 import { scrollToChatBottomOnLoad, scrollToChatBottomOnMessageAppend } from './plugins/chatScroll';
 import { listenForSpeakerClick } from './plugins/speechSynthesis';
+import { filterVocabByLang } from './plugins/filterVocab';
 // IMPORT SYNTAX:
 // import {method_name} from './plugins/filename'
 // call the imported function here in application.js
@@ -50,6 +51,10 @@ if(window.location.href.match(/chats/)){
   scrollToChatBottomOnMessageAppend();
 }
 
-if(window.location.href.match(/vocab_lists/)) {
+// matches vocab_items#index page only
+if(window.location.href.match(/vocab_items/)) {
   listenForSpeakerClick();
+  filterVocabByLang();
 }
+
+console.log('loaded');
