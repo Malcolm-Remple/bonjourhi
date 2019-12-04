@@ -3,10 +3,10 @@ const filterVocabByLang = () => {
 
   // get all vocab groups (by lang)
   const vocabItems = document.querySelectorAll('.vocab-item');
-  console.log(vocabItemLists);
+
 
   vocabItems.forEach((vocabItem)=> {
-    vocabItem.style.display = 'none';
+    //vocabItem.style.display = 'none';
   });
 
 
@@ -15,10 +15,10 @@ const filterVocabByLang = () => {
 
     // loop trough lang groups and display none on all but current lang
     Array.from(vocabItems).forEach((vocabItem) => {
-      if(vocabItem.language.id !== `language-${langId}`) {
-         vocabGroup.style.display = 'none';
+      if(vocabItem.dataset.langId !== langId) {
+         vocabItem.style.display = 'none';
       } else {
-         vocabGroup.style.display = 'block';
+         vocabItem.style.display = 'block';
       }
     });
   });
