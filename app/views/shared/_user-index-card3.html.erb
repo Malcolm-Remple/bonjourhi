@@ -8,29 +8,7 @@
     <p style="font-weight: light;"><%= user.city %></p>
   </div>
   <!-- <div class="bh-card-user-index-languages"> -->
-  <div class="bh-card-user-index-sharing">
-    <div class="language-sharing">
-      <div class="text-style">sharing</div>
-      <!-- build the progress bar by self -->
-      <!-- filter(&:sharing) == filter{|user_language| user_language.sharing} -->
-
-      <div class="language-part">
- 
-          <% user.user_languages.filter(&:sharing).each do |user_language| %>
-          <div class="lang-pro">
-            <%=  user_language.language.code %>
-            <div style="background-color: #DDDDDD; width: 20px;">
-              <div style ="width: <%= user_language.level %>; background-color: #80BD9E; height: 10px;"></div>
-            </div>
-          </div>
-          <% end %>
-
-      </div>
-    </div>
-    <div class="bh-card-user-index-info">
-      <p style="font-weight: bold; color: black;"><%= user.first_name %></p>
-      <p style="font-weight: light; font-size: 14px;"><%= user.city %></p>
-    </div>
+  
     <!-- <div class="bh-card-user-index-languages"> -->
     <div class="bh-card-user-index-sharing">
       <div class="language-sharing">
@@ -45,7 +23,7 @@
               <%=  user_language.language.code %>
               <div style="background-color: #DDDDDD; width: 20px;">
 
-                <div style ="width: <%= user_language.level %>; background-color: #F49342; height: 10px;"></div>
+                <div style ="width: <%= user_language.level %>; background-color: #80BD9E; height: 10px;"></div>
 
               </div>
             </div>
@@ -64,8 +42,7 @@
                 <div style="background-color: #DDDDDD; width: 20px;">
                   <div style ="width: <%= user_language.level %>; background-color: #F49342; height: 6px;"></div>
                 </div>
-             
-            </div>
+              </div>
             <% end %>
         </div>
       </div>

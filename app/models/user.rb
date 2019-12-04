@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :reviews, as: :author
 
 
-  before_save :lowercase_city
+  # before_save :lowercase_city
   has_many :meetups, as: :sender
   has_many :meetups, as: :recipient
 
