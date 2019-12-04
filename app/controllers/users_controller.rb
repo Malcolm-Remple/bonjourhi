@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def index
+    @header_title = "Match partners"
     if params[:city].present?
 
       city = params[:city]
@@ -21,6 +22,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @header_title = ""
     @user_languages = UserLanguage.where("user_id = ?", params[:id])
+    @title = "Bonjourhi | " + @user.first_name + " " + @user.last_name
   end
 
   def edit
