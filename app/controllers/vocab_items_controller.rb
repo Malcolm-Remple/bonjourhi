@@ -24,9 +24,10 @@ class VocabItemsController < ApplicationController
   end
 
   def create
+     @new_vocab_form_languages = current_user.user_languages.filter(&:seeking).map {|ul| ul.language}
     @vocab_item = VocabItem.new(vocab_item_params)
     @vocab_item.user = current_user
-    @languages = current_user.languages
+
 
 
     if @vocab_item.save!
