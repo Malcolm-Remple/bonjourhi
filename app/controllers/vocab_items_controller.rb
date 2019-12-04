@@ -1,5 +1,6 @@
 class VocabItemsController < ApplicationController
   def index
+    @header_title = "Your Vocab"
     # get vocab in descending order by creation date
     @vocab_items = current_user.vocab_items.order(created_at: :desc)
 
