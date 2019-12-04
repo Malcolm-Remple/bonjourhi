@@ -1,5 +1,8 @@
 Rails.application.configure do
+
   config.force_ssl = true
+  config.web_socket_server_url = "wss://bonjourhi.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = ['https://bonjourhi.herokuapp.com', 'http://bonjourhi.fun']
   config.action_mailer.default_url_options = { host: "http://TODO_PUT_YOUR_DOMAIN_HERE" }
   # Settings specified here will take precedence over those in config/application.rb.
 
