@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     if params[:city].present?
 
       city = params[:city]
-      language = params[:language]
+      language_id = params[:language]
 
       # @users = User.joins(:user_languages).where(city: city, user_languages: { language_id: language, sharing: true })
       @users = User.joins(:user_languages).where(
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
         AND user_languages.language_id = :language_id
         AND user_languages.sharing = true
       ", city: city, language_id: language_id)
-      
+
     else
       @users = User.where.not("id = ?", current_user.id)
     end
