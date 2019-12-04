@@ -1,10 +1,9 @@
-<h1>Edit your info</h1>
-
+<div class="container mt-4">
 <%= simple_form_for @user do |f| %>
 <%= f.input :first_name %>
 <%= f.input :last_name %>
 <%= f.input :city%>
 <%= f.input :email%>
-<%= f.submit %>
-
+<%= f.submit class: "bh-btn-solid-lg mt-4" %>
 <% end %>
+</div>
