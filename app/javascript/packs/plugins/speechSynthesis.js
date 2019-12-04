@@ -11,7 +11,7 @@ const listenForSpeakerClick = () => {
    const vocabItemList = document.querySelectorAll('.vocab-item-list');
    vocabItemList.forEach((vocabGroup) => {
      vocabGroup.addEventListener('click', (e) => {
-     console.log(e);
+
      // only fire if speaker icon (<i>) was clicked
       if(e.target.nodeName === "I") {
         const text = e.target.dataset.text;

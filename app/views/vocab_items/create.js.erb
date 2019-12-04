@@ -10,7 +10,7 @@ function addVocab(vocabHTML) {
   const formLang = document.getElementById('vocab_item_language_id').value;
   console.log(formLang);
 
-  const targetElement = document.getElementById('language-15');
+  const targetElement = document.getElementById(`language-${formLang}`);
   targetElement.insertAdjacentHTML('beforeend', vocabHTML);
 }
 
