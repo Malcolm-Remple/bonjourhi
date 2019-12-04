@@ -25,6 +25,7 @@ class VocabItemsController < ApplicationController
   def create
     @vocab_item = VocabItem.new(vocab_item_params)
     @vocab_item.user = current_user
+    @languages = current_user.languages
 
 
     if @vocab_item.save!

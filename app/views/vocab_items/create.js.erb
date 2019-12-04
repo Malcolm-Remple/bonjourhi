@@ -6,17 +6,17 @@ function refreshForm(innerHTML) {
 }
 
 function addVocab(vocabHTML) {
-/*  console.log(vocabHTML);
+  console.log(vocabHTML);
   const formLang = document.getElementById('vocab_item_language_id').value;
   console.log(formLang);
-*/
-  // const reviews = document.getElementById('reviews');
-  // reviews.insertAdjacentHTML('beforeend', reviewHTML);
+
+  const targetElement = document.getElementById('language-15');
+  targetElement.insertAdjacentHTML('beforeend', vocabHTML);
 }
 
 <% if @vocab_item.errors.any? %>
   refreshForm('<%= j render "vocab_items/vocab_item_form", vocab_item: @vocab_item %>');
 <% else %>
-  addVocab('<%= j render "vocab_items/vocab_item_form", vocab_item: @vocab_item %>');
+  addVocab('<%= j render "vocab_items/vocab_item", vocab_item: @vocab_item %>');
   refreshForm('<%= j render "vocab_items/vocab_item_form", vocab_item: @vocab_item %>');
 <% end %>

@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
 
 
-  post '/vocab_items', to: 'vocab_items#create'
+  post '/vocab_items', to: 'vocab_items#create', defaults: {format: :js}
   resources :vocab_items, except: [:create]
 
 

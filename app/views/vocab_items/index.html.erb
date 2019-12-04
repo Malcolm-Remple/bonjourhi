@@ -18,8 +18,8 @@
 
   </ul>
 </div>
-
-<%= render 'vocab_items/vocab_item_form',  vocab_item: VocabItem.new  %>
+<h1>Add a new vocab item</h1>
+<%= render 'vocab_items/vocab_item_form', { vocab_item: @vocab_item }%>
 
 <%= link_to new_vocab_item_path do %>
   <i class="fas fa-plus-circle"> Add vocab</i>
