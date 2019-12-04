@@ -1,4 +1,5 @@
 // get jquery
+import "bootstrap";
 import * as $ from 'jquery';
 import { scrollToChatBottomOnLoad, scrollToChatBottomOnMessageAppend } from './plugins/chatScroll';
 import { listenForSpeakerClick } from './plugins/speechSynthesis';

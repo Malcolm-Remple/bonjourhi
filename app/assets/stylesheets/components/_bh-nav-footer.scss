@@ -9,14 +9,10 @@
   height: 52px;
   font-size: 22px;
   text-align: center;
-  position: sticky;
+  position: fixed;
   bottom: 0;
 }
 
-.bh-nav-i {
-  color: white;
-}
-
 .bh-pushdown-content {
-  // min-height: calc(100vh - 51px);
+  margin-top: 52px;
 }
