@@ -22,7 +22,7 @@ class Meetup < ApplicationRecord
 
   def meetup_occurred?
     meetup_precise_date = self.date.to_datetime + self.start_time.hour.hour + self.start_time.min.minute + self.duration.minute
-    meetup_precise_date > DateTime.now
+    meetup_precise_date < DateTime.now
   end
 
   def real_start_time
