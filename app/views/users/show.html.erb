@@ -41,7 +41,7 @@
     <p><%= @user.bio %></p>
   </div>
 
-  <div class="d-flex justify-content-end mt-n1"><%= link_to "Reply in Messages >>", user_chats_path(current_user, other_user: @user), method: :post %></div>
+  <div class="d-flex justify-content-end mt-n1"><%= link_to "Chat with #{@user.first_name} >>", user_chats_path(current_user, other_user: @user), method: :post %></div>
 
   <div class="bh-text-body">
     <h3><b>Reviews</b></h3>
