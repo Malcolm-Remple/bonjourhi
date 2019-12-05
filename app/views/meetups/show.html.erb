@@ -43,7 +43,7 @@
 <div class="container">
 
   <div class="bh-text-body mt-3">
-    <h3><b>Greeting message:</b></h3>
+    <h3><b>Greeting message</b></h3>
     <p><%= @meetup.greeting %></p>
     <div class="d-flex justify-content-end mt-n1"><%= link_to "Open Chat >>", user_chats_path(current_user, other_user: @meetup.opposite_user(current_user)), method: :post %></div>
   </div>
