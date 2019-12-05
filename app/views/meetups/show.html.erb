@@ -1,7 +1,6 @@
 <div class="container">
   
   <div class="bh-flex-container"> 
-    
     <div class="bh-flex-element">  
       <img class="bh-avatar-lg" src="<%= @meetup.opposite_user(current_user).photo %>">
     </div>
@@ -16,22 +15,11 @@
     </div>
   </div>
   
-  
-  <div class="bh-text-body"> 
-      <div class="bh-flex-element">
-      <% @meetup.opposite_user(current_user).user_languages.filter(&:sharing).each do |user_language| %>
-        <p><%=  user_language.language.code %> </p>
-      <% end %>
-      
-      <% @meetup.opposite_user(current_user).user_languages.filter(&:sharing).each do |user_language| %>
-        <p><%=  user_language.language.code %> </p>
-      <% end %>
-      </div>
+  <div class="bh-flex-container">
+    <p> <%=  @meetup.seeking_lang.code %> | <%= @meetup.sharing_lang.code %> </p>
   </div>
   
 
-  
-    
   <div class="bh-text-body">
     <h3><b>Bio</b></h3>
     <p><%=  %></p>
