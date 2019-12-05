@@ -29,20 +29,27 @@ class MeetupsController < ApplicationController
     # seeking_l =  Language.find(params[:meetup][:seeking_lang].to_i)
     @meetup.sharing_lang = Language.find(params[:meetup][:sharing_lang].to_i)
 <<<<<<< HEAD
+<<<<<<< HEAD
     @meetup.seeking_lang = Language.find(params[:meetup][:seeking_lang].to_i)
     @meetup.sender = current_user
     @seeking_langs = @user.user_languages.filter(&:sharing).map {|user_languages| user_languages.language}
     @sharing_langs = current_user.user_languages.filter(&:sharing).map {|user_languages| user_languages.language}
 =======
+=======
+>>>>>>> master
     @meetup.seeking_lang_id = params[:meetup][:seeking_lang].to_i
     # @meetup.seeking_lang_id = seeking_l.id
 
     @meetup.sender = current_user
+<<<<<<< HEAD
+>>>>>>> master
+=======
+
 >>>>>>> master
     @meetup.recipient = @user
     @seeking_langs = @user.user_languages.filter(&:sharing).map {|user_languages| user_languages.language}.collect {|l| [ l.name, l.id ] }
     @sharing_langs = current_user.user_languages.filter(&:sharing).map {|user_languages| user_languages.language}.collect {|l| [ l.name, l.id ] }
-raise
+
     if @meetup.save!
 
       redirect_to meetups_path
