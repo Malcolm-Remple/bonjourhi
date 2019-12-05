@@ -15,7 +15,7 @@
     <meta property="og:title" content="<%= meta_title %>" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="<%= request.original_url %>" />
-    <meta property="og:image" content="<%= meta_image %>" />
+    <!-- <meta property="og:image" content="<%= meta_image %>" /> -->
     <meta property="og:description" content="<%= meta_description %>" />
     <meta property="og:site_name" content="<%= meta_title %>" />
 
@@ -25,7 +25,7 @@
     <meta name="twitter:title" content="<%= meta_title %>">
     <meta name="twitter:description" content="<%= meta_description %>">
     <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
-    <meta name="twitter:image:src" content="<%= meta_image %>">
+    <!-- <meta name="twitter:image:src" content="<%= meta_image %>"> -->
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
@@ -45,8 +45,8 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
   <body>
-    <% if request.original_url == root_url %>  
-      <%= render 'shared/home_bh-nav-header' %>      
+    <% if request.original_url == root_url %>
+      <%= render 'shared/home_bh-nav-header' %>
       <% else %>
       <%= render 'shared/bh-nav-header' %>
     <% end %>
