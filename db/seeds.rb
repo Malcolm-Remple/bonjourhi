@@ -246,19 +246,19 @@ puts "Creating reviews..."
 
 # antoine bad reviews
 Review.create!(
-  date: Faker::Date.backward(days: 300),
+  date: Date.new(2019,11,18),
   content: "Antoine never showed up...." ,
   author: User.last,
   user: antoine
   )
 Review.create!(
-  date: Faker::Date.backward(days: 300),
+  date: Date.new(2019,10,3),
   content: "No show and no contact!" ,
   author: User.last(2).first,
   user: antoine
   )
 Review.create!(
-  date: Faker::Date.backward(days: 300),
+  date: Date.new(2019,8,29),
   content: "nice guy, showed up a bit late though",
   author: User.last(3).first,
   user: antoine
