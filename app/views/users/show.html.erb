@@ -46,7 +46,10 @@
   <div class="bh-text-body">
     <h3><b>Reviews</b></h3>
     <% @user.user_reviews.each do |r|%>
-      <p><b> <%= r.author.first_name %> | <%= r.date_to_string %></b> <br> <%= r.content %></p>
+      <p><%= link_to user_path(r.author) do  %>
+          <%= image_tag r.author.photo, class: "bh-avatar-xxs" %>
+          <% end %>
+        <b> <%= r.author.first_name %> | <%= r.date_to_string %></b> <br> <%= r.content %></p>
     <% end %>
   </div>
 </div>
