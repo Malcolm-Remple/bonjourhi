@@ -4,7 +4,7 @@
   <% if @existing_chats_users %>
     <% @existing_chats_users.each do |other_user| %>
       <% if other_user != current_user %>
-       
+
         <%= button_to(user_chats_path(current_user, other_user: other_user.id), method: :post, class:"chat-butto_to" ) do %>
           <div class="bh-chat-index">
             <div class="chat-image">
@@ -55,7 +55,7 @@
             </div>
           </div>
         <% end %>
-        
+
       <% end %>
     <% end %>
   <% end %>
