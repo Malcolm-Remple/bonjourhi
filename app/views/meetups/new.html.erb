@@ -1,18 +1,18 @@
 <div class="container">
-  
+
   <div class="bh-flex-container">
-    <div class="bh-flex-element">  
+    <div class="bh-flex-element">
       <img class="bh-avatar-lg" src="<%= @user.photo %>">
     </div>
     <div class="bh-flex-element">
       <h2><b><%= @user.first_name %></b></h2>
       <p><b>Availibile: <br> <%= @user.availibility %></b></p>
       <p><b>Favorite Meetup locations</b></p>
-    </div>   
+    </div>
   </div>
 
   <%= simple_form_for [@user, @meetup] do |f| %>
-    <%= f.input :seeking_lang, as: :select, label: "I want to practice", collection: @seeking_langs, include_blank: false, include_hidden: false %>
+    <%= f.input :seeking_lang, as: :select, label: "I want to practice", collection: @seeking_langs, include_blank: false, include_hidden: false  %>
     <%= f.input :sharing_lang, as: :select, label: "I want to share", collection: @sharing_langs, include_blank: false, include_hidden: false %>
     <%= f.input :date, label: "Date", html5: true, required: true %>
     <%= f.input :start_time, label: "Start Time", :as => :time, :minute_step => 15 %>
@@ -21,5 +21,5 @@
     <%= f.input :greeting, label: "Greeting (max 150 characters)", error: "Message too long (under 150 characters)" %>
     <%= f.submit "Send request", class: "bh-btn-solid-lg-show mb-4" %>
   <% end %>
-  
+
 </div>
