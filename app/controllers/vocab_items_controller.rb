@@ -1,5 +1,8 @@
+require 'json'
+
 class VocabItemsController < ApplicationController
   def index
+
     @header_title = "Your Vocab"
     # get vocab in descending order by creation date
     @vocab_items = current_user.vocab_items.order(created_at: :desc)
@@ -7,6 +10,8 @@ class VocabItemsController < ApplicationController
     # user can add new vocab in any of their seeking langs
     @new_vocab_form_languages = current_user.user_languages.filter(&:seeking).map {|ul| ul.language}
     # @new_vocab_form_languages = current_user.user_languages.filter(&:seeking).map {|ul| [ul.language.name, ul.language.iso_code]}
+
+    @languages = Language.all
 
     @vocab_item = VocabItem.new
   end

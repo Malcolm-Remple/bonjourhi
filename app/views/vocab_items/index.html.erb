@@ -21,3 +21,8 @@
   </div>
 </div>
 
+<!-- pass lang codes to html -->
+<% @languages.each do |l|%>
+  <span class="language-meta-data" id="language-meta-<%= l.id %>" data-iso-code="<%= l.iso_code %>" data-lang-name="<%= l.name %>"></span>
+<% end %>
+

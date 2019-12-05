@@ -1,9 +1,7 @@
 const recognizeSpeech = (lang, outputLocation) => {
-  console.log(`lang: ${lang}`);
-  const recognizeLang = document.getElementById('vocab_item_language_id').value
 
   const recognition = new webkitSpeechRecognition();
-  recognition.lang = 'en';
+  recognition.lang = lang;
   recognition.start();
 
   recognition.addEventListener('result', (event) => {
@@ -20,11 +18,15 @@ const listenForMicClick = () => {
   const micButton = document.getElementById('mic-button');
   micButton.addEventListener('click', (e) => {
     // toggle animation class
-    // get lang, outputLocation
-    const lang = document.getElementById('vocab_item_language_id');
+
+    // get current lang id in selected in select box
+    const selectorLang = document.getElementById('vocab_item_language_id').value
+    // translate lang name into iso code using meta-data
+    const langCode = document.getElementById('language-meta-'+ selectorLang).dataset.isoCode;
+    console.log(langCode)
     const outputLocation = document.getElementById('vocab_item_content');
     // call recognizeSpeech
-    recognizeSpeech(lang, outputLocation);
+    recognizeSpeech(langCode, outputLocation);
   });
 };
 
