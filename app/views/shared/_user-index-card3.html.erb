@@ -1,6 +1,6 @@
 <div class="container">
   <div class="bh-card-user-index mb-1">
-    <div>
+    <div class="bh-user-index-avatar">
       <%= image_tag user.photo || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80", class: "bh-avatar-sm" %>
     </div>
     <div class="bh-card-user-index-info">
@@ -17,7 +17,7 @@
         <div class="language-part">
             <% user.user_languages.filter(&:sharing).each do |user_language| %>
             <div class="lang-pro">
-              <%=  user_language.language.code %>
+              <div class="language-code"><%=  user_language.language.code %></div>
               <div class="progress-bar">
                 <div style="background-color: #DDDDDD; width: 20px;">
                   <div style ="width: <%= user_language.level %>; background-color: #80BD9E; height: 7px; font-size: 12px;"></div>
@@ -34,7 +34,7 @@
         <div class="language-part">
             <% user.user_languages.filter(&:seeking).each do |user_language| %>
               <div class="lang-pro">
-                <%=  user_language.language.code %>
+                <div class="language-code"><%=  user_language.language.code %></div>
                 <div class="progress-bar">
                   <div style="background-color: #DDDDDD; width: 20px;">
                     <div style ="width: <%= user_language.level %>; background-color: #F49342; height: 7px; font-size: 12px;"></div>
@@ -46,6 +46,5 @@
       </div>
     </div>
   </div>
-  <hr class="separate-line">
 </div>
 

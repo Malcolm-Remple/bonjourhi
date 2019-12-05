@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @header_title = "Match partners"
+    @header_title = "Partner Search"
     if params[:city].present?
 
       city = params[:city]
