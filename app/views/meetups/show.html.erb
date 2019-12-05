@@ -1,10 +1,10 @@
 <div class="container">
-  
-  <div class="bh-flex-container"> 
-    <div class="bh-flex-element">  
+
+  <div class="bh-flex-container">
+    <div class="bh-flex-element">
       <img class="bh-avatar-lg" src="<%= @meetup.opposite_user(current_user).photo %>">
     </div>
-    
+
     <div class="bh-flex-element">
       <h3><b><%= @meetup.opposite_user(current_user).first_name %></b></h3>
       <% if @meetup.confirmed %>
@@ -15,21 +15,21 @@
       <p class="mt-n2"> <%=  @meetup.seeking_lang.code %> | <%= @meetup.sharing_lang.code %> </p>
     </div>
   </div>
-  
+
   <div class="bh-text-body">
     <h3><b>When</b></h3>
     <p>
-      <%= "#{@meetup.date.strftime("%a, %b %d %Y")}" %>  ,  
-      <%= "#{@meetup.start_time.strftime('%l:%M')} - #{@meetup.end_time.strftime('%l:%M %p')}" %>  
+      <%= "#{@meetup.date.strftime("%a, %b %d %Y")}" %>  ,
+      <%= "#{@meetup.start_time.strftime('%l:%M')} - #{@meetup.end_time.strftime('%l:%M %p')}" %>
     </p>
-    
+
     <h3><b>Where</b></h3>
     <p class="d-flex justify-content-end mb-n4" ><%= link_to "Open in Maps >>", "#" %></p>
     <p>
       <%= @meetup.location %>
     </p>
   </div>
-  
+
 <!-- End of container -->
 </div>
 
@@ -39,13 +39,13 @@
 
 <!-- Start of new container -->
 <div class="container">
-  
+
   <div class="bh-text-body mt-3">
     <h3><b>Greeting message:</b></h3>
     <p><%= @meetup.greeting %></p>
-    <div class="d-flex justify-content-end mt-n1"><%= link_to "Reply in Messages >>", "#" %></div>
+    <div class="d-flex justify-content-end mt-n1"><%= link_to "Reply in Messages >>", user_chats_path(current_user, other_user: @meetup.recipient.id), method: :post %></div>
   </div>
-  
+
 <div class="container">
     <% if @meetup.confirmed && !@meetup.meetup_occurred? %>
       <%= link_to "" do %>
