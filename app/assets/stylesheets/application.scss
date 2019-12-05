@@ -24,7 +24,7 @@ h2{
 }
 
 h3{
-  font-size: 21px !important; 
+  font-size: 21px !important;
   font-family: "Roboto", "Helvetica", "sans-serif";
 }
 
@@ -39,5 +39,10 @@ ul {
 
 a:hover {
   text-decoration: none;
-  color: white;
+  color: $bh-dark;
+}
+
+a:active {
+  text-decoration: none;
+  color: $bh-dark;
 }

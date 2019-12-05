@@ -8,6 +8,7 @@ class MeetupsController < ApplicationController
   end
 
   def show
+    @header_title = "Meetup Info"
     @meetup = Meetup.find(params[:id])
 
   end
