@@ -19,8 +19,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @header_title = "User Info"
     @user = User.find(params[:id])
-    @header_title = ""
     @user_languages = UserLanguage.where("user_id = ?", params[:id])
     @title = "Bonjourhi | " + @user.first_name + " " + @user.last_name
   end
