@@ -3,6 +3,7 @@ require 'securerandom'
 class ChatsController < ApplicationController
 
   def index
+    @header_title = "Your Chats"
     chats = current_user.chats
     @existing_chats_users = current_user.existing_chats_users
   end
