@@ -12,6 +12,7 @@ class MeetupsController < ApplicationController
   end
 
   def new
+    @header_title = "Request a Meetup"
     @user = User.find(params[:user_id])
     @meetup = Meetup.new
     @seeking_langs = @user.user_languages.filter(&:sharing).map {|user_languages| user_languages.language}
