@@ -9,9 +9,11 @@ class MeetupsController < ApplicationController
 
   def show
     @meetup = Meetup.find(params[:id])
+
   end
 
   def new
+    @header_title = "Request a Meetup"
     @user = User.find(params[:user_id])
     @meetup = Meetup.new
     @seeking_langs = @user.user_languages.filter(&:sharing).map {|user_languages| user_languages.language}
@@ -30,6 +32,7 @@ class MeetupsController < ApplicationController
     # @meetup.seeking_lang_id = seeking_l.id
 
     @meetup.sender = current_user
+
     @meetup.recipient = @user
     @seeking_langs = @user.user_languages.filter(&:sharing).map {|user_languages| user_languages.language}.collect {|l| [ l.name, l.id ] }
     @sharing_langs = current_user.user_languages.filter(&:sharing).map {|user_languages| user_languages.language}.collect {|l| [ l.name, l.id ] }
