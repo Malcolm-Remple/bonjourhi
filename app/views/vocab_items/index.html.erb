@@ -4,13 +4,15 @@
   <%= render 'vocab_items/vocab_item_form'%>
 </div>
 
-    <ul class="vocab-item-list" id="vocab-item-list">
-        <% @vocab_items.each do |vi| %>
-          <li class="vocab-item" data-lang-id="<%= vi.language.id %>">
-            <%= vi.content %>
-            <i class="fas fa-volume-up" data-text="<%= vi.content %>" data-iso-code="<%= vi.language.iso_code %>"></i>
-          </li>
-        <% end %>
-      </ul>
+  <div class="vocab-item-list" id="vocab-item-list">
+    <% @vocab_items.each do |vi| %>
+      <div class="vocab-item" data-lang-id="<%= vi.language.id %>">
+        <div class="vocab-item-content">
+          <%= vi.content %>
+        </div>
+        <i class="fas fa-volume-up" data-text="<%= vi.content %>" data-iso-code="<%= vi.language.iso_code %>"></i>
+      </div>
+    <% end %>
+  </div>
 </div>
 
