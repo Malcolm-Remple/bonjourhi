@@ -39,7 +39,7 @@ class MeetupsController < ApplicationController
 
     if @meetup.save!
 
-      redirect_to meetups_path
+      redirect_to meetup_path(@meetup)
     else
       render :new
     end

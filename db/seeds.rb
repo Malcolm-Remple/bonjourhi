@@ -85,7 +85,7 @@ isabelle = User.create!(
   photo: 'https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
   bio: "Allo! I'm a web designer born and raised in Montreal. I love catepillars and travelling, let's have a chat (and not cat)!",
   num_of_past_meetups: 28,
-  availibility: "Mon-Fri after 18:00"
+  availibility: "weekends"
   )
 
 
