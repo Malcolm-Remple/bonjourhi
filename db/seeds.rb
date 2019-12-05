@@ -1,3 +1,4 @@
+require 'date'
 # USER SEEDS
 puts "Destroying user languages, vocab lists, reviews, meetups, chats, users..."
 
@@ -245,19 +246,19 @@ puts "Creating reviews..."
 
 # antoine bad reviews
 Review.create!(
-  date: Faker::Date.backward(days: 300),
+  date: Date.new(2019,11,18),
   content: "Antoine never showed up...." ,
   author: User.last,
   user: antoine
   )
 Review.create!(
-  date: Faker::Date.backward(days: 300),
+  date: Date.new(2019,10,3),
   content: "No show and no contact!" ,
   author: User.last(2).first,
   user: antoine
   )
 Review.create!(
-  date: Faker::Date.backward(days: 300),
+  date: Date.new(2019,8,29),
   content: "nice guy, showed up a bit late though",
   author: User.last(3).first,
   user: antoine
@@ -266,29 +267,31 @@ Review.create!(
 
 # isabelle reviews
 Review.create!(
-  date: Faker::Date.backward(days: 300),
+  date: Date.new(2019,11,29) ,
   content: "Isabelle is a delight! She sure knows a lot about catepillars. Danke!" ,
   author: User.last,
   user: isabelle
   )
 Review.create!(
-  date: Faker::Date.backward(days: 300),
+  date: Date.new(2019,10,7) ,
   content: "Merci for everything! Great conversationalist" ,
   author: User.last(2).first,
   user: isabelle
   )
 Review.create!(
-  date: Faker::Date.backward(days: 300),
-  content: "Isabelle est très cool!!!!!",
+  date: Date.new(2019,7,15),
+  content: "Isabelle est très cool!!!! very patient and helped correct my english",
   author: User.last(3).first,
   user: isabelle
   )
+
 Review.create!(
-  date: Faker::Date.backward(days: 300),
-  content: "She's very patient and helpped correct my english",
+  date: Date.new(2019,3,14),
+  content: "Isabelle est très cool!!!! very patient and helped correct my english",
   author: User.last(4).first,
   user: isabelle
   )
+
 
 
 
