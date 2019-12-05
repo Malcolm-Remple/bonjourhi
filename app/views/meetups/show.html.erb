@@ -16,7 +16,6 @@
     </div>
   </div>
   
-
   <div class="bh-text-body">
     <h3 class="mt-2"><b>When</b></h3>
     <p>
@@ -25,15 +24,26 @@
     </p>
     
     <h3><b>Where</b></h3>
+    <p class="d-flex justify-content-end mb-n4" ><%= link_to "Open in Maps >>", "#" %></p>
     <p>
       <%= @meetup.location %>
     </p>
   </div>
-
-  <div class="bh-text-body">
-    <h3><b>Bio</b></h3>
-    <p><%=  %></p>
-  </div>
-    
+  
+<!-- End of container -->
 </div>
 
+<div class="mt-n2" >
+<%= image_tag "cafe.png", style:"width:100%" %>
+</div>
+
+<!-- Start of new container -->
+<div class="container">
+  
+
+  <div class="bh-text-body mt-3">
+    <h3><b>Greeting message:</b></h3>
+    <p><%=  %></p>
+  </div>
+  
+</div>
