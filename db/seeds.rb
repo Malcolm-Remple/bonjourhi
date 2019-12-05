@@ -267,7 +267,7 @@ Review.create!(
 
 # isabelle reviews
 Review.create!(
-  date: Date.new(2019,7,3) ,
+  date: Date.new(2019,11,29) ,
   content: "Isabelle is a delight! She sure knows a lot about catepillars. Danke!" ,
   author: User.last,
   user: isabelle
@@ -279,11 +279,19 @@ Review.create!(
   user: isabelle
   )
 Review.create!(
-  date: Date.new(2019,11,17) ,
+  date: Date.new(2019,7,15),
   content: "Isabelle est très cool!!!! very patient and helped correct my english",
   author: User.last(3).first,
   user: isabelle
   )
+
+Review.create!(
+  date: Date.new(2019,3,14),
+  content: "Isabelle est très cool!!!! very patient and helped correct my english",
+  author: User.last(4).first,
+  user: isabelle
+  )
+
 
 
 
