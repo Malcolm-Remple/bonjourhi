@@ -19,8 +19,15 @@
   
   <div class="bh-flex-container"> 
     
-    <div class="bh-flex-element">  
-      
+    <div class="bh-flex-element">
+      <div class="meetup-show-sharing">
+        
+      </div>
+      <div class="meetup-show-seeking">
+        <% @meetup.opposite_user(current_user).user_languages.filter(&:seeking).each do |user_language| %>
+          <p style="margin-left: 7px;"> | <%=  user_language.language.code %></p>
+        <% end %>
+      </div>
     </div>
     
   </div>
