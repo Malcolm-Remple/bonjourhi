@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
   def set_title
     @header_title = ""
   end
+
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
 end
