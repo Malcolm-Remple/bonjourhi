@@ -1,6 +1,7 @@
 class MeetupsController < ApplicationController
 
   def index
+    @header_title = "Your Meetups"
     @outbound_meetup_requests = current_user.outbound_meetup_requests
     @inbound_meetup_requests = current_user.inbound_meetup_requests
     @confirmed_meetups = current_user.confirmed_meetups

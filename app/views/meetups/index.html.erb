@@ -7,26 +7,25 @@
       <% if !m.meetup_occurred? %>
         <%= link_to meetup_path(m) do %>
           <div class="bh-card-meetup-index">
-            <!-- <div class="image-user"> -->
-            <div>
+            <div class="image-user">
               <%= image_tag m.opposite_user(current_user).photo || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80", class: "bh-avatar-sm" %>
             </div>
-
             <div class="user-info">
-              <%=  m.opposite_user(current_user).first_name %>
-              <div>confirmed</div>
+              <p style="font-weight: bold; color: black;"><%=  m.opposite_user(current_user).first_name %></p>
+              <p style="font-weight: light;">confirmed</p>
             </div>
-            <!-- </div> -->
             <div class="date-languages">
-              <div class="date"><%=  m.date %></div>
+              <p class="date"><%=  m.date.strftime("%b %d, %Y") %></p>
               <!-- sharing -->
               <div class="languages">
                 <div class="language-part">
                   <% m.opposite_user(current_user).user_languages.filter(&:sharing).each do |user_language| %>
                     <div class="lang-pro">
-                      <%=  user_language.language.code %>
-                      <div style="background-color: #DDDDDD; width: 20px;">
-                        <div style ="width: <%= user_language.level %>; background-color: #80BD9E; height: 7px;"></div>
+                      <div class="language-code"><%=  user_language.language.code %></div>
+                      <div class="progress-bar">
+                        <div style="background-color: #DDDDDD; width: 20px;">
+                          <div style ="width: <%= user_language.level %>; background-color: #80BD9E; height: 7px;"></div>
+                        </div>
                       </div>
                     </div>
                   <% end %>
@@ -34,10 +33,12 @@
                 <!-- practicing -->
                 <div class="language-part">
                   <% m.opposite_user(current_user).user_languages.filter(&:seeking).each do |user_language| %>
-                    <div class="lang-pro">
-                      <%=  user_language.language.code %>
-                      <div style="background-color: #DDDDDD; width: 20px;">
-                        <div style ="width: <%= user_language.level %>; background-color: #F49342; height: 7px;"></div>
+                    <div class="lang-pro-seeking">
+                      <div class="language-code"><%=  user_language.language.code %></div>
+                      <div class="progress-bar">
+                        <div style="background-color: #DDDDDD; width: 20px;">
+                          <div style ="width: <%= user_language.level %>; background-color: #F49342; height: 7px;"></div>
+                        </div>
                       </div>
                     </div>
                   <% end %>
@@ -45,6 +46,7 @@
               </div>
             </div>
           </div>
+          <hr class="meetup-index-hr">
         <% end %>
       <% end %>
     <% end %>
@@ -55,24 +57,26 @@
       <%= link_to meetup_path(m) do %>
         <div class="bh-card-meetup-index">
           <div class="image-user">
-            <div>
-              <%= image_tag m.opposite_user(current_user).photo || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80", class: "bh-avatar-sm" %>
-            </div>
-            <div class="user-info">
-              <%=  m.opposite_user(current_user).first_name %>
-              <div>pending</div>
-            </div>
+            <%= image_tag m.opposite_user(current_user).photo || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80", class: "bh-avatar-sm" %>
           </div>
+
+          <div class="user-info">
+            <p style="font-weight: bold; color: black;"><%=  m.opposite_user(current_user).first_name %></p>
+            <p style="font-weight: light;">pending</p>
+          </div>
+          <!-- </div> -->
           <div class="date-languages">
-            <%=  m.date %>
+            <p class="date"><%=  m.date.strftime("%b %d, %Y") %></p>
             <!-- sharing -->
             <div class="languages">
               <div class="language-part">
                 <% m.opposite_user(current_user).user_languages.filter(&:sharing).each do |user_language| %>
                   <div class="lang-pro">
-                    <%=  user_language.language.code %>
-                    <div style="background-color: #DDDDDD; width: 20px;">
-                      <div style ="width: <%= user_language.level %>; background-color: #80BD9E; height: 7px;"></div>
+                    <div class="language-code"><%=  user_language.language.code %></div>
+                    <div class="progress-bar">
+                      <div style="background-color: #DDDDDD; width: 20px;">
+                        <div style ="width: <%= user_language.level %>; background-color: #80BD9E; height: 7px;"></div>
+                      </div>
                     </div>
                   </div>
                 <% end %>
@@ -80,10 +84,12 @@
               <!-- practicing -->
               <div class="language-part">
                 <% m.opposite_user(current_user).user_languages.filter(&:seeking).each do |user_language| %>
-                  <div class="lang-pro">
-                    <%=  user_language.language.code %>
-                    <div style="background-color: #DDDDDD; width: 20px;">
-                      <div style ="width: <%= user_language.level %>; background-color: #F49342; height: 7px;"></div>
+                  <div class="lang-pro-seeking">
+                    <div class="language-code"><%=  user_language.language.code %></div>
+                    <div class="progress-bar">
+                      <div style="background-color: #DDDDDD; width: 20px;">
+                        <div style ="width: <%= user_language.level %>; background-color: #F49342; height: 7px;"></div>
+                      </div>
                     </div>
                   </div>
                 <% end %>
@@ -91,6 +97,7 @@
             </div>
           </div>
         </div>
+        <hr class="meetup-index-hr">
       <% end %>
     <% end %>
 
@@ -100,24 +107,26 @@
       <%= link_to meetup_path(m) do %>
         <div class="bh-card-meetup-index">
           <div class="image-user">
-            <div>
-              <%= image_tag m.opposite_user(current_user).photo || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80", class: "bh-avatar-sm" %>
-            </div>
-            <div class="user-info">
-              <%=  m.opposite_user(current_user).first_name %>
-              <div>pending</div>
-            </div>
+            <%= image_tag m.opposite_user(current_user).photo || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80", class: "bh-avatar-sm" %>
           </div>
+
+          <div class="user-info">
+            <p style="font-weight: bold; color: black;"><%=  m.opposite_user(current_user).first_name %></p>
+            <p style="font-weight: light;">pending</p>
+          </div>
+          <!-- </div> -->
           <div class="date-languages">
-            <%=  m.date %>
+            <p class="date"><%=  m.date.strftime("%b %d, %Y") %></p>
             <!-- sharing -->
             <div class="languages">
               <div class="language-part">
                 <% m.opposite_user(current_user).user_languages.filter(&:sharing).each do |user_language| %>
                   <div class="lang-pro">
-                    <%=  user_language.language.code %>
-                    <div style="background-color: #DDDDDD; width: 20px;">
-                      <div style ="width: <%= user_language.level %>; background-color: #80BD9E; height: 7px;"></div>
+                    <div class="language-code"><%=  user_language.language.code %></div>
+                    <div class="progress-bar">
+                      <div style="background-color: #DDDDDD; width: 20px;">
+                        <div style ="width: <%= user_language.level %>; background-color: #80BD9E; height: 7px;"></div>
+                      </div>
                     </div>
                   </div>
                 <% end %>
@@ -125,10 +134,12 @@
               <!-- practicing -->
               <div class="language-part">
                 <% m.opposite_user(current_user).user_languages.filter(&:seeking).each do |user_language| %>
-                  <div class="lang-pro">
-                    <%=  user_language.language.code %>
-                    <div style="background-color: #DDDDDD; width: 20px;">
-                      <div style ="width: <%= user_language.level %>; background-color: #F49342; height: 7px;"></div>
+                  <div class="lang-pro-seeking">
+                    <div class="language-code"><%=  user_language.language.code %></div>
+                    <div class="progress-bar">
+                      <div style="background-color: #DDDDDD; width: 20px;">
+                        <div style ="width: <%= user_language.level %>; background-color: #F49342; height: 7px;"></div>
+                      </div>
                     </div>
                   </div>
                 <% end %>
@@ -136,6 +147,7 @@
             </div>
           </div>
         </div>
+          <hr class="meetup-index-hr">
       <% end %>
     <% end %>
 
@@ -143,48 +155,57 @@
   <h3 class="bh-text-bg">Past</h3>
   <% if @confirmed_meetups.any? %>
     <p>There is no past meetup</p>
+    <hr>
   <% else %>
     <% @confirmed_meetups.select { |cm| !cm.meetup_occurred? }.reverse.each do |m| %>
       <%= link_to meetup_path(m) do %>
-          <div class="bh-card-meetup-index">
-            <!-- <div class="image-user"> -->
-            <div>
-              <%= image_tag m.opposite_user(current_user).photo || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80", class: "bh-avatar-sm" %>
-            </div>
+        <div class="bh-card-meetup-index">
+          <div class="image-user">
+            <%= image_tag m.opposite_user(current_user).photo || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80", class: "bh-avatar-sm" %>
+          </div>
 
-            <div class="user-info">
-              <%=  m.opposite_user(current_user).first_name %>
-              <div>waiting for your review</div>
-            </div>
-            <!-- </div> -->
+          <div class="user-info">
+            <p style="font-weight: bold; color: black;"><%=  m.opposite_user(current_user).first_name %></p>
+            <p style="font-weight: light;">confirmed</p>
+          </div>
+          <!-- </div> -->
+          <div class="date-languages">
+            <div class="date"><%=  m.date.strftime("%b %d, %Y") %></div>
+            <!-- sharing -->
             <div class="date-languages">
-              <div class="date"><%=  m.date %></div>
-              <!-- sharing -->
-              <div class="languages">
-                <div class="language-part">
-                  <% m.opposite_user(current_user).user_languages.filter(&:sharing).each do |user_language| %>
-                    <div class="lang-pro">
-                      <%=  user_language.language.code %>
+            <p class="date"><%=  m.date %></p>
+            <!-- sharing -->
+            <div class="languages">
+              <div class="language-part">
+                <% m.opposite_user(current_user).user_languages.filter(&:sharing).each do |user_language| %>
+                  <div class="lang-pro">
+                    <div class="language-code"><%=  user_language.language.code %></div>
+                    <div class="progress-bar">
                       <div style="background-color: #DDDDDD; width: 20px;">
                         <div style ="width: <%= user_language.level %>; background-color: #80BD9E; height: 7px;"></div>
                       </div>
                     </div>
-                  <% end %>
-                </div>
-                <!-- practicing -->
-                <div class="language-part">
-                  <% m.opposite_user(current_user).user_languages.filter(&:seeking).each do |user_language| %>
-                    <div class="lang-pro">
-                      <%=  user_language.language.code %>
+                  </div>
+                <% end %>
+              </div>
+              <!-- practicing -->
+              <div class="language-part">
+                <% m.opposite_user(current_user).user_languages.filter(&:seeking).each do |user_language| %>
+                  <div class="lang-pro-seeking">
+                    <div class="language-code"><%=  user_language.language.code %></div>
+                    <div class="progress-bar">
                       <div style="background-color: #DDDDDD; width: 20px;">
                         <div style ="width: <%= user_language.level %>; background-color: #F49342; height: 7px;"></div>
                       </div>
                     </div>
-                  <% end %>
-                </div>
+                  </div>
+                <% end %>
               </div>
             </div>
           </div>
+          </div>
+        </div>
+        <hr class="meetup-index-hr">
       <% end %>
     <% end %>
   <% end %>
