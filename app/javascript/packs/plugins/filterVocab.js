@@ -10,7 +10,7 @@ const filterVocabByLang = () => {
       if(vocabItem.dataset.langId !== langId) {
          vocabItem.style.display = 'none';
       } else {
-         vocabItem.style.display = 'block';
+         vocabItem.style.display = 'flex';
       }
     });
   });

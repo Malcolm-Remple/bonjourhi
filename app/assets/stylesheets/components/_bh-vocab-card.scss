@@ -1,0 +1,11 @@
+.vocab-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  .vocab-item-content{
+    padding-right: 8px;
+  }
+}
