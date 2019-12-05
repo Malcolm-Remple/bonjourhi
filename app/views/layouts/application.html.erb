@@ -26,9 +26,7 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
   <body>
-    <% if request.original_url == root_url %>  
-      <%= render 'shared/home_bh-nav-header' %>      
-      <% else %>
+    <% if request.original_url != root_url %>  
       <%= render 'shared/bh-nav-header' %>
     <% end %>
     <%= yield %>
