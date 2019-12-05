@@ -181,6 +181,7 @@ claire.user_languages.create!(language: jp, proficiency: 4, seeking: false, shar
 
 # demo
 blair.user_languages.create!(language: es, proficiency: 4, seeking: true, sharing: false)
+blair.user_languages.create!(language: fr, proficiency: 1, seeking: true, sharing: false)
 blair.user_languages.create!(language: en, proficiency: 5, seeking: false, sharing: true)
 
 antoine.user_languages.create!(language: en, proficiency: 3, seeking: true, sharing: false)
