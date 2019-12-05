@@ -46,4 +46,37 @@
     <div class="d-flex justify-content-end mt-n1"><%= link_to "Reply in Messages >>", "#" %></div>
   </div>
   
+<div class="container">
+    <% if @meetup.confirmed && !@meetup.meetup_occurred? %>
+      <%= link_to "" do %>
+        <button type="button" class="bh-btn-solid-lg-show">
+          Reschedule / Cancel
+        </button>
+      <% end %>
+    <% elsif !@meetup.confirmed && @meetup.sender == current_user %>
+      <%= link_to "" do %>
+        <button type="button" class="bh-btn-solid-lg-show">
+          Reschedule / Cancel
+        </button>
+      <% end %>
+    <% elsif @meetup.confirmed && @meetup.meetup_occurred? %>
+      <%= link_to "" do %>
+        <button type="button" class="bh-btn-solid-lg-show">
+          Leave a review
+        </button>
+      <% end %>
+    <% else %>
+      <%= link_to meetup_path(@meetup), method: :patch, remote: true do %>
+        <button id="confirmed-button" type="button" class="bh-btn-solid-lg-show" data-toggle="modal" data-target="#exampleModal">
+          Confirm meetup
+        </button>
+      <% end %>
+      <%= link_to "", remote: true do %>
+        <button id="cancel-button" type="button" class="bh-btn-solid-lg-show d-none">
+          Reschedule / Cancel
+        </button>
+      <% end %>
+    <% end %>
+  </div>
+  <br>
 </div>
