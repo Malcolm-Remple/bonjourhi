@@ -12,16 +12,17 @@
       <% else %>
         <p>Status: <span id="pending">Pending</span></p>
       <% end %>
+      <p class="mt-n2"> <%=  @meetup.seeking_lang.code %> | <%= @meetup.sharing_lang.code %> </p>
     </div>
   </div>
   
-  <div class="bh-flex-container">
-    <p> <%=  @meetup.seeking_lang.code %> | <%= @meetup.sharing_lang.code %> </p>
-  </div>
-  
+
   <div class="bh-text-body">
-    <p>When: <%= "#{@meetup.date.strftime("%d/%m/%Y")},#{@meetup.start_time.strftime('%H:%M')} - #{@meetup.end_time.strftime('%H:%M')}" %>
-      
+    <h3 class="mt-3"><b>When</b></h3>
+    <p>
+      <%= "#{@meetup.date.strftime("%a %b %d, %Y")}" %>
+      <br>
+      <%= "#{@meetup.start_time.strftime('%H:%M')} - #{@meetup.end_time.strftime('%H:%M')}" %>  
     </p>
     <p>Where: <%= @meetup.location %></p>
   </div>
