@@ -5,7 +5,7 @@
       <img class="bh-avatar-lg" src="<%= @meetup.opposite_user(current_user).photo %>">
     </div>
     
-    <div class="bh-flex-element mt-1">
+    <div class="bh-flex-element">
       <h3><b><%= @meetup.opposite_user(current_user).first_name %></b></h3>
       <% if @meetup.confirmed %>
         <p>Status: Confirmed</p>
@@ -17,7 +17,7 @@
   </div>
   
   <div class="bh-text-body">
-    <h3 class="mt-2"><b>When</b></h3>
+    <h3><b>When</b></h3>
     <p>
       <%= "#{@meetup.date.strftime("%a, %b %d %Y")}" %>  ,  
       <%= "#{@meetup.start_time.strftime('%l:%M')} - #{@meetup.end_time.strftime('%l:%M %p')}" %>  
@@ -40,10 +40,10 @@
 <!-- Start of new container -->
 <div class="container">
   
-
   <div class="bh-text-body mt-3">
     <h3><b>Greeting message:</b></h3>
-    <p><%=  %></p>
+    <p><%= @meetup.greeting %></p>
+    <div class="d-flex justify-content-end mt-n1"><%= link_to "Reply in Messages >>", "#" %></div>
   </div>
   
 </div>
