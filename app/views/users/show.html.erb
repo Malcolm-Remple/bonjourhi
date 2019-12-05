@@ -10,14 +10,14 @@
     </div>
   </div>
 
-  <div class="bh-flex-container">  
-    
-    <div class="bh-flex-element">  
-      <h3><b>Sharing</b></h3> 
-      <% @user.user_languages.filter(&:sharing).each do |user_language| %> 
+  <div class="bh-flex-container">
+
+    <div class="bh-flex-element">
+      <h3><b>Sharing</b></h3>
+      <% @user.user_languages.filter(&:sharing).each do |user_language| %>
         <div class="lang-pro d-flex justify-content-between">
           <span style="width: 1px">
-            <%= user_language.language.code %>            
+            <%= user_language.language.code %>
           </span>
           <div class="d-flex align-items-center justify-content-flex-left">
             <div style="background-color: #DDDDDD; width: 50px; height: 13px;">
@@ -28,17 +28,17 @@
           </div>
           <br>
           <i></i>
-          <br>           
+          <br>
         </div>
       <% end %>
     </div>
-    
-    <div class="bh-flex-element">  
-      <h3><b>Practicing</b></h3> 
-      <% @user.user_languages.filter(&:seeking).each do |user_language| %> 
+
+    <div class="bh-flex-element">
+      <h3><b>Practicing</b></h3>
+      <% @user.user_languages.filter(&:seeking).each do |user_language| %>
         <div class="lang-pro d-flex justify-content-between">
           <span style="width: 1px">
-            <%= user_language.language.code %>            
+            <%= user_language.language.code %>
           </span>
           <div class="d-flex align-items-center justify-content-flex-left">
             <div style="background-color: #DDDDDD; width: 50px; height: 13px;">
@@ -49,11 +49,11 @@
           </div>
           <br>
           <i></i>
-          <br>           
+          <br>
         </div>
       <% end %>
-    </div> 
-    
+    </div>
+
   </div>
 
   <div class="bh-text-body">
@@ -61,7 +61,7 @@
     <p><%= @user.bio %></p>
   </div>
 
-  <div class="d-flex justify-content-end mt-n1"><%= link_to "Chat with #{@user.first_name} >>", user_chats_path(current_user, other_user: @user), method: :post %></div>
+
 
   <div class="bh-text-body">
     <h3><b>Reviews</b></h3>
