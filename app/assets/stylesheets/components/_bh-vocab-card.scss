@@ -9,3 +9,14 @@
     padding-right: 8px;
   }
 }
+
+.vocab-card-right {
+  display: flex;
+  .vocab-speaker {
+    padding-right: 8px;
+  }
+  .vocab-delete {
+    color:#b1b1b1;
+  }
+
+}

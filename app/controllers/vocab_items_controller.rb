@@ -1,4 +1,3 @@
-require 'json'
 
 class VocabItemsController < ApplicationController
   def index
