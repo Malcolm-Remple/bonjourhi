@@ -1,7 +1,7 @@
 
 <%= simple_form_for(VocabItem.new, method: :post, remote: true) do |f| %>
   <%= f.association :language, label: false, collection: @new_vocab_form_languages, include_blank: false %>
-  <%= f.input :content, label: "New word"%>
+  <%= f.input :content, label: false, placeholder: 'Enter or speak new phrase' %>
   <%= button_tag type: 'submit', class: "bh-btn-solid-variable-slim" do %>
       <i class="fas fa-plus-circle"></i> Add Vocab
   <% end %>

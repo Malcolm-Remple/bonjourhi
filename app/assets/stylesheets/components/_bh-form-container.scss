@@ -1,6 +1,14 @@
 .bh-form-container{
-
   margin-top: 6px;
-  width: 60%;
+  width: 65%;
 }
 
+.vocab-add-container {
+  display: flex;
+}
+
+#mic-button {
+  position: relative;
+  top: 61px;
+  left: 10px;
+}
