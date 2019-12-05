@@ -4,7 +4,7 @@
   // align-items: left;
   color: white;
   list-style-type: none;
-  background-color: black;
+  background-color: $bh-dark;
   width: 100%;
   height: 52px;
 
@@ -33,7 +33,7 @@
 }
 
 .signin a {
-  color: #495157;
-  font-size: 11px;
+  color: $bh-dark;
+  font-size: 14px;
   margin: 15px;
 }
