@@ -19,6 +19,12 @@
     <p> <%=  @meetup.seeking_lang.code %> | <%= @meetup.sharing_lang.code %> </p>
   </div>
   
+  <div class="bh-text-body">
+    <p>When: <%= "#{@meetup.date.strftime("%d/%m/%Y")},#{@meetup.start_time.strftime('%H:%M')} - #{@meetup.end_time.strftime('%H:%M')}" %>
+      
+    </p>
+    <p>Where: <%= @meetup.location %></p>
+  </div>
 
   <div class="bh-text-body">
     <h3><b>Bio</b></h3>
