@@ -14,7 +14,7 @@
       <% else %>
         <p>Status: <span id="pending">Pending</span></p>
       <% end %>
-      <p class="mt-n2"> <%=  @meetup.seeking_lang.code %> | <%= @meetup.sharing_lang.code %> </p>
+      <p class="mt-n2"> <%=  Language.find(@meetup.seeking_lang_id).code %> | <%= @meetup.sharing_lang.code %> </p>
     </div>
   </div>
 
