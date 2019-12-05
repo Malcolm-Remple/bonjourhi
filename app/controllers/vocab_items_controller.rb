@@ -1,16 +1,18 @@
+require 'json'
+
 class VocabItemsController < ApplicationController
   def index
+
     @header_title = "Your Vocab"
     # get vocab in descending order by creation date
     @vocab_items = current_user.vocab_items.order(created_at: :desc)
 
-    # get unique languages of all vocab items
-    @languages = current_user.vocab_items.map { |vi| vi.language }.uniq
-    # create diaply/value pairs for select box
-    @language_option_array = @languages.map { |l| [l.name, l.id] }
-
     # user can add new vocab in any of their seeking langs
-    @new_vocab_form_languages = current_user.user_languages.filter(&:seeking).map {|ul| ul.language}
+    # @new_vocab_form_languages = current_user.user_languages.filter(&:seeking).map {|ul| ul.language}
+    # @new_vocab_form_languages = current_user.user_languages.filter(&:seeking).map {|ul| [ul.language.name, ul.language.iso_code]}
+    set_new_vocab_form_languages
+    @languages = Language.all
+
     @vocab_item = VocabItem.new
   end
 
@@ -25,7 +27,8 @@ class VocabItemsController < ApplicationController
   end
 
   def create
-     @new_vocab_form_languages = current_user.user_languages.filter(&:seeking).map {|ul| ul.language}
+
+    set_new_vocab_form_languages
     @vocab_item = VocabItem.new(vocab_item_params)
     @vocab_item.user = current_user
 
@@ -57,5 +60,13 @@ class VocabItemsController < ApplicationController
 
   def vocab_item_params
     params.require(:vocab_item).permit(:language_id, :content)
+  end
+
+  def set_new_vocab_form_languages
+    last_vocab_lang = VocabItem.order('created_at DESC').first.language
+    new_vocab_form_languages = current_user.user_languages.filter(&:seeking).map {|ul| ul.language}
+    rest_of_langs = new_vocab_form_languages - [last_vocab_lang]
+    # @new_vocab_form_languages = current_user.user_languages.filter(&:seeking).map {|ul| ul.language}
+    @new_vocab_form_languages = [last_vocab_lang] + rest_of_langs
   end
 end

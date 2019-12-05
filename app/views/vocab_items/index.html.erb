@@ -1,12 +1,17 @@
 <div class="container">
+<div class="vocab-add-container">
+  <div class="bh-form-container">
+    <%= render 'vocab_items/vocab_item_form'%>
+  </div>
 
-<div class="bh-form-container">
-  <%= render 'vocab_items/vocab_item_form'%>
+  <button class="bh-btn-solid-variable-slim" id="mic-button">
+    <i class="fas fa-microphone"></i>
+  </button>
 </div>
 
-  <div class="vocab-item-list" id="vocab-item-list">
+  <div class="vocab-item-list " id="vocab-item-list">
     <% @vocab_items.each do |vi| %>
-      <div class="vocab-item" data-lang-id="<%= vi.language.id %>">
+      <div class="vocab-item animated flipInX" data-lang-id="<%= vi.language.id %>">
         <div class="vocab-item-content">
           <%= vi.content %>
         </div>
@@ -15,4 +20,9 @@
     <% end %>
   </div>
 </div>
+
+<!-- pass lang codes to html -->
+<% @languages.each do |l|%>
+  <span class="language-meta-data" id="language-meta-<%= l.id %>" data-iso-code="<%= l.iso_code %>" data-lang-name="<%= l.name %>"></span>
+<% end %>
 
