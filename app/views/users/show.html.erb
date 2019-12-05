@@ -69,7 +69,7 @@
       <p><%= link_to user_path(r.author) do  %>
           <%= image_tag r.author.photo, class: "bh-avatar-xxs" %>
           <% end %>
-        <b> <%= r.author.first_name %> | <%= r.date_to_string %></b> <br> <%= r.content %></p>
+          <%= r.author.first_name %> | <%= r.date_to_string %></b></p> <p> <%= r.content %></p>
     <% end %>
   </div>
 </div>
