@@ -5,6 +5,11 @@
 
 .vocab-add-container {
   display: flex;
+  justify-content:center;
+  background-color: $bh-light-orange;
+  border-radius: 8px;
+  padding: 8px;
+  margin: 6px 0;
 }
 
 #mic-button {

@@ -3,11 +3,6 @@ const addVocabListLoadAnimation = (element) => {
   element.classList.add('flipInX');
 };
 
-// const removeVocabListLoadAnimation = (element) => {
-//   element.classList.remove('animation');
-//   element.classList.remove('bounceIn');
-//   element.classList.remove('flipInX');
-// };
 
 
 const filterVocabByLang = () => {
