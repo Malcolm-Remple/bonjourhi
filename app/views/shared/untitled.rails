@@ -1,3 +1,4 @@
+
 .bh-nav-header {
   display: flex;
   justify-content: space-between;
@@ -10,16 +11,12 @@
   text-align: center;
   position: sticky;
   top: 0;
-  
 }
 
 .bh-nav-i {
   color: white;
 }
 
-.bh-nav-i-home{
-  color: $bh-dark;
-}
 .bh-nav-title {
   display: flex;
   align-items: center;

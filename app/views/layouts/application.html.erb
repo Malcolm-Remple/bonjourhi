@@ -24,7 +24,11 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
   <body>
-    <%= render 'shared/bh-nav-header' %>
+    <% if request.original_url == root_url %>  
+      <%= render 'shared/home_bh-nav-header' %>      
+      <% else %>
+      <%= render 'shared/bh-nav-header' %>           ## Assuming that _header.html.erb is under layouts directory
+    <% end %>
     <%= yield %>
     <%= render 'shared/bh-nav-footer' %>
     <%= javascript_include_tag 'application' %>
