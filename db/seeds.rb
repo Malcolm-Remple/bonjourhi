@@ -327,27 +327,32 @@ Review.create!(
   user: isabelle
   )
 Review.create!(
-  date: Date.new(2019,10,7) ,
+  date: Date.new(2019,11,10) ,
   content: "Merci for everything! Great conversationalist" ,
   author: User.last(2).first,
   user: isabelle
   )
 Review.create!(
-  date: Date.new(2019,7,15),
+  date: Date.new(2019,11,6),
   content: "Isabelle est très cool!!!! She sure knows a lot about catepillars.",
   author: User.last(3).first,
   user: isabelle
   )
 
 Review.create!(
-  date: Date.new(2019,3,14),
+  date: Date.new(2019,11,1),
   content: "Isabelle est très cool!!!! very patient and helped correct my english",
   author: User.last(4).first,
   user: isabelle
   )
 
 
-
+Review.create!(
+  date: Date.new(2019,10,12),
+  content: "Super!",
+  author: User.last(5).first,
+  user: isabelle
+  )
 
 
 
