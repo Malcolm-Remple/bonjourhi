@@ -9,6 +9,7 @@ class MeetupsController < ApplicationController
 
   def show
     @meetup = Meetup.find(params[:id])
+
   end
 
   def new
@@ -27,7 +28,6 @@ class MeetupsController < ApplicationController
     @meetup.sender = current_user
     @seeking_langs = @user.user_languages.filter(&:sharing).map {|user_languages| user_languages.language}
     @sharing_langs = current_user.user_languages.filter(&:sharing).map {|user_languages| user_languages.language}
-
     @meetup.recipient = @user
     if @meetup.save
       redirect_to meetups_path
