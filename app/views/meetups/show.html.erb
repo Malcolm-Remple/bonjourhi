@@ -2,7 +2,9 @@
 
   <div class="bh-flex-container">
     <div class="bh-flex-element">
-      <img class="bh-avatar-lg" src="<%= @meetup.opposite_user(current_user).photo %>">
+      <%= link_to user_path(@meetup.opposite_user(current_user)) do  %>
+        <img class="bh-avatar-lg" src="<%= @meetup.opposite_user(current_user).photo %>">
+      <% end %>
     </div>
 
     <div class="bh-flex-element">
