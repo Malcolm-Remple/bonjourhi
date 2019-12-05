@@ -3,7 +3,7 @@ import "bootstrap";
 import * as $ from 'jquery';
 import { scrollToChatBottomOnLoad, scrollToChatBottomOnMessageAppend } from './plugins/chatScroll';
 import { listenForSpeakerClick } from './plugins/speechSynthesis';
-import { filterVocabByLang } from './plugins/filterVocab';
+import { filterVocabByLang, listenForSelectChange } from './plugins/filterVocab';
 import { listenForMicClick } from './plugins/speechRec';
 // IMPORT SYNTAX:
 // import {method_name} from './plugins/filename'
@@ -57,6 +57,7 @@ if(window.location.href.match(/chats/)){
 if(window.location.href.match(/vocab_items/)) {
   listenForSpeakerClick();
   filterVocabByLang();
+  listenForSelectChange();
   listenForMicClick();
 }
 
