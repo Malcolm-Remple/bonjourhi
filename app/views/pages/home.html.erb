@@ -1,13 +1,13 @@
 <!-- <div class="container"> -->
-  
+
   <div class="bh-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1500565534308-0db60f7116f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60);">
-    
+
     <div class="d-flex justify-content-center mb-4">
-      <%= image_tag "bhlogo.svg", style: "width: 60%" %>
+      <%= image_tag "bhlogo.svg", style: "width: 60%", class: "animated infinite pulse slower" %>
     </div>
-    
+
       <div class="container">
-      
+
       <h2>Find a language partner</h2>
 
       <!-- simple form  -->
@@ -18,7 +18,7 @@
       <!-- <%# @ul = UserLanguage.all %> -->
 
       <%= text_field_tag :city,
-      
+
         params[:city],
         class: "form-control",
         placeholder: "Choose a city!"
