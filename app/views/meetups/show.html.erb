@@ -5,7 +5,7 @@
       <img class="bh-avatar-lg" src="<%= @meetup.opposite_user(current_user).photo %>">
     </div>
     
-    <div class="bh-flex-element">
+    <div class="bh-flex-element mt-1">
       <h3><b><%= @meetup.opposite_user(current_user).first_name %></b></h3>
       <% if @meetup.confirmed %>
         <p>Status: Confirmed</p>
@@ -18,13 +18,16 @@
   
 
   <div class="bh-text-body">
-    <h3 class="mt-3"><b>When</b></h3>
+    <h3 class="mt-2"><b>When</b></h3>
     <p>
-      <%= "#{@meetup.date.strftime("%a %b %d, %Y")}" %>
-      <br>
-      <%= "#{@meetup.start_time.strftime('%H:%M')} - #{@meetup.end_time.strftime('%H:%M')}" %>  
+      <%= "#{@meetup.date.strftime("%a, %b %d %Y")}" %>  ,  
+      <%= "#{@meetup.start_time.strftime('%l:%M')} - #{@meetup.end_time.strftime('%l:%M %p')}" %>  
     </p>
-    <p>Where: <%= @meetup.location %></p>
+    
+    <h3><b>Where</b></h3>
+    <p>
+      <%= @meetup.location %>
+    </p>
   </div>
 
   <div class="bh-text-body">
