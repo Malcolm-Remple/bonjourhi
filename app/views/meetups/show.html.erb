@@ -1,51 +1,52 @@
 <div class="container">
-
-  <div class="bh-meetup-show-container">
-    <div class="bh-meetup-show-avatar">
+  
+  <div class="bh-flex-container"> 
+    <div class="bh-flex-element">  
       <img class="bh-avatar-lg" src="<%= @meetup.opposite_user(current_user).photo %>">
     </div>
-    <div class="bh-meetup-show-info">
-      <h3><b>With <%= @meetup.opposite_user(current_user).first_name %></b></h3>
+    
+    <div class="bh-flex-element">
+      <h3><b><%= @meetup.opposite_user(current_user).first_name %></b></h3>
       <% if @meetup.confirmed %>
         <p>Status: Confirmed</p>
       <% else %>
         <p>Status: <span id="pending">Pending</span></p>
       <% end %>
+      <p class="mt-n2"> <%=  @meetup.seeking_lang.code %> | <%= @meetup.sharing_lang.code %> </p>
     </div>
   </div>
-
-  <div class="mt-3">
-    <div class="meetup-languagues">
-      <div><i class="fas fa-globe"></i></div>
-      <div class="meetup-show-sharing">
-        <% @meetup.opposite_user(current_user).user_languages.filter(&:sharing).each do |user_language| %>
-          <p style="margin-left: 7px;"><%=  user_language.language.code %> </p>
-        <% end %>
-      </div>
-      <div class="meetup-show-seeking">
-        <% @meetup.opposite_user(current_user).user_languages.filter(&:seeking).each do |user_language| %>
-          <p style="margin-left: 7px;"> | <%=  user_language.language.code %></p>
-        <% end %>
-      </div>
-    </div>
-
-    <p>When: <%= "#{@meetup.date.strftime("%d/%m/%Y")}, #{@meetup.start_time.strftime('%H:%M')} - #{@meetup.end_time.strftime('%H:%M')}" %></p>
-    <p>Where: <%= @meetup.location %></p>
-    <% if @meetup.confirmed %>
-      <div class="d-flex justify-content-end"><%= link_to "add event to calendar", meetup_get_token_url(@meetup)  %></div>
-    <% end %>
-    <%= image_tag "https://res.cloudinary.com/dgxkozw6v/image/upload/v1575058085/cafe-myriade_kd2faq.png", style:'height:200px; width:500px; margin-bottom:20px; object-fit:cover;' %>
-    <div class="d-flex justify-content-end"><%= link_to "Open in Maps >>", "#" %></div>
+  
+  <div class="bh-text-body">
+    <h3><b>When</b></h3>
+    <p>
+      <%= "#{@meetup.date.strftime("%a, %b %d %Y")}" %>  ,  
+      <%= "#{@meetup.start_time.strftime('%l:%M')} - #{@meetup.end_time.strftime('%l:%M %p')}" %>  
+    </p>
+    
+    <h3><b>Where</b></h3>
+    <p class="d-flex justify-content-end mb-n4" ><%= link_to "Open in Maps >>", "#" %></p>
+    <p>
+      <%= @meetup.location %>
+    </p>
   </div>
+  
+<!-- End of container -->
+</div>
 
-  <div>
-    <h3>Greeting message:</h3>
+<div class="mt-n2" >
+<%= image_tag "cafe.png", style:"width:100%" %>
+</div>
+
+<!-- Start of new container -->
+<div class="container">
+  
+  <div class="bh-text-body mt-3">
+    <h3><b>Greeting message:</b></h3>
     <p><%= @meetup.greeting %></p>
-    <div class="d-flex justify-content-end"><%= link_to "Reply in Messages >>", "#" %></div>
-  <div>
-
-  <br>
-  <div class="container">
+    <div class="d-flex justify-content-end mt-n1"><%= link_to "Reply in Messages >>", "#" %></div>
+  </div>
+  
+<div class="container">
     <% if @meetup.confirmed && !@meetup.meetup_occurred? %>
       <%= link_to "" do %>
         <button type="button" class="bh-btn-solid-lg-show">
@@ -77,28 +78,5 @@
       <% end %>
     <% end %>
   </div>
-
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <div class="d-flex align-items-center">
-            <img class="ml-5 bh-avatar-sm" src="<%= @meetup.opposite_user(current_user).photo %>">
-            <h5 class="ml-4 modal-title" id="exampleModalLabel">Meetup with <%= @meetup.sender.first_name %> confirmed!</h5>
-          </div>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="d-flex justify-content-end"><%= link_to "Add event to Google calendar", meetup_get_token_url(@meetup), class: "bh-btn-outline-lg"  %></div>
-          <div class="d-flex justify-content-end"><%= link_to "Message #{@meetup.sender.first_name} in chat", user_chats_path(current_user), class: "bh-btn-outline-lg" %></div>
-        </div>
-        <div class="modal-footer">
-          <%= link_to "Go back to my meetups page", meetups_path, class: "bh-btn-solid-lg-show" %>
-        </div>
-      </div>
-    </div>
-  </div>
+  <br>
 </div>
-
