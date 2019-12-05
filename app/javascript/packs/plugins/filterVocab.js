@@ -1,13 +1,13 @@
 const addVocabListLoadAnimation = (element) => {
-  element.classList.add('animation');
-  element.classList.add('bounceIn');
+  element.classList.add('animated');
+  element.classList.add('flipInX');
 };
 
-const removeVocabListLoadAnimation = (element) => {
-  element.classList.remove('animation');
-  element.classList.remove('bounceIn');
-  element.classList.remove('flipInX');
-};
+// const removeVocabListLoadAnimation = (element) => {
+//   element.classList.remove('animation');
+//   element.classList.remove('bounceIn');
+//   element.classList.remove('flipInX');
+// };
 
 
 const filterVocabByLang = () => {
@@ -24,13 +24,10 @@ const filterVocabByLang = () => {
 
     // loop trough lang groups and display none on all but current lang
     Array.from(vocabItems).forEach((vocabItem) => {
-      removeVocabListLoadAnimation(vocabItem);
-
+      addVocabListLoadAnimation(vocabItem);
       if(vocabItem.dataset.langId !== langId) {
          vocabItem.style.display = 'none';
-
       } else {
-        addVocabListLoadAnimation(vocabItem);
         vocabItem.style.display = 'flex';
       }
     });

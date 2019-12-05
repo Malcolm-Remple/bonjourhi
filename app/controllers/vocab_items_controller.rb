@@ -27,7 +27,12 @@ class VocabItemsController < ApplicationController
   end
 
   def create
-    @new_vocab_form_languages = current_user.user_languages.filter(&:seeking).map {|ul| ul.language}
+    last_vocab_lang = VocabItem.order('created_at DESC').first.language
+    new_vocab_form_languages = current_user.user_languages.filter(&:seeking).map {|ul| ul.language}
+    rest_of_langs = current_user.languages - [last_vocab_lang]
+    # @new_vocab_form_languages = current_user.user_languages.filter(&:seeking).map {|ul| ul.language}
+    @new_vocab_form_languages = [last_vocab_lang] + rest_of_langs
+
     # @new_vocab_form_languages = current_user.user_languages.filter(&:seeking).map {|ul| [ul.language.name, ul.language.iso_code]}
     @vocab_item = VocabItem.new(vocab_item_params)
     @vocab_item.user = current_user

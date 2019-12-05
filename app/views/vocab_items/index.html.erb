@@ -9,9 +9,9 @@
   </button>
 </div>
 
-  <div class="vocab-item-list animated bouneIn" id="vocab-item-list">
+  <div class="vocab-item-list " id="vocab-item-list">
     <% @vocab_items.each do |vi| %>
-      <div class="vocab-item" data-lang-id="<%= vi.language.id %>">
+      <div class="vocab-item animated flipInX" data-lang-id="<%= vi.language.id %>">
         <div class="vocab-item-content">
           <%= vi.content %>
         </div>
