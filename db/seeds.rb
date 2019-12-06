@@ -302,7 +302,7 @@ puts "Creating reviews..."
 Review.create!(
   date: Date.new(2019,11,18),
   content: "Antoine never showed up...." ,
-  author: User.last,
+  author: User.last(7).first,
   user: antoine
   )
 Review.create!(
@@ -323,7 +323,7 @@ Review.create!(
 Review.create!(
   date: Date.new(2019,11,29) ,
   content: "Isabelle is a delight! She taught me tons of Québécois sayings" ,
-  author: User.last,
+  author: User.last(6).first,
   user: isabelle
   )
 Review.create!(
