@@ -2,17 +2,23 @@
 
   <div class="bh-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1500565534308-0db60f7116f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60);">
 
-    <div class="d-flex justify-content-center mb-4">
-      <%= image_tag "bhlogo.svg", style: "width: 60%", class: "animated infinite pulse slower" %>
+    <div class="bh-animation">
+      <div class="logo-breathing1">
+        <%= image_tag "bhlogo.svg", style: "width: 100%", class: "animated infinite pulse slower" %>
+      </div>
+
+      <div class="logo-breathing2">
+        <%= image_tag "bhlogo2.svg", style: "width: 100%", class: "animated infinite pulse slower delay-2s" %>
+      </div>
     </div>
 
-      <div class="container">
+    <div class="bh-container">
 
       <h2>Find a language partner</h2>
 
       <!-- simple form  -->
 
-    <%= form_tag users_path, method: :get do %>
+      <%= form_tag users_path, method: :get do %>
       <% @language = Language.all %>
       <!-- <%# @proficiency = UserLanguage.all.pluck(:proficiency).uniq.sort %> -->
       <!-- <%# @ul = UserLanguage.all %> -->
@@ -25,14 +31,7 @@
       %>
       <p>I want to practice:</p>
       <%= select_tag :language, options_from_collection_for_select(@language, 'id', 'name'), class: "bh-select-list" %>
-      <!-- proficiency -->
-      <!-- <select  name="proficiency" class="bh-select-list">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select> -->
+
       <%= submit_tag "Search", class: "bh-btn-solid-lg-home mb-2" %>
     <% end %>
 
