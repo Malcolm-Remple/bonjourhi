@@ -46,3 +46,16 @@ a:active {
   text-decoration: none;
   color: $bh-dark;
 }
+
+.mobile-container {
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+@media(min-width: 600px) {
+  .mobile-container {
+    width: 375px;
+    height: 667px;
+  }
+}

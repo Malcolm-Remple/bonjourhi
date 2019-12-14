@@ -16,3 +16,9 @@
 .bh-pushdown-content {
   margin-top: 125px;
 }
+
+@media(min-width: 600px) {
+  .bh-nav-footer {
+    width: 375px;
+  } 
+}
